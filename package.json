@@ -1,0 +1,22 @@
+{
+  "name": "boxedsales",
+  "version": "0.0.1",
+  "description": "HTML5 mobile app landing page",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/parkerproject/BoxedSales-landing.git"
+  },
+  "author": "Parker Ituk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/parkerproject/BoxedSales-landing/issues"
+  },
+  "homepage": "https://github.com/parkerproject/BoxedSales-landing",
+  "dependencies": {
+    "hapi": "~6.7.1"
+  }
+}
