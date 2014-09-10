@@ -4,7 +4,7 @@ module.exports = {
         handler: function(request, reply){
           // Render the view with the custom greeting
             reply.view('index', {
-                title: 'Awesome Boiler Plate Homepage'
+                title: 'BoxedSales Landing page'
             });
         },
         app: {
@@ -31,4 +31,4 @@ module.exports = {
             name: '404'
         }
     }
-}
+};
