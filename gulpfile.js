@@ -22,7 +22,7 @@ gulp.task('default', function(){
 
     // concat and minify your css
     gulp.src(assets.development.css)
-        .pipe(concat("styles.css"))
+        .pipe(concat("styles.min.css"))
         .pipe(minifycss())
         .pipe(gulp.dest('./css/'));
 
