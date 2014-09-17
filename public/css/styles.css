@@ -1,37 +1,33 @@
-html{
-    background: #000 url(../images/BoxedSales.png) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+html {
+  background: #000 url(../images/BoxedSales.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
-
-.center{
+.center {
   position: relative;
   top: 20%;
   -webkit-transform: translateY(20%);
   -ms-transform: translateY(20%);
   transform: translateY(20%);
 }
-
-.container{
-    margin: 0 auto;
-    width: 860px;
+.container {
+  margin: 0 auto;
+  width: 900px;
 }
-.phone-slider{
-    background: url("../images/phone_bg.png") no-repeat;
-    height: 569px;
-    width: 276px;
-    float: left;
+.phone-slider {
+  background: url("../images/phone_bg.png") no-repeat;
+  height: 569px;
+  width: 276px;
+  float: left;
 }
-
-.content{
-    color: #fff;
-     float: left;
-    padding: 0 0 0 49px;
+.content {
+  color: #fff;
+  float: left;
+  padding: 0 0 0 49px;
 }
-
-.content h1{
+.content h1 {
   color: #fff;
   font-family: 'GothamMedium';
   text-transform: uppercase;
@@ -39,88 +35,85 @@ html{
   -webkit-font-smoothing: antialiased;
   margin-bottom: 0;
 }
-
-.content p{
-    font-family: 'GothamBook';
-    -webkit-font-smoothing: antialiased;
-    width: 416px;
-    font-size: 2rem;
-    margin-top: 0;
+.content p {
+  font-family: 'GothamBook';
+  -webkit-font-smoothing: antialiased;
+  width: 416px;
+  font-size: 1.9rem;
+  margin-top: 0;
 }
-
-.content input{
-    background: transparent;
-    border: 2px solid #948c88;
-    height: 30px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -ms-border-radius: 3px;
-    -o-border-radius: 3px;
-    border-radius: 3px;
-    width: 350px;
-    padding: 5px;
-    outline: none;
-    font-size: 0.9em;
-    color: #fff;
-    font-family: 'GothamMedium';
-     -webkit-font-smoothing: antialiased;
+.content input {
+  background: transparent;
+  border: 2px solid #948c88;
+  height: 30px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  width: 350px;
+  padding: 5px;
+  outline: none;
+  font-size: 0.9em;
+  color: #fff;
+  font-family: 'GothamMedium';
+  -webkit-font-smoothing: antialiased;
 }
-
-.content button{
-    background: #6fa9be;
-    border: 1px solid #6fa9be;
-    height: 42px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -ms-border-radius: 3px;
-    -o-border-radius: 3px;
-    border-radius: 3px;
-    font-size: 0.9rem;
-    color: #fff;
-    padding: 0 10px;
-    font-family: 'GothamMedium';
-     -webkit-font-smoothing: antialiased;
+.content button {
+  background: #6fa9be;
+  border: 1px solid #6fa9be;
+  height: 42px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  color: #fff;
+  padding: 0 10px;
+  font-family: 'GothamMedium';
+  -webkit-font-smoothing: antialiased;
+  margin-left: 9px;
 }
-
-.spread_the_word{
-    top: 50px;
-    position: relative;
+.content .info {
+  font-family: 'GothamBook';
+  font-size: 1.3em;
+  padding-bottom: 30px;
 }
-
-.spread_the_word p{
-   font-size: 1.2em;
+.spread_the_word {
+  top: 50px;
+  position: relative;
 }
-
-
-.spread_the_word a{
-    text-decoration: none;
-    color: #948c88;
-    font-size: 2rem;
-    margin: 0 6px 0 0;
-    position: relative;
-    top: 9px;
+.spread_the_word p {
+  font-size: 1.2em;
 }
-
-::-webkit-input-placeholder{
-   color: white;
-    font-family: 'GothamMedium';
-     -webkit-font-smoothing: antialiased;
+.spread_the_word a {
+  text-decoration: none;
+  color: #948c88;
+  font-size: 2rem;
+  margin: 0 6px 0 0;
+  position: relative;
+  top: 9px;
 }
-
-:-moz-placeholder { /* Firefox 18- */
-      color: white;
-    font-family: 'GothamMedium';
-     -webkit-font-smoothing: antialiased;
+: : -webkit-input-placeholder {
+  color: white;
+  font-family: 'GothamMedium';
+  -webkit-font-smoothing: antialiased;
 }
-
-::-moz-placeholder {  /* Firefox 19+ */
-      color: white;
-    font-family: 'GothamMedium';
-     -webkit-font-smoothing: antialiased;
+: -moz-placeholder {
+  /* Firefox 18- */
+  color: white;
+  font-family: 'GothamMedium';
+  -webkit-font-smoothing: antialiased;
 }
-
-:-ms-input-placeholder {
-      color: white;
-    font-family: 'GothamMedium';
-     -webkit-font-smoothing: antialiased;
+: : -moz-placeholder {
+  /* Firefox 19+ */
+  color: white;
+  font-family: 'GothamMedium';
+  -webkit-font-smoothing: antialiased;
+}
+: -ms-input-placeholder {
+  color: white;
+  font-family: 'GothamMedium';
+  -webkit-font-smoothing: antialiased;
 }
