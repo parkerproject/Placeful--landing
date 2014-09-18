@@ -17,9 +17,9 @@ html {
   width: 900px;
 }
 .phone-slider {
-  background: url("../images/phone_bg.png") no-repeat;
-  height: 569px;
-  width: 276px;
+  /*background: url("../images/phone_bg.png") no-repeat;*/
+  max-height: 569px;
+  max-width: 276px;
   float: left;
 }
 .content {
@@ -44,7 +44,7 @@ html {
 }
 .content input {
   background: transparent;
-  border: 2px solid #948c88;
+  border: 2px solid #fff;
   height: 30px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -95,25 +95,34 @@ html {
   position: relative;
   top: 9px;
 }
-: : -webkit-input-placeholder {
+::-webkit-input-placeholder {
   color: white;
   font-family: 'GothamMedium';
   -webkit-font-smoothing: antialiased;
 }
-: -moz-placeholder {
+:-moz-placeholder {
   /* Firefox 18- */
   color: white;
   font-family: 'GothamMedium';
   -webkit-font-smoothing: antialiased;
 }
-: : -moz-placeholder {
+::-moz-placeholder {
   /* Firefox 19+ */
   color: white;
   font-family: 'GothamMedium';
   -webkit-font-smoothing: antialiased;
 }
-: -ms-input-placeholder {
+:-ms-input-placeholder {
   color: white;
   font-family: 'GothamMedium';
   -webkit-font-smoothing: antialiased;
+}
+
+.marvel-device.iphone6plus{
+  height: 380px;
+  width: 214px;
+}
+
+.marvel-device.iphone6plus .sensor{
+  left: 71px;
 }

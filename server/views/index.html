@@ -1,10 +1,29 @@
 {% extends './layouts/default.html' %} {% block title %}{{ title }}{% endblock %} {% block content %}
 
 <div class="container">
-  <section class="phone-slider"></section>
+  <section class="phone-slider">
+    <div class="marvel-device iphone6plus black">
+    <div class="top-bar"></div>
+    <div class="sleep"></div>
+    <div class="volume"></div>
+    <div class="camera"></div>
+    <div class="sensor"></div>
+    <div class="speaker"></div>
+    <div class="screen">
+        <!-- Content goes here -->
+    </div>
+    <div class="home"></div>
+    <div class="bottom-bar"></div>
+</div>
+  </section>
   <section class="content">
     <h1>boxedsales</h1>
-    <p style="width: 100%;">Daily deals based on your interests.</p>
+
+    <!--
+    Daily deals that interest you.
+    Daily deals based on your interests.
+    -->
+    <p style="width: 100%;">Personalized daily deals for you.</p>
     <p class="info">We bring together deals from Groupon, LivingSocial and others.</p>
     <input type="email" placeholder="Email" value="" />
     <button type="submit">Join the waiting list</button>
