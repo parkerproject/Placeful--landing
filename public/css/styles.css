@@ -13,8 +13,14 @@ html {
   transform: translateY(20%);
 }
 .container {
-  margin: 0 auto;
-  width: 900px;
+	width: 900px;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	height: 606px;
 }
 .phone-slider {
   /*background: url("../images/phone_bg.png") no-repeat;*/
