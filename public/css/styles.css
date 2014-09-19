@@ -132,3 +132,22 @@ html {
 .marvel-device.iphone6plus .sensor{
   left: 71px;
 }
+
+.count_down{
+	padding-top: 50%;
+	font-family: 'GothamLight'
+}
+
+.days, .mins, .hours, .secs{
+	 display: block
+}
+
+.count_down i{
+	font-style: normal
+}
+
+.chart canvas {
+position: absolute;
+left: 0;
+top: 0;
+}
