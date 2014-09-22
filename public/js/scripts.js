@@ -1,11 +1,26 @@
-function update(){
-var launch_date = moment().countdown("2014-12-01", countdown.DAYS|countdown.HOURS|countdown.MINUTES|countdown.SECONDS, NaN, 0); //=> '30 years, 10 months, 14 days, 1 hour, 8 minutes, and 14 seconds'
-document.querySelector('.days i').textContent = launch_date.days;
-document.querySelector('.hours i').textContent = launch_date.hours;
-document.querySelector('.mins i').textContent = launch_date.minutes;
-document.querySelector('.secs i').textContent = launch_date.seconds;
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.js-submit').addEventListener('click', checkEmail, false);
 
+});
+
+function validateEmail(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
 }
 
- update();
- setInterval(update, 1000);
+
+function checkEmail() {
+    var email = document.querySelector('.js-email').value;
+    if (validateEmail(email)) {
+        $('.js-email').removeClass('js-error');
+        sendEmail(email);
+    } else {
+        $('.js-email').addClass('js-error');
+    }
+}
+
+function sendEmail(email) {
+    $.post('/process_email/' + email, function(data) {
+        document.querySelector('.form').innerHTML = '<i class="notify">' + data + '</i>';
+    });
+}

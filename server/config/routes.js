@@ -44,6 +44,10 @@ module.exports = function(server) {
         method: 'GET',
         path: '/bower_components/{path*}',
         config: controller.assets.bower
+    }, {
+        method: 'POST',
+        path: '/process_email/{email}',
+        config: controller.api.storeEmail
     }];
     return routeTable;
 }

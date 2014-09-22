@@ -95,7 +95,7 @@ html {
 }
 .spread_the_word a {
   text-decoration: none;
-  color: #948c88;
+  color: #fff;
   font-size: 2rem;
   margin: 0 6px 0 0;
   position: relative;
@@ -138,16 +138,19 @@ html {
 	font-family: 'GothamLight'
 }
 
-.days, .mins, .hours, .secs{
-	 display: block
+.js-error{
+    border: 2px solid red!important;
 }
 
-.count_down i{
-	font-style: normal
+button{
+    outline: none;
+    cursor: pointer;
 }
 
-.chart canvas {
-position: absolute;
-left: 0;
-top: 0;
+.notify{
+    background: white;
+    color: black;
+    padding: 10px;
+    font-family: 'GothamBook';
+    font-style: normal;
 }
