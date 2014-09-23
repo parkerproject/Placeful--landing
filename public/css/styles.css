@@ -1,156 +1,386 @@
+
 html {
-  background: #000 url(../images/BoxedSales.png) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+
+  background: #222;
+
 }
+
+@media only screen and (min-width: 768px) {
+
+  html {
+
+    background: #000 url(../images/BoxedSales.png) no-repeat center center fixed;
+
+    -webkit-background-size: cover;
+
+    -moz-background-size: cover;
+
+    -o-background-size: cover;
+
+    background-size: cover;
+
+    background-position: 100% 3%;
+
+  }
+
+}
+
 .center {
+
   position: relative;
+
   top: 20%;
+
   -webkit-transform: translateY(20%);
+
   -ms-transform: translateY(20%);
+
   transform: translateY(20%);
+
 }
+
 .container {
-	width: 900px;
-	margin: auto;
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	height: 606px;
+
+  width: 900px;
+
+  margin: auto;
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  bottom: 0;
+
+  right: 0;
+
+  height: 606px;
+
 }
+
 .phone-slider {
+
   /*background: url("../images/phone_bg.png") no-repeat;*/
+
   max-height: 569px;
+
   max-width: 276px;
+
   float: left;
+
 }
+
 .content {
+
   color: #fff;
+
   float: left;
+
   padding: 0 0 0 49px;
+
 }
+
 .content h1 {
+
   color: #fff;
+
   font-family: 'GothamMedium';
+
   text-transform: uppercase;
+
   font-size: 3.5em;
+
   -webkit-font-smoothing: antialiased;
+
   margin-bottom: 0;
+
 }
+
 .content p {
+
   font-family: 'GothamBook';
+
   -webkit-font-smoothing: antialiased;
+
   width: 416px;
+
   font-size: 1.9rem;
+
   margin-top: 0;
+
 }
+
 .content input {
+
   background: transparent;
+
   border: 2px solid #fff;
+
   height: 30px;
+
   -webkit-border-radius: 3px;
+
   -moz-border-radius: 3px;
+
   -ms-border-radius: 3px;
+
   -o-border-radius: 3px;
+
   border-radius: 3px;
+
   width: 350px;
+
   padding: 5px;
+
   outline: none;
+
   font-size: 0.9em;
+
   color: #fff;
+
   font-family: 'GothamMedium';
+
   -webkit-font-smoothing: antialiased;
+
 }
+
 .content button {
+
   background: #6fa9be;
+
   border: 1px solid #6fa9be;
+
   height: 42px;
+
   -webkit-border-radius: 3px;
+
   -moz-border-radius: 3px;
+
   -ms-border-radius: 3px;
+
   -o-border-radius: 3px;
+
   border-radius: 3px;
+
   font-size: 0.9rem;
+
   color: #fff;
+
   padding: 0 10px;
+
   font-family: 'GothamMedium';
+
   -webkit-font-smoothing: antialiased;
+
   margin-left: 9px;
+
 }
+
 .content .info {
+
   font-family: 'GothamBook';
+
   font-size: 1.3em;
+
   padding-bottom: 30px;
+
 }
+
 .spread_the_word {
+
   top: 50px;
+
   position: relative;
+
 }
+
 .spread_the_word p {
+
   font-size: 1.2em;
+
 }
+
 .spread_the_word a {
+
   text-decoration: none;
+
   color: #fff;
+
   font-size: 2rem;
+
   margin: 0 6px 0 0;
+
   position: relative;
+
   top: 9px;
+
 }
-::-webkit-input-placeholder {
+
+: : -webkit-input-placeholder {
+
   color: white;
+
   font-family: 'GothamMedium';
+
   -webkit-font-smoothing: antialiased;
+
 }
-:-moz-placeholder {
+
+: -moz-placeholder {
+
   /* Firefox 18- */
+
   color: white;
+
   font-family: 'GothamMedium';
+
   -webkit-font-smoothing: antialiased;
+
 }
-::-moz-placeholder {
+
+: : -moz-placeholder {
+
   /* Firefox 19+ */
+
   color: white;
+
   font-family: 'GothamMedium';
+
   -webkit-font-smoothing: antialiased;
-}
-:-ms-input-placeholder {
-  color: white;
-  font-family: 'GothamMedium';
-  -webkit-font-smoothing: antialiased;
+
 }
 
-.marvel-device.iphone6plus{
+: -ms-input-placeholder {
+
+  color: white;
+
+  font-family: 'GothamMedium';
+
+  -webkit-font-smoothing: antialiased;
+
+}
+
+.marvel-device.iphone6plus {
+
   height: 380px;
+
   width: 214px;
+
 }
 
-.marvel-device.iphone6plus .sensor{
+.marvel-device.iphone6plus .sensor {
+
   left: 71px;
+
 }
 
-.count_down{
-	padding-top: 50%;
-	font-family: 'GothamLight'
+.count_down {
+
+  padding-top: 50%;
+
+  font-family: 'GothamLight'
+
 }
 
-.js-error{
-    border: 2px solid red!important;
+.js-error {
+
+  border: 2px solid red!important;
+
 }
 
-button{
-    outline: none;
-    cursor: pointer;
+button {
+
+  outline: none;
+
+  cursor: pointer;
+
 }
 
-.notify{
-    background: white;
-    color: black;
+.notify {
+
+  background: white;
+
+  color: black;
+
+  padding: 10px;
+
+  font-family: 'GothamBook';
+
+  font-style: normal;
+
+}
+
+.phone-slider {
+
+  display: none;
+
+}
+
+/* Desktops and laptops ----------- */
+
+@media only screen and (min-width: 1224px) {
+
+  .phone-slider {
+
+    display: block;
+
+  }
+
+}
+
+@media only screen and (max-width: 1024px) {
+
+  .container {
+
+    width: 100%;
+
+    position: relative;
+
     padding: 10px;
-    font-family: 'GothamBook';
-    font-style: normal;
+
+  }
+
+  h1 {
+
+    font-size: 2.4em!important;
+
+  }
+
+  .content {
+
+    width: 100%;
+
+    padding: 0;
+
+  }
+
+  .content p {
+
+    width: 85%;
+
+  }
+
+  .content .info {
+
+    width: 85%;
+
+  }
+
+  .content button {
+
+    margin-top: 10px;
+
+  }
+
+  .content input {
+
+    width: 90%;
+
+  }
+
+}
+
+.form{
+  display: block;
 }

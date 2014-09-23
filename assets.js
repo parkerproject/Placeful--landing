@@ -2,7 +2,7 @@
 module.exports = {
   development: {
     js: ['js/jquery.min.js', 'js/scripts.js'],
-    css: ['css/devices.min.css', 'css/fonts.css', 'css/styles.css']
+    css: ['css/animate.css', 'css/devices.min.css', 'css/fonts.css', 'css/styles.css']
   },
   production: {
     js: ['js/scripts.min.js'],
