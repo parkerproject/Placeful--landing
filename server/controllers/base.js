@@ -4,7 +4,7 @@ module.exports = {
         handler: function(request, reply){
           // Render the view with the custom greeting
             reply.view('index', {
-                title: 'BoxedSales Landing page'
+                title: 'Daily deals, coupons - BOXEDSALES'
             });
         },
         app: {
