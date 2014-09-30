@@ -1,42 +1,32 @@
 require('dotenv').load();
-var Kaiseki = require('kaiseki');
-var kaiseki = new Kaiseki(process.env.PARSE_APP_ID, process.env.PARSE_REST_API_KEY);
-var className = 'emails';
+var _request = require('request'),
+api_key = 'psaygy',
+url = 'http://api.sqoot.com/v2/categories?api_key=',
+request_JSON = {
+  'message_status': "SUCCESS",
+  'api_key_token': api_key_token,
+  'api_secret_token': api_key_secret,
+  'city_select': "New York City",
+  'country_select': "United States",
+  'sort_method': "bought"
+},
+		
+uri_string = 'https://webapi.blipadeal.com/api_get_deals?request=' + JSON.stringify( request_JSON );
 
 module.exports = {
-    storeEmail: {
-        handler: function(request, reply) {
+  deals: {
+    handler: function(request, reply) {
 
-            var emails = [{
-                email: request.params.email
-            }]
-
-            var params = {
-                where: {
-                    email: request.params.email
-                }
-            };
-
-            kaiseki.getObjects(className, params, function(err, res, body, success) {
-                if (body.length === 0) {
-                    kaiseki.createObjects(className, emails, function(err, res, body, success) {
-                        if (success) {
-                            reply('Thanks for signing up. We can\'t wait to launch this.');
-                        } else {
-                            reply('oops! looks like the server failed. Try again');
-                        }
-
-                    });
-                } else {
-                    reply('You have already signup!');
-                }
-            });
-
-
-        },
-        app: {
-            name: 'storeEmail'
+      _request(uri_string, function(error, response, body) {
+        if (!error && response.statusCode == 200) {
+          reply(body);
         }
+      });
+
+    },
+    app: {
+      name: 'deals'
     }
+  }
 
 };

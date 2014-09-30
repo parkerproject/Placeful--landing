@@ -47,7 +47,13 @@ module.exports = function(server) {
     }, {
         method: 'POST',
         path: '/process_email/{email}',
-        config: controller.api.storeEmail
-    }];
+        config: controller.email.storeEmail
+    },
+		{
+				method: 'GET',
+				path: '/api/deals',
+				config: controller.api.deals
+			
+		}];
     return routeTable;
-}
+};
