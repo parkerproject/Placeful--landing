@@ -9,7 +9,7 @@ html {
 
   html {
 
-    background: #000 url(../images/BoxedSales.png) no-repeat center center fixed;
+    background: #fff /*url(../images/BoxedSales.png) no-repeat center center fixed*/;
 
     -webkit-background-size: cover;
 
@@ -73,7 +73,7 @@ html {
 
 .content {
 
-  color: #fff;
+  color: #363636;
 
   float: left;
 
@@ -83,11 +83,11 @@ html {
 
 .content h1 {
 
-  color: #fff;
+  color: #363636;
 
   font-family: 'GothamMedium';
 
-  text-transform: uppercase;
+  text-transform: capitalize;
 
   font-size: 3.5em;
 
@@ -115,7 +115,7 @@ html {
 
   background: transparent;
 
-  border: 2px solid #fff;
+  border: 1px solid #363636;
 
   height: 30px;
 
@@ -147,9 +147,9 @@ html {
 
 .content button {
 
-  background: #6fa9be;
+  background: #F44336;
 
-  border: 1px solid #6fa9be;
+  border: 1px solid #F44336;
 
   height: 42px;
 
@@ -205,7 +205,7 @@ html {
 
   text-decoration: none;
 
-  color: #fff;
+  color: #363636;
 
   font-size: 2rem;
 
