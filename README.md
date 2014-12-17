@@ -1,3 +1,3 @@
-BoxedSales-landing
+Dealsbox-landing
 ==================
-The Landing page for Boxedsales mobile app built on ionic framework
+The Landing page for Dealsbox mobile app
