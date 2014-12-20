@@ -1,15 +1,13 @@
 
 html {
 
-  background: #222;
+  background: #f7f7f7;
 
 }
 
 @media only screen and (min-width: 768px) {
 
   html {
-
-    background: #fff /*url(../images/BoxedSales.png) no-repeat center center fixed*/;
 
     -webkit-background-size: cover;
 
@@ -40,45 +38,29 @@ html {
 }
 
 .container {
-
   width: 900px;
-
   margin: auto;
-
-  position: absolute;
-
-  top: 0;
-
-  left: 0;
-
-  bottom: 0;
-
-  right: 0;
-
-  height: 606px;
+	position: relative;
+  top: 50%;
+  	-webkit-transform: translateY(-50%);
+  	-ms-transform: translateY(-50%);
+  	transform: translateY(-50%);
 
 }
 
 .phone-slider {
 
   /*background: url("../images/phone_bg.png") no-repeat;*/
-
-  max-height: 569px;
-
-  max-width: 276px;
-
   float: left;
 
 }
 
 .content {
-
   color: #363636;
-
   float: left;
-
   padding: 0 0 0 49px;
 
+	
 }
 
 .content h1 {
@@ -89,7 +71,7 @@ html {
 
   text-transform: capitalize;
 
-  font-size: 3.5em;
+  font-size: 1.7em;
 
   -webkit-font-smoothing: antialiased;
 
@@ -105,7 +87,7 @@ html {
 
   width: 416px;
 
-  font-size: 1.9rem;
+  font-size: 1.2rem;
 
   margin-top: 0;
 
@@ -115,7 +97,7 @@ html {
 
   background: transparent;
 
-  border: 1px solid #363636;
+  border: 1px solid #c2c2c2;
 
   height: 30px;
 
@@ -129,19 +111,19 @@ html {
 
   border-radius: 3px;
 
-  width: 350px;
-
   padding: 5px;
 
   outline: none;
 
   font-size: 0.9em;
 
-  color: #fff;
+  color: #222;
 
   font-family: 'GothamMedium';
 
   -webkit-font-smoothing: antialiased;
+	
+	width: 350px;
 
 }
 
@@ -181,7 +163,7 @@ html {
 
   font-family: 'GothamBook';
 
-  font-size: 1.3em;
+  font-size: 1.1em;
 
   padding-bottom: 30px;
 
@@ -503,3 +485,5 @@ button {
 .form{
   display: block;
 }
+
+
