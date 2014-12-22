@@ -38,14 +38,12 @@ html {
 }
 
 .container {
-  width: 900px;
-  margin: auto;
-	position: relative;
+/*   width: 900px; */
+  margin: -250px 0 0 -450px;
+	position: absolute;
   top: 50%;
-  	-webkit-transform: translateY(-50%);
-  	-ms-transform: translateY(-50%);
-  	transform: translateY(-50%);
-
+	left: 50%;
+	height: 500px;
 }
 
 .phone-slider {
@@ -87,10 +85,21 @@ html {
 
   width: 416px;
 
-  font-size: 1.2rem;
+  font-size: 0.8rem;
 
   margin-top: 0;
+	line-height: 1.5
 
+}
+
+.content li{
+	font-size: 0.8rem;
+	padding: 5px 0;
+	width: 60%;
+}
+
+.content ul{
+	padding-left: 16px;
 }
 
 .content input {
@@ -283,7 +292,7 @@ button {
 
   background: white;
 
-  color: black;
+  color: red!important;
 
   padding: 10px;
 
@@ -340,6 +349,7 @@ button {
   .content p {
 
     width: 85%;
+		line-height: 1.5;
 
   }
 
