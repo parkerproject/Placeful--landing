@@ -330,6 +330,18 @@ button {
 
     padding: 10px;
 
+    margin: 0;
+
+    left: 0;
+
+    top: 0;
+
+    height: auto;
+
+  }
+
+  .spread_the_word{
+    top: 15px;
   }
 
   h1 {
@@ -376,7 +388,6 @@ button {
 .form{
   display: block;
 }
-214px;
 
 }
 
