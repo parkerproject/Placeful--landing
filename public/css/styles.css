@@ -85,7 +85,7 @@ html {
 
   width: 416px;
 
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 
   margin-top: 0;
 	line-height: 1.5
@@ -188,7 +188,7 @@ html {
 
 .spread_the_word p {
 
-  font-size: 1.2em;
+  font-size: 0.9em;
 
 }
 
@@ -290,9 +290,9 @@ button {
 
 .notify {
 
-  background: white;
+  background: transparent;
 
-  color: red!important;
+  color: green;
 
   padding: 10px;
 
@@ -410,9 +410,9 @@ button {
 
 .notify {
 
-  background: white;
+  background: transparent;
 
-  color: black;
+  color: green;
 
   padding: 10px;
 
@@ -502,4 +502,8 @@ button {
     right: 50%;
     font-size: 10px;
     font-family: 'arial'
+}
+
+.error{
+    color: red;
 }
