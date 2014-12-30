@@ -1,7 +1,7 @@
 
 html {
 
-  background: #f7f7f7;
+  background: #f7f7f7 url(../images/html_bg.png) no-repeat;
 
 }
 
@@ -9,7 +9,7 @@ html {
 
   html {
 
-    -webkit-background-size: cover;
+/*    -webkit-background-size: cover;
 
     -moz-background-size: cover;
 
@@ -17,7 +17,7 @@ html {
 
     background-size: cover;
 
-    background-position: 100% 3%;
+    background-position: 100% 3%;*/
 
   }
 
@@ -180,7 +180,7 @@ html {
 
 .spread_the_word {
 
-  top: 50px;
+  top: 10px;
 
   position: relative;
 
@@ -321,6 +321,10 @@ button {
 }
 
 @media only screen and (max-width: 1024px) {
+
+    html{
+        background-image: none!important;
+    }
 
   .container {
 
