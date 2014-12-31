@@ -65,7 +65,7 @@ html {
 
   color: #363636;
 
-  font-family: 'GothamMedium';
+  font-family: arial;
 
   text-transform: capitalize;
 
@@ -79,7 +79,7 @@ html {
 
 .content p {
 
-  font-family: 'GothamBook';
+  font-family: arial;
 
   -webkit-font-smoothing: antialiased;
 
@@ -128,7 +128,7 @@ html {
 
   color: #222;
 
-  font-family: 'GothamMedium';
+  font-family: arial;
 
   -webkit-font-smoothing: antialiased;
 
@@ -160,7 +160,7 @@ html {
 
   padding: 0 10px;
 
-  font-family: 'GothamMedium';
+  font-family: arial;
 
   -webkit-font-smoothing: antialiased;
 
@@ -170,7 +170,7 @@ html {
 
 .content .info {
 
-  font-family: 'GothamBook';
+  font-family: arial;
 
   font-size: 1.1em;
 
@@ -212,7 +212,7 @@ html {
 
   color: white;
 
-  font-family: 'GothamMedium';
+  font-family: arial;
 
   -webkit-font-smoothing: antialiased;
 
@@ -224,7 +224,7 @@ html {
 
   color: white;
 
-  font-family: 'GothamMedium';
+  font-family: arial;
 
   -webkit-font-smoothing: antialiased;
 
@@ -236,7 +236,7 @@ html {
 
   color: white;
 
-  font-family: 'GothamMedium';
+  font-family: arial;
 
   -webkit-font-smoothing: antialiased;
 
@@ -246,7 +246,7 @@ html {
 
   color: white;
 
-  font-family: 'GothamMedium';
+  font-family: arial;
 
   -webkit-font-smoothing: antialiased;
 
@@ -270,7 +270,7 @@ html {
 
   padding-top: 50%;
 
-  font-family: 'GothamLight'
+  font-family: arial
 
 }
 
@@ -296,7 +296,7 @@ button {
 
   padding: 10px;
 
-  font-family: 'GothamBook';
+  font-family: arial;
 
   font-style: normal;
 
@@ -405,7 +405,7 @@ button {
 
   padding-top: 50%;
 
-  font-family: 'GothamLight'
+  font-family: arial
 
 }
 
@@ -431,7 +431,7 @@ button {
 
   padding: 10px;
 
-  font-family: 'GothamBook';
+  font-family: arial;
 
   font-style: normal;
 

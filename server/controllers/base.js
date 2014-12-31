@@ -11,14 +11,14 @@ module.exports = {
             name: 'index'
         }
     },
-    about: {
+    fbconfirm: {
         handler: function(request, reply) {
-            reply.view('about', {
-                title: 'This is the example about page'
+            reply.view('fbconfirm', {
+                title: 'Thank you'
             });
         },
         app: {
-            name: 'about'
+            name: 'fbconfirm'
         }
     },
     missing: {
