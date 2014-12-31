@@ -345,7 +345,7 @@ button {
   }
 
   .spread_the_word{
-    top: 15px;
+    display: none;
   }
 
   h1 {
@@ -364,10 +364,15 @@ button {
 
   .content p {
 
-    width: 85%;
-		line-height: 1.5;
+    width: 100%!important;
+    line-height: 1.5;
 
   }
+
+  textarea, input[type="text"],
+input[type="email"] {
+-webkit-appearance: none;
+}
 
   .content .info {
 
@@ -378,6 +383,8 @@ button {
   .content button {
 
     margin-top: 10px;
+    width: 90%;
+    margin-left: 0;
 
   }
 
@@ -385,6 +392,10 @@ button {
 
     width: 90%;
 
+  }
+
+  .content li{
+    width: 100%;
   }
 
 }
@@ -521,4 +532,8 @@ button {
 
 .error{
     color: red;
+}
+
+.confirm{
+    color: green!important;
 }
