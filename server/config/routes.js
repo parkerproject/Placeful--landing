@@ -48,6 +48,10 @@ module.exports = function(server) {
         method: 'POST',
         path: '/process_email/{email}',
         config: controller.email.storeEmail
+    },{
+        method: 'POST',
+        path: '/welcome_email/{email}/{name}',
+        config: controller.email.welcomeEmail
     }];
     return routeTable;
-}
+};
