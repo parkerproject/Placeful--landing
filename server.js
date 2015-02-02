@@ -4,6 +4,8 @@
 var Hapi = require('hapi'),
     config = require('./server/config/settings');
 
+global.__base = __dirname + '/';
+
 // Create a server with a host, port, and options
 var server = Hapi.createServer('0.0.0.0', config.port, config.hapi.options);
 
