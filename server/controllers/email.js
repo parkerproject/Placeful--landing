@@ -26,6 +26,7 @@ function sendEmails(email, subject, content) {
         email: email
       }],
       from_email: 'no-reply@dealsbox.co',
+			from_name: 'Dealsbox Team',
       subject: subject,
       html: content
     }
@@ -37,6 +38,7 @@ function sendEmails(email, subject, content) {
     else console.log(response);
   });
 }
+
 
 
 module.exports = {
@@ -63,10 +65,12 @@ module.exports = {
 
   welcomeEmail: {
     handler: function(request, reply) {
-      var email = request.params.email;
-      var name = request.params.name;
+      var user = request.params.user;
+			var email = user.split('/')[0];
+      var name = user.split('/')[1];
+			var subject = 'Welcome to Dealsbox';
 
-      swig.renderFile(__base + 'views/welcome.html', {
+      swig.renderFile(__base + 'server/views/welcome_email.html', {
           name: name
         },
         function(err, content) {

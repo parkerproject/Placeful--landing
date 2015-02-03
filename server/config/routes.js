@@ -50,12 +50,13 @@ module.exports = function(server) {
         config: controller.email.storeEmail
     }, {
         method: 'POST',
-        path: '/welcome_email/{email}/{name}',
+        path: '/welcome_email/{user*2}',
         config: controller.email.welcomeEmail
-    }, {
-        method: 'GET',
-        path: '/newsletter',
-        config: controller.newsletter.newsletter
-    }];
+ }//, {
+//         method: 'GET',
+//         path: '/newsletter',
+//         config: controller.newsletter.newsletter
+//     }
+     ];
     return routeTable;
 };

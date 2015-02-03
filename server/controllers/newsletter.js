@@ -152,21 +152,5 @@ function provider(source, cb) {
 
 
 module.exports = {
-    newsletter: {
-        handler: function(request, reply) {
-            providers.map(function(d) {
-                provider(d, function(deals) {
-                    return deals;
-                });
-            });
-            reply(providers);
-        });
-
-
-},
-app: {
-    name: 'newsletter'
-}
-}
-
-};
+    newsletter: {}
+	};
