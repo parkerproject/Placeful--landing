@@ -36,5 +36,6 @@ gulp.task('default', function(){
     gulp.src('./images/*')
         .pipe(imagemin())
         .pipe(gulp.dest('./images/'));
+        
 
 });

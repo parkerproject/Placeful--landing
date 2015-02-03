@@ -11,47 +11,47 @@
 
 /* Client-specific Styles & Reset */
 
-#outlook a { 
-  padding:0; 
-} 
-
-body{ 
-  width:100% !important; 
-  min-width: 100%;
-  -webkit-text-size-adjust:100%; 
-  -ms-text-size-adjust:100%; 
-  margin:0; 
+#outlook a {
   padding:0;
 }
 
-.ExternalClass { 
-  width:100%;
-} 
-
-.ExternalClass, 
-.ExternalClass p, 
-.ExternalClass span, 
-.ExternalClass font, 
-.ExternalClass td, 
-.ExternalClass div { 
-  line-height: 100%; 
-} 
-
-#backgroundTable { 
-  margin:0; 
-  padding:0; 
-  width:100% !important; 
-  line-height: 100% !important; 
+body{
+  width:100% !important;
+  min-width: 100%;
+  -webkit-text-size-adjust:100%;
+  -ms-text-size-adjust:100%;
+  margin:0;
+  padding:0;
 }
 
-img { 
-  outline:none; 
-  text-decoration:none; 
+.ExternalClass {
+  width:100%;
+}
+
+.ExternalClass,
+.ExternalClass p,
+.ExternalClass span,
+.ExternalClass font,
+.ExternalClass td,
+.ExternalClass div {
+  line-height: 100%;
+}
+
+#backgroundTable {
+  margin:0;
+  padding:0;
+  width:100% !important;
+  line-height: 100% !important;
+}
+
+img {
+  outline:none;
+  text-decoration:none;
   -ms-interpolation-mode: bicubic;
   width: auto;
-  max-width: 100%; 
-  float: left; 
-  clear: both; 
+  max-width: 100%;
+  float: left;
+  clear: both;
   display: block;
 }
 
@@ -60,7 +60,7 @@ center {
   min-width: 580px;
 }
 
-a img { 
+a img {
   border: none;
 }
 
@@ -73,12 +73,12 @@ table {
   border-collapse: collapse;
 }
 
-td { 
+td {
   word-break: break-word;
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
   hyphens: auto;
-  border-collapse: collapse !important; 
+  border-collapse: collapse !important;
 }
 
 table, tr, td {
@@ -88,9 +88,9 @@ table, tr, td {
 }
 
 hr {
-  color: #d9d9d9; 
-  background-color: #d9d9d9; 
-  height: 1px; 
+  color: #d9d9d9;
+  background-color: #d9d9d9;
+  height: 1px;
   border: none;
 }
 
@@ -107,8 +107,8 @@ table.container {
   text-align: inherit;
 }
 
-table.row { 
-  padding: 0px; 
+table.row {
+  padding: 0px;
   width: 100%;
   position: relative;
 }
@@ -129,7 +129,7 @@ table.column {
 
 table.columns td,
 table.column td {
-  padding: 0px 0px 10px; 
+  padding: 0px 0px 10px;
 }
 
 table.columns td.sub-columns,
@@ -323,13 +323,13 @@ img.center {
 
 /* Typography */
 
-body, table.body, h1, h2, h3, h4, h5, h6, p, td { 
+body, table.body, h1, h2, h3, h4, h5, h6, p, td {
   color: #222222;
-  font-family: "Helvetica", "Arial", sans-serif; 
-  font-weight: normal; 
-  padding:0; 
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-weight: normal;
+  padding:0;
   margin: 0;
-  text-align: left; 
+  text-align: left;
   line-height: 1.3;
 }
 
@@ -350,7 +350,7 @@ p.lead, p.lede, p.leed {
   line-height:21px;
 }
 
-p { 
+p {
   margin-bottom: 10px;
 }
 
@@ -359,48 +359,48 @@ small {
 }
 
 a {
-  color: #2ba6cb; 
+  color: #2ba6cb;
   text-decoration: none;
 }
 
-a:hover { 
+a:hover {
   color: #2795b6 !important;
 }
 
-a:active { 
+a:active {
   color: #2795b6 !important;
 }
 
-a:visited { 
+a:visited {
   color: #2ba6cb !important;
 }
 
-h1 a, 
-h2 a, 
-h3 a, 
-h4 a, 
-h5 a, 
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
 h6 a {
   color: #2ba6cb;
 }
 
-h1 a:active, 
-h2 a:active,  
-h3 a:active, 
-h4 a:active, 
-h5 a:active, 
-h6 a:active { 
-  color: #2ba6cb !important; 
-} 
+h1 a:active,
+h2 a:active,
+h3 a:active,
+h4 a:active,
+h5 a:active,
+h6 a:active {
+  color: #2ba6cb !important;
+}
 
-h1 a:visited, 
-h2 a:visited,  
-h3 a:visited, 
-h4 a:visited, 
-h5 a:visited, 
-h6 a:visited { 
-  color: #2ba6cb !important; 
-} 
+h1 a:visited,
+h2 a:visited,
+h3 a:visited,
+h4 a:visited,
+h5 a:visited,
+h6 a:visited {
+  color: #2ba6cb !important;
+}
 
 /* Panels */
 
@@ -523,7 +523,7 @@ table.medium-button td a:visited,
 table.large-button:hover td a,
 table.large-button:active td a,
 table.large-button td a:visited {
-  color: #ffffff !important; 
+  color: #ffffff !important;
 }
 
 table.secondary td {
@@ -825,15 +825,15 @@ body.outlook p {
                       <table class="twelve columns">
                         <tr>
                           <td>
-														
-                						{% for deal in deals %}
-														{% if loop.first %}
-														<p class="lead"><a href="{{deal.url}}" style="color: #cf4124;"><strong>{{deal.title}} / ${{deal.new_price}}</strong></a></p>
-														<img width="580" height="300" src="{{deal.large_image}}">
-														{{deal.merchant_name}}, {{deal.merchant_address}}<br>
-														<span style="font-size: 9px;color: #888888;">source: {{deal.provider_name}}</span>
-														{% endif %}
-														{% endfor %}
+
+		               {% for deal in deals %}
+						{% if loop.first %}
+						<p class="lead"><a href="{{deal.url}}" style="color: #cf4124;"><strong>{{deal.title}} / ${{deal.new_price}}</strong></a></p>
+						<img width="580" height="300" src="{{deal.large_image}}">
+						{{deal.merchant_name}}, {{deal.merchant_address}}<br>
+						<span style="font-size: 9px;color: #888888;">source: {{deal.provider_name}}</span>
+						{% endif %}
+						{% endfor %}
 
                           </td>
                           <td class="expander"></td>
@@ -852,7 +852,7 @@ body.outlook p {
                         <tr>
                           <td class="panel">
 
-                            <p>Phasellus dictum sapien a neque luctus cursus. Pellentesque sem dolor, fringilla et pharetra vitae. <a href="#">Click it! »</a></p>
+                            <p>Download our iPhone app <a href="#"><img src="images/app_store.png"></a></p>
 
                           </td>
                           <td class="expander"></td>
@@ -868,15 +868,13 @@ body.outlook p {
                     <td class="wrapper last">
 
                       <table class="twelve columns">
+                        {% for deal in deals %}
                         <tr>
-                          <td>
-
-                            <h3>Title Ipsum <small>This is a note.</small></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-                          </td>
+                          <td><img src="{{deal.large_image}}" width="150"></td>
+                          <td>{{deal.title}}<br/>{{deal.merchant_name}}<br />{{deal.new_price}}<br>{{deal.provider_name}}</td>
                           <td class="expander"></td>
                         </tr>
+                        {% endfor %}
                       </table>
 
                     </td>
