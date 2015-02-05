@@ -1,43 +1,83 @@
 {% extends './layouts/default.html' %} {% block title %}{{ title }}{% endblock %} {% block content %}
 
 
-<div class="container">
-  <section class="phone-slider">
-    <div class="animated bounceInDown">
-     <img src="images/iPhone6.png" alt="" height="489"/>
+ <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+    <div class="row">
+      <div class="twelve columns">
+       <div class="logo"><img src="images/white_logo.png" alt="" /></div>
+      </div>
     </div>
-  </section>
-  <section class="content animated bounceInUp">
-    <h1>Dealsbox</h1>
 
-    <!--
-    Daily deals that interest you.
-    Daily deals based on your interests.
-    -->
-    <p style="width: 100%;font-size:1.5em;">Find quality deals every day.</p>
-    <div class="info">
-			<p>Dealsbox makes daily deals fun again.
-			We deliver the best deals from around the Web, along with the Yelp reviews that make your decision easier.
-			No more searching every deal, every day, on every site. That’s our job!</p>
-	 <ul>
-		<li>Everything in One Place: Only the best deals from Groupon, LivingSocial and more! </li>
-    <li>Never Lose Your Deal: Save favorites for later.</li>
-    <li>Reviews, Too: We incorporate Yelp reviews from sellers, so you can make an informed deals decision</li>
-		</ul>
+    <div class="row">
+        <div class="twelve columns">
+                     <p class="blurb">We bring daily deals from Groupon, LivingSocial and more to save you money and time. Find the top deals from around the Web, all in one spot — with Yelp reviews to help you decide.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="twelve columns">
+    <div class="form_container">
+			<span class="form"><input type="email" placeholder="Email" class="text js-email" value=""><button type="submit"class="js-submit">Get invite</button></span>
+    </div>
+
+    </div>
+    </div>
+
+    <div class="row scroll_section">
+        <div class="twelve columns">
+            <span class="scroll">scroll down to learn more</span>
+        </div>
+    </div>
+
+    <div class="row content">
+        <div class="six columns">
+					<h5><strong>Daily deals — updated and simplified!</strong></h5>
+					
+<ul class="list">
+	<li>Never Lose Your Deal: Save favorites for later.</li>
+	<li>Everything in One Place: deals from Groupon, LivingSocial and more!</li>
+	<li>Reviews, Too: We incorporate Yelp reviews from sellers, so you can make an informed deals decision</li>
+	<li>Custom search: using price, location and keywords criteria</li>
+	<li></li>
+</ul>
+
+					
+	<div class="testify">
+			<a class="twitter-timeline" href="https://twitter.com/dealsboxapp" data-widget-id="563423063262638080">Tweets by @dealsboxapp</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		
+	</div>
+
+
+        </div>
+
+        <div class="six columns">
+        <img src="images/black_phone.png" alt="" />
+
+        </div>
+    </div>
+  </div>
+	
+	<div id="footer">
+		<div class="container">
+					<div class="row">
+			<div class="twelve columns">
+				<p>Quality deals — with Yelp reviews — all in one place.</p>
+				<ul>
+					<li><a href="https://www.facebook.com/dealsboxapp" class="facebook">facebook</a></li>
+					<li><a href="https://twitter.com/dealsboxapp" class="twitter">twitter</a></li>
+				</ul>
+				
+				<p class="copyright">&copy;2015 Dealsbox.co // All rights reserved.</p>
+			</div>
+		</div>
+			
 		</div>
 
-    <span class="form"><input type="email" class="js-email" placeholder="Email" value="" />
-    <button type="submit"class="js-submit">Get early access</button></span>
+	</div>
 
-    <div class="spread_the_word">
-      <p>spread the word <span><a href="https://www.facebook.com/dealsboxapp" class="icon-facebook-circled"></a><a href="https://twitter.com/dealsboxapp" class="icon-twitter-circled"></a></span>
-      </p>
-    </div>
-  </section>
-</div>
-
-<footer>
-    <p class="copyright">&copy; 2014 DEALSBOX</p>
-</footer>
-
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 {% endblock %}

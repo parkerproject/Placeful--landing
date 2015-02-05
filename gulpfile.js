@@ -28,7 +28,7 @@ gulp.task('default', function(){
 
     // concat and minify your js
     gulp.src(assets.development.js)
-        .pipe(concat("scripts.js"))
+        .pipe(concat("scripts.min.js"))
         .pipe(uglify())
         .pipe(gulp.dest('./js/'));
 

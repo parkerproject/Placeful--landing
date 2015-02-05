@@ -16,10 +16,11 @@ function validateEmail(email) {
 function checkEmail() {
     var email = document.querySelector('.js-email').value;
     if (validateEmail(email)) {
-        $('.js-email').removeClass('js-error');
+        //$('.js-email').removeClass('js-error');
         sendEmail(email);
     } else {
-        $('.js-email').addClass('js-error');
+			sweetAlert("Oops...", "enter your valid email!", "error");
+        //$('.js-email').addClass('js-error');
     }
 }
 
@@ -30,7 +31,9 @@ function sendEmail(email) {
         if (data === 1) {
             window.location = "/fbconfirm";
         } else {
-            document.querySelector('.form').innerHTML = '<i class="notify animated bounceInRight">' + data + '</i>';
+					$('.js-submit').text('get invite');
+					swal('You have already submitted your email.');
+            //document.querySelector('.form').innerHTML = '<i class="notify animated bounceInRight">' + data + '</i>';
         }
 
 
