@@ -159,6 +159,20 @@ input:focus {
   border-color: #368a55!important;
 }
 
+.sweet-alert p{
+    color: black;
+}
+
+.sweet-alert h2{
+    font-size: 28px;
+    line-height: normal;
+    margin: 0 0 14px 0;
+}
+
+.sweet-alert hr{
+    margin: 0;
+}
+
 
 @media only screen
 and (min-width : 375px)

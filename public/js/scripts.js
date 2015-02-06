@@ -1,4 +1,6 @@
 $(function() {
+    swal("Extra 20% off Groupon Local deals", "enter email to get code");
+
     $('.js-email').val('');
     $(document).on('click', '.js-submit', function() {
         checkEmail();
@@ -29,11 +31,9 @@ function validateEmail(email) {
 function checkEmail() {
     var email = document.querySelector('.js-email').value;
     if (validateEmail(email)) {
-        //$('.js-email').removeClass('js-error');
         sendEmail(email);
     } else {
         sweetAlert("Oops...", "enter your valid email!", "error");
-        //$('.js-email').addClass('js-error');
     }
 }
 
@@ -42,7 +42,13 @@ function sendEmail(email) {
     $.post('/process_email/' + email, function(data) {
         console.log(data);
         if (data === 1) {
-            window.location = "/fbconfirm";
+            //window.location = "/fbconfirm";
+            $('.js-submit').text('get invite');
+            document.querySelector('.js-email').value = '';
+            swal({
+                title: 'code: LOVE20',
+                html: 'Enter the above code on <a href="http://www.anrdoezrs.net/links/7517646/type/dlg/http://www.groupon.com/browse/?context=local">Groupon</a> checkout page. '
+            });
         } else {
             $('.js-submit').text('get invite');
             swal('You have already submitted your email.');
