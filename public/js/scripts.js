@@ -4,6 +4,19 @@ $(function() {
         checkEmail();
     });
 
+    $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            if (target.length) {
+                $('html,body').animate({
+                    scrollTop: target.offset().top
+                }, 1000);
+                return false;
+            }
+        }
+    });
+
 
 });
 
@@ -19,7 +32,7 @@ function checkEmail() {
         //$('.js-email').removeClass('js-error');
         sendEmail(email);
     } else {
-			sweetAlert("Oops...", "enter your valid email!", "error");
+        sweetAlert("Oops...", "enter your valid email!", "error");
         //$('.js-email').addClass('js-error');
     }
 }
@@ -31,8 +44,8 @@ function sendEmail(email) {
         if (data === 1) {
             window.location = "/fbconfirm";
         } else {
-					$('.js-submit').text('get invite');
-					swal('You have already submitted your email.');
+            $('.js-submit').text('get invite');
+            swal('You have already submitted your email.');
             //document.querySelector('.form').innerHTML = '<i class="notify animated bounceInRight">' + data + '</i>';
         }
 
