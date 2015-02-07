@@ -245,5 +245,9 @@ color: white;
     width: 100%;
 }
 
+.facebook, .twitter{
+    display: none;
+}
+
 
 }
