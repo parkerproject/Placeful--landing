@@ -175,8 +175,8 @@ input:focus {
 
 
 @media only screen
-and (min-width : 375px)
-and (max-width : 1024px) {
+and (min-device-width : 320px)
+and (max-device-width : 1024px) {
 body{
 background: #ba3b06;
 }
@@ -195,7 +195,13 @@ background: #ba3b06;
 }
 
 .form_container .text{
-    width: auto;
+    width: 70%;
+}
+
+button.js-submit{
+width:30%;
+padding:0;
+text-align:center;
 }
 
 .scroll_section{
