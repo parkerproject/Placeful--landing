@@ -16,6 +16,7 @@ p {
   width: 600px;
   margin: 68px auto 0 auto;
   font-style: italic;
+	font-weight: bold;
 }
 .form_container {
   width: 605px;
