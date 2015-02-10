@@ -4,7 +4,7 @@ module.exports = {
         handler: function(request, reply) {
             // Render the view with the custom greeting
             reply.view('index', {
-                title: 'Earn up to 5% credit on any deal - DEALSBOX'
+                title: 'Daily deals discovery app - DEALSBOX'
             });
         },
         app: {
