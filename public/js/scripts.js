@@ -1,5 +1,5 @@
 $(function() {
-    swal("Extra 20% off Groupon Local deals", "enter email to get code");
+    //swal("Extra 20% off Groupon Local deals", "enter email to get code");
 
     $('.js-email').val('');
     $(document).on('click', '.js-submit', function() {
@@ -45,13 +45,13 @@ function sendEmail(email) {
             //window.location = "/fbconfirm";
             $('.js-submit').text('get invite');
             document.querySelector('.js-email').value = '';
-            swal({
-                title: 'code: LOVE20',
-                html: 'Enter the above code on <a href="http://www.anrdoezrs.net/links/7517646/type/dlg/http://www.groupon.com/browse/?context=local">Groupon</a> checkout page. '
-            });
+            // swal({
+            //     title: 'code: LOVE20',
+            //     html: 'Enter the above code on <a href="http://www.anrdoezrs.net/links/7517646/type/dlg/http://www.groupon.com/browse/?context=local">Groupon</a> checkout page. '
+            // });
         } else {
             $('.js-submit').text('get invite');
-            swal('You have already submitted your email.');
+            //swal('You have already submitted your email.');
             //document.querySelector('.form').innerHTML = '<i class="notify animated bounceInRight">' + data + '</i>';
         }
 
