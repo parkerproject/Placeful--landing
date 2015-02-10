@@ -42,7 +42,7 @@ function sendEmail(email) {
     $.post('/process_email/' + email, function(data) {
         console.log(data);
         if (data === 1) {
-            //window.location = "/fbconfirm";
+            window.location = "/fbconfirm";
             $('.js-submit').text('get invite');
             document.querySelector('.js-email').value = '';
             // swal({
@@ -51,7 +51,7 @@ function sendEmail(email) {
             // });
         } else {
             $('.js-submit').text('get invite');
-            //swal('You have already submitted your email.');
+            swal('You have already submitted your email.');
             //document.querySelector('.form').innerHTML = '<i class="notify animated bounceInRight">' + data + '</i>';
         }
 
