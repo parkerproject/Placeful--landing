@@ -68,9 +68,22 @@ input:focus {
 }
 
 .list li{
-	background: url(../images/list_icon.png) no-repeat;
+	/*background: url(../images/list_icon.png) no-repeat;
 	padding-left: 30px;
-	list-style: none;
+	list-style: none;*/
+}
+
+h5{
+	text-decoration: underline;
+	text-transform: uppercase;
+}
+
+.disc li{
+	list-style: disc;
+}
+
+.disc{
+	margin-left: 15px;
 }
 
 .testify{

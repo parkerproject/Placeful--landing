@@ -40,15 +40,9 @@ function checkEmail() {
 function sendEmail(email) {
     $('.js-submit').text('processing...');
     $.post('/process_email/' + email, function(data) {
-        console.log(data);
+       
         if (data === 1) {
             window.location = "/fbconfirm";
-            $('.js-submit').text('get invite');
-            document.querySelector('.js-email').value = '';
-            // swal({
-            //     title: 'code: LOVE20',
-            //     html: 'Enter the above code on <a href="http://www.anrdoezrs.net/links/7517646/type/dlg/http://www.groupon.com/browse/?context=local">Groupon</a> checkout page. '
-            // });
         } else {
             $('.js-submit').text('get invite');
             swal('You have already submitted your email.');

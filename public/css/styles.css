@@ -73,7 +73,6 @@ html {
 
   -webkit-font-smoothing: antialiased;
 
-  margin-bottom: 0;
 
 }
 
@@ -82,13 +81,10 @@ html {
   font-family: arial;
 
   -webkit-font-smoothing: antialiased;
-
-  width: 416px;
-
-  font-size: 0.9rem;
-
+  font-size: 1.3rem;
   margin-top: 0;
-	line-height: 1.5
+	line-height: 1.5;
+	font-style: italic;
 
 }
 
