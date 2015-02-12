@@ -8,9 +8,10 @@ var kaiseki = new Kaiseki(process.env.PARSE_APP_ID, process.env.PARSE_REST_API_K
 var _ = require('underscore');
 var mandrill = require('node-mandrill')(process.env.MANDRILL);
 
-function saveEmail(email, reply) {
+function saveEmail(data, reply) {
   db.early_access.save({
-    email: email
+    email: data.email,
+		referral: data.hash
   }, function(err, success) {
     console.log(success);
     if (err) reply('<span class="error">oops! looks like the server failed. Try again</span>');
@@ -44,7 +45,12 @@ function sendEmails(email, subject, content) {
 module.exports = {
   storeEmail: {
     handler: function(request, reply) {
-      var email = request.params.email;
+      var user = request.params.email;
+			var email = user.split('/')[0];
+			var hash = user.split('/')[1];
+
+			
+			
       db.early_access.findOne({
         email: email
       }, function(err, result) {
@@ -52,7 +58,7 @@ module.exports = {
         if (result) {
           reply('You have already submitted your email.');
         } else {
-          saveEmail(email, reply);
+          saveEmail({email: email, hash: hash}, reply);
         }
       });
 

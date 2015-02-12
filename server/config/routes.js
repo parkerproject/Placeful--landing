@@ -46,16 +46,12 @@ module.exports = function(server) {
     config: controller.assets.bower
   }, {
     method: 'POST',
-    path: '/process_email/{email}',
+    path: '/process_email/{email*2}',
     config: controller.email.storeEmail
   }, {
     method: 'POST',
     path: '/welcome_email/{user*2}',
     config: controller.email.welcomeEmail
-  }, {
-    method: 'GET',
-    path: '/coupons/{code}',
-    config: controller.promotions.index
   }];
   return routeTable;
 };
