@@ -1,30 +1,23 @@
 body {
-	font-family:'Open Sans', sans-serif;
-    background: url(../images/hero.png) repeat-x;
+    background: #ce3f21;
 }
 .logo {
-  width: 583px;
-  margin: 0 auto;
   padding: 50px 0 0 0;
 }
 p {
-  font-family:'Open Sans', sans-serif;
   color: white;
   font-size: 1.4em;
 }
 .blurb {
-  width: 600px;
-  margin: 68px auto 0 auto;
-  font-style: italic;
+  padding: 15px 0 0 0;
 }
 .form_container {
   width: 605px;
-  margin: 76px auto 0 auto;
 }
 .form_container .text {
   background-color: rgba(225, 162, 135, 0.6);
   border-color: transparent;
-  width: 450px;
+  width: 350px;
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
   border-right: 0;
@@ -80,10 +73,12 @@ h5{
 
 .disc li{
 	list-style: disc;
+    font-size: 1.1em;
 }
 
 .disc{
 	margin-left: 15px;
+    color: #fff;
 }
 
 .testify{
@@ -192,10 +187,14 @@ h5{
 	padding-top: 20px;
 }
 
+#info{
+    color: #fff;
+}
+
 
 @media only screen
-and (min-device-width : 320px)
-and (max-device-width : 1024px) {
+and (min-width : 320px)
+and (max-width : 1024px) {
 body{
 background: #ce3f21;
 }
@@ -246,7 +245,7 @@ text-align:center;
 
 #footer{
     background: none;
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100%;
 }
@@ -265,6 +264,10 @@ color: white;
 }
 
 .facebook, .twitter{
+    display: none;
+}
+
+.phone{
     display: none;
 }
 
