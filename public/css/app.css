@@ -104,6 +104,9 @@ h5{
 #footer{
 	background: #000;
 	text-align: center;
+	width: 100%;
+	bottom: 0;
+	position: absolute;
 }
 
 #footer li{
