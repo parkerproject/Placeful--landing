@@ -67,8 +67,7 @@ input:focus {
 }
 
 h5{
-	text-decoration: underline;
-	text-transform: uppercase;
+	font-weight: bold;
 }
 
 .disc li{
