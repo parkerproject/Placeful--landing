@@ -101,11 +101,9 @@ h5{
 }
 
 #footer{
-	background: #000;
 	text-align: center;
 	width: 100%;
 	bottom: 0;
-	position: absolute;
 }
 
 #footer li{
@@ -158,9 +156,7 @@ h5{
    color: white;
 }
 
-.copyright{
-	color: #888;
-}
+
 .sweet-alert button{
 	padding-top: 0!important;
 	background-color: #43AC6A!important;
