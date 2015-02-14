@@ -211,11 +211,11 @@ background: #ce3f21;
 }
 
 .form_container .text{
-    width: 70%;
+    width: 60%;
 }
 
 button.js-submit{
-width:30%;
+width:33%;
 padding:0;
 text-align:center;
 }
