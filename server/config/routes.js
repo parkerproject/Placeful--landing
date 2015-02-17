@@ -53,7 +53,7 @@ module.exports = function(server) {
         path: '/welcome_email/{user*2}',
         config: controller.email.welcomeEmail
     }, {
-        method: 'GET',
+        method: 'POST',
         path: '/guest_email',
         config: controller.email.guestEmail
     }];
