@@ -52,10 +52,11 @@ module.exports = function(server) {
         method: 'POST',
         path: '/welcome_email/{user*2}',
         config: controller.email.welcomeEmail
-    }, {
-        method: 'POST',
-        path: '/guest_email',
-        config: controller.email.guestEmail
-    }];
+     }//, {
+//         method: 'POST',
+//         path: '/guest_email',
+//         config: controller.email.guestEmail
+//     }
+];
     return routeTable;
 };
