@@ -22,7 +22,8 @@ p {
   border-top-right-radius: 0;
   border-right: 0;
   color: white;
-	float: left;
+  float: left;
+  height: 50px;
 }
 input:focus {
   outline: 0!important;
@@ -34,6 +35,7 @@ input:focus {
   border-left: 0;
   background: #eecfc1;
   border: 1px solid #eecfc1;
+  height: 50px;
 }
 
 .scroll {
@@ -78,6 +80,8 @@ h5{
 .disc{
 	margin-left: 15px;
     color: #fff;
+    width: 100%;
+    float: left;
 }
 
 .testify{
@@ -187,6 +191,9 @@ h5{
 
 #info{
     color: #fff;
+    width: 100%;
+    float: left;
+    margin-top: 1em;
 }
 
 
