@@ -16,9 +16,6 @@ module.exports = {
                     html: require('swig')
                 }
             }
-        },
-			cors: {
-				origin: ['http://app.dealsbox.co/']
-			}
+        }
     }
 };

@@ -69,7 +69,9 @@ module.exports = {
       name: 'storeEmail'
     },
 		
-		cors: true
+		cors: {
+			origin: ['http://app.dealsbox.co']
+		}
   },
 
   welcomeEmail: {
