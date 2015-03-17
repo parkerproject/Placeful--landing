@@ -93,49 +93,49 @@ module.exports = {
     app: {
       name: 'welcomeEmail'
     }
-  },
-
-  guestEmail: {
-    handler: function(request, reply) {
-
-      db.bloggers.find(function(err, docs) {
-        var subject = 'Guest post request';
-        var email, name;
-
-        for (var i = 0, len = docs.length; i < len; i++) {
-          email = docs[i]['EMAIL ADD'];
-          name = docs[i]['FIRST NAME'];
-
-          (function(userEmail, userName) {
-
-            swig.renderFile(__base + 'server/views/guest_post.html', {
-                name: userName
-              },
-              function(err, content) {
-                if (err) {
-                  throw err;
-                }
-                
-                sendEmails(userEmail, subject, content);
-
-              });
-
-          }(email, name));
-
-
-        }
-
-        reply(docs);
-
-      });
-
-
-
-
-    },
-    app: {
-      name: 'guestEmail'
-    }
   }
+
+//   guestEmail: {
+//     handler: function(request, reply) {
+
+//       db.bloggers.find(function(err, docs) {
+//         var subject = 'Guest post request';
+//         var email, name;
+
+//         for (var i = 0, len = docs.length; i < len; i++) {
+//           email = docs[i]['EMAIL ADD'];
+//           name = docs[i]['FIRST NAME'];
+
+//           (function(userEmail, userName) {
+
+//             swig.renderFile(__base + 'server/views/guest_post.html', {
+//                 name: userName
+//               },
+//               function(err, content) {
+//                 if (err) {
+//                   throw err;
+//                 }
+                
+//                 sendEmails(userEmail, subject, content);
+
+//               });
+
+//           }(email, name));
+
+
+//         }
+
+//         reply(docs);
+
+//       });
+
+
+
+
+//     },
+//     app: {
+//       name: 'guestEmail'
+//     }
+//   }
 
 };

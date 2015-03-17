@@ -9,57 +9,60 @@ module.exports = function(server) {
 
     // Array of routes for Hapi
     var routeTable = [{
-        method: 'GET',
-        path: '/fbconfirm',
-        config: controller.base.fbconfirm
-    }, {
-        method: 'GET',
-        path: '/',
-        config: controller.base.index
-    }, {
-        method: 'GET',
-        path: '/{path*}',
-        config: controller.base.missing
-    }, {
-        method: 'GET',
-        path: '/partials/{path*}',
-        config: controller.assets.partials
-    }, {
-        method: 'GET',
-        path: '/images/{path*}',
-        config: controller.assets.images
-    }, {
-        method: 'GET',
-        path: '/css/{path*}',
-        config: controller.assets.css
-    }, {
-        method: 'GET',
-        path: '/fonts/{path*}',
-        config: controller.assets.fonts
-    }, {
-        method: 'GET',
-        path: '/js/{path*}',
-        config: controller.assets.js
-    }, {
-        method: 'GET',
-        path: '/bower_components/{path*}',
-        config: controller.assets.bower
-    }, {
-        method: 'POST',
-        path: '/process_email/{email*2}',
-        config: controller.email.storeEmail
-    }, {
-        method: 'POST',
-        path: '/welcome_email/{user*2}',
-        config: controller.email.welcomeEmail
-    }, {
+            method: 'GET',
+            path: '/fbconfirm',
+            config: controller.base.fbconfirm
+        }, {
+            method: 'GET',
+            path: '/',
+            config: controller.base.index
+        }, {
+            method: 'GET',
+            path: '/{path*}',
+            config: controller.base.missing
+        }, {
+            method: 'GET',
+            path: '/partials/{path*}',
+            config: controller.assets.partials
+        }, {
+            method: 'GET',
+            path: '/images/{path*}',
+            config: controller.assets.images
+        }, {
+            method: 'GET',
+            path: '/css/{path*}',
+            config: controller.assets.css
+        }, {
+            method: 'GET',
+            path: '/fonts/{path*}',
+            config: controller.assets.fonts
+        }, {
+            method: 'GET',
+            path: '/js/{path*}',
+            config: controller.assets.js
+        }, {
+            method: 'GET',
+            path: '/bower_components/{path*}',
+            config: controller.assets.bower
+        }, {
+            method: 'POST',
+            path: '/process_email/{email*2}',
+            config: controller.email.storeEmail
+        }, {
+            method: 'POST',
+            path: '/welcome_email/{user*2}',
+            config: controller.email.welcomeEmail
+        },
+        /*{
         method: 'POST',
         path: '/guest_email',
         config: controller.email.guestEmail
-    }, {
-        method: 'GET',
-        path: '/how-it-works',
-        config: controller.static.index
-    }];
+    }, */
+        {
+            method: 'GET',
+            path: '/how-it-works',
+            config: controller.static.index
+        }
+    ];
     return routeTable;
 };
