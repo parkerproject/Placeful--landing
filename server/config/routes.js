@@ -56,6 +56,10 @@ module.exports = function(server) {
         method: 'POST',
         path: '/guest_email',
         config: controller.email.guestEmail
+    }, {
+        method: 'GET',
+        path: '/how-it-works',
+        config: controller.static.index
     }];
     return routeTable;
 };
