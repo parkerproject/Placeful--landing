@@ -2,6 +2,8 @@ $(function() {
     //swal("Extra 20% off Groupon Local deals", "enter email to get code");
     window._hash = window.location.hash;
 
+    $('#tabs').tabulous({});
+
     $('.js-email').val('');
     $(document).on('click', '.js-submit', function() {
         checkEmail();

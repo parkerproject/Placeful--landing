@@ -1,65 +1,136 @@
 {% extends './layouts/default.html' %} {% block title %}{{ title }}{% endblock %} {% block content %}
 
+<div class="row topbar">
+        <div class="six columns">
+            <a class="logo">logo</a>
+        </div>
+        <div class="six columns">
+            <nav class="top-nav">
+                <ul>
+                    <li><a href="#giveaways">Weekly giveaways</a>
+                    </li>
+                    <li><a href="http://boxedsales.com/">Blog</a>
+                    </li>
+                    <li><a href="mailto:parker@dealsbox.co">Contact us</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 
- <!-- Primary Page Layout
+
+    <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <div class="container">
-<!--     <div class="row">
-      <div class="twelve columns">
-       <div class="logo"><img src="https://dl.dropboxusercontent.com/s/80sfw87n7muxwoe/dealsbox_logo_white.png?dl=0" alt="" /></div>
-      </div>
-    </div> -->
 
-    <div class="row">
-
-               <div class="seven columns">
-            <div class="logo"><img src="https://dl.dropboxusercontent.com/s/80sfw87n7muxwoe/dealsbox_logo_white.png?dl=0" alt="" /></div>
-                     <p class="blurb">A daily deals app for tracking deals near you - deals from Groupon, LivingSocial, Amazon Local and others.</p>
-
-        <p><img src="images/app_badges.png" alt="" />&nbsp;&nbsp;<img src="images/app_andriod_badges.png"></p>
-
-    <div class="form_container">
-            <span class="form"><input type="email" placeholder="Email me when is ready" class="text js-email u-full-width" value="">
-                <button type="submit"class="js-submit">Keep me posted</button></span>
-    </div>
-
- <h5 id="info">This is the real deal!</h5>
-
-<ul class="list disc">
-    <li>Multiple deals, One email
-    <li>Seller Yelp reviews</li>
-    <li>Trending Deals</li>
-    <li>Buy or Save deals for later.</li>
-    <li>Everything in One Place: deals from Groupon, LivingSocial, Amazon Local and more!</li>
-    <li>Search or Filter Deals easily.</li>
-</ul>
-        </div>
-
-        <div class="four columns phone">
-            <img src="images/iphone_black_1.png" alt="" />
+    <div class="section hero">
+        <div class="container">
+            <div class="row">
+                <div class="one-half column animated fadeInLeft">
+                    <h4 class="hero-heading">Local deals from the best spots around you.</h4>
+                    <a class="ios-download" href="http://getskeleton.com">Coming soon to App store</a>
+                </div>
+                <div class="one-half column phones animated fadeInRight">
+                    <img class="phone" src="images/iphone.png">
+                    <img class="phone" src="images/iphone.png">
+                </div>
+            </div>
         </div>
     </div>
 
-  </div>
+    <div class="section values">
+        <div class="container">
+            <div class="row">
+                <div class="one-third column value">
+                    <h2 class="value-multiplier">{{ liked }}</h2>
+                    <h5 class="value-heading">Liked deals</h5>
+                    <p class="value-description">Total number of most liked deals.</p>
+                </div>
+                <div class="one-third column value">
+                    <h2 class="value-multiplier">{{saved_deals}}</h2>
+                    <h5 class="value-heading">Most Saved</h5>
+                    <p class="value-description">Total number of saved deals.</p>
+                </div>
+                <div class="one-third column value">
+                    <h2 class="value-multiplier">{{deals_count}}</h2>
+                    <h5 class="value-heading">Local deals</h5>
+                    <p class="value-description">Total number of local deals.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<div id="footer">
-		<div class="container">
-					<div class="row">
-			<div class="twelve columns">
-				<p>Quality deals — with Yelp reviews — all in one place.</p>
-				<ul>
-					<li><a href="https://www.facebook.com/dealsboxapp" class="facebook">facebook</a></li>
-					<li><a href="https://twitter.com/dealsboxapp" class="twitter">twitter</a></li>
-				</ul>
+    <div class="section get-help">
+        <div class="row">
+            <div class="six columns">
+                <h3 class="section-heading" name="giveaways">This week's giveaway</h3>
+                <h4>$10 Spa Day Groupon eGift Card</h4>
+                <img src="https://dl.dropboxusercontent.com/u/9995989/spa.png" al="" />
+            </div>
+            <div class="six columns">
+                <div id="tabs">
+                    <ul style="margin-bottom:0;">
+                        <li><a href="#tabs-1" title="" class="how-enter">How to enter</a>
+                        </li>
+                        <!--
+                        <li><a href="#tabs-2" title="">Past winners</a>
+                        </li>
+-->
+                    </ul>
+                    <div id="tabs_container">
+                        <div id="tabs-1">
+                            <h5>You need 500 points to be submitted to the weekly giveaways.</h5>
+                            <ol>
+                                <li>Earn 50 points every day you use DEALSBOX app</li>
+                                <li>Earn 25 points for every friend you refer from DEALSBOX app</li>
+                            </ol>
+                        </div>
+                        <!--
+                        <div id="tabs-2">
+                            tab content
+                        </div>
+-->
+                    </div>
+                    <!--End tabs container-->
+                </div>
+                <!--End tabs-->
+            </div>
 
-				<p class="copyright">&copy;2015 Dealsbox.co // All rights reserved.</p>
-<a href="https://mixpanel.com/f/partner"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics" /></a>
-			</div>
-		</div>
+        </div>
+    </div>
 
-		</div>
-	</div>
+    <!--
+<div class="section categories">
+    <div class="container">
+        <h3 class="section-heading">Responsive Images</h3>
+        <p class="section-description">Skeleton images sit easily in grid with .u-max-full-width class. I suggest exploring solution to serving different images based on device size.</p>
+        <div class="row">
+            <div class="one-half column category">
+                <img class="u-max-full-width" src="images/placeholder.png">
+            </div>
+            <div class="one-half column category">
+                <img class="u-max-full-width" src="images/placeholder.png">
+            </div>
+        </div>
+    </div>
+</div>
+-->
 
-<!-- End Document
+
+    <div class="row footer">
+        <div class="twelve columns">
+            <ul>
+                <li><a href="https://www.facebook.com/dealsboxapp" class="facebook">facebook</a>
+                </li>
+                <li><a href="https://twitter.com/dealsboxapp" class="twitter">twitter</a>
+                </li>
+            </ul>
+
+            <p class="copyright">©2015 Dealsbox.co // All rights reserved.</p>
+            <a href="https://mixpanel.com/f/partner" class="tracking"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics">
+            </a>
+        </div>
+    </div>
+
+    <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 {% endblock %}

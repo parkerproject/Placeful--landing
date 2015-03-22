@@ -28,6 +28,8 @@
     "kaiseki": "^0.5.6",
     "mongojs": "^0.18.0",
     "node-mandrill": "^1.0.1",
+    "numeral": "^1.5.3",
+    "raccoon": "^0.2.3",
     "request": "^2.44.0",
     "request-promise": "^0.3.3",
     "require-directory": "~2.0.0",
