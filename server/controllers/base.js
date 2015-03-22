@@ -46,7 +46,7 @@ module.exports = {
 
                     raccoon.mostLiked(function(results) {
                         reply.view('index', {
-                            title: 'Daily deals discovery app - DEALSBOX',
+                            title: 'Local deals discovery app - DEALSBOX',
                             liked: results.length,
                             deals_count: numeral(count).format('0,0'),
                             saved_deals: uniqueSaved.length
