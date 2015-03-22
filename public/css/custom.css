@@ -83,7 +83,7 @@
 
 .values {
     /*background-image: url('../images/values-bg.jpg');*/
-    
+
     background-size: cover;
     color: #000;
     padding-bottom: 1rem!important;
@@ -257,4 +257,15 @@
     direction: ltr;
     display: block;
     margin-right: 10px;
+}
+
+@media only screen and (max-device-width: 768px){
+.ios-download{
+    margin: 0 auto;
+}
+
+#tabs, #tabs2, #tabs3, #tabs4, #tabs5{
+    width: 85%;
+    margin: 0 auto;
+   }
 }
