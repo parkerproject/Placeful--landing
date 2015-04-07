@@ -87,8 +87,63 @@
     background-size: cover;
     color: #000;
     padding-bottom: 1rem!important;
-    padding-top: 12rem!important;
+    padding-top: 10rem!important;
+    height: auto;
+    text-align: left;
+}
+
+.merchants{
+    padding: 0;
+    margin: 0;
+}
+.merchants li{
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.merchants li:first-child{
+    padding: 0;
+}
+
+.groupon{
+ text-indent: -9999px;
+    background: url('../images/groupon.png') no-repeat;
+    height: 35px;
+    width: 80px;
+}
+
+.livingsocial{
+    text-indent: -9999px;
+    background: url('../images/livingsocial.png') no-repeat;
+    height: 35px;
+    width: 89px;
+}
+
+.restaurant{
+    text-indent: -9999px;
+    background: url('../images/restaurant.png') no-repeat;
+    height: 35px;
+    width: 145px;
+}
+
+.amazon{
+    text-indent: -9999px;
+    background: url('../images/amazon.png') no-repeat;
+    height: 35px;
+    width: 130px;
+}
+
+.yelp{
+    text-indent: -9999px;
+    background: url('../images/yelp.png') no-repeat;
+    height: 35px;
+    width: 65px;
+}
+
+.text-button, .text-button:focus{
     background: #ce3f21;
+    border:1px solid #ce3f21;
+    color: white;
 }
 
 .value-multiplier {
