@@ -102,7 +102,7 @@
 }
 
 .merchants li:first-child{
-    padding: 0;
+    padding-left: 0;
 }
 
 .groupon{
