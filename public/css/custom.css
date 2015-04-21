@@ -176,6 +176,13 @@
 .categories .section-description {
     margin-bottom: 4rem;
 }
+
+.social a{
+	font-size: 1.2em;
+  color: white;
+  margin-right: 7px;
+	text-decoration: none;
+}
 /* Bigger than 550 */
 
 @media (min-width: 550px) {
