@@ -14,10 +14,10 @@
 }
 
 .logo {
-    padding: 20px 0 0 0;
     display: block;
     background: url(../images/logo.png)no-repeat;
-    width: 300px;
+    width: 200px;
+    height: 29px;
     text-indent: -9999px;
 }
 
@@ -83,7 +83,7 @@
 
 .values {
     /*background-image: url('../images/values-bg.jpg');*/
-
+    
     background-size: cover;
     color: #000;
     padding-bottom: 1rem!important;
@@ -92,57 +92,59 @@
     text-align: left;
 }
 
-.merchants{
+.merchants {
     padding: 0;
     margin: 0;
 }
-.merchants li{
+
+.merchants li {
     display: inline-block;
     padding: 0 10px;
 }
 
-.merchants li:first-child{
+.merchants li:first-child {
     padding-left: 0;
 }
 
-.groupon{
- text-indent: -9999px;
+.groupon {
+    text-indent: -9999px;
     background: url('../images/groupon.png') no-repeat;
     height: 35px;
     width: 80px;
 }
 
-.livingsocial{
+.livingsocial {
     text-indent: -9999px;
     background: url('../images/livingsocial.png') no-repeat;
     height: 35px;
     width: 89px;
 }
 
-.restaurant{
+.restaurant {
     text-indent: -9999px;
     background: url('../images/restaurant.png') no-repeat;
     height: 35px;
     width: 145px;
 }
 
-.amazon{
+.amazon {
     text-indent: -9999px;
     background: url('../images/amazon.png') no-repeat;
     height: 35px;
     width: 130px;
 }
 
-.yelp{
+.yelp {
     text-indent: -9999px;
     background: url('../images/yelp.png') no-repeat;
     height: 35px;
     width: 65px;
 }
 
-.text-button, .text-button:focus{
+.text-button,
+.text-button:focus {
     background: #ce3f21;
-    border:1px solid #ce3f21;
+    border: 1px solid #ce3f21;
     color: white;
 }
 
@@ -177,11 +179,15 @@
     margin-bottom: 4rem;
 }
 
-.social a{
-	font-size: 1.2em;
-  color: white;
-  margin-right: 7px;
-	text-decoration: none;
+.social a {
+    font-size: 1.2em;
+    color: white;
+    margin-right: 7px;
+    text-decoration: none;
+}
+
+label {
+    color: red;
 }
 /* Bigger than 550 */
 
@@ -321,13 +327,16 @@
     margin-right: 10px;
 }
 
-@media only screen and (max-device-width: 768px){
-.ios-download{
-    margin: 0 auto;
-}
-
-#tabs, #tabs2, #tabs3, #tabs4, #tabs5{
-    width: 85%;
-    margin: 0 auto;
-   }
+@media only screen and (max-device-width: 768px) {
+    .ios-download {
+        margin: 0 auto;
+    }
+    #tabs,
+    #tabs2,
+    #tabs3,
+    #tabs4,
+    #tabs5 {
+        width: 85%;
+        margin: 0 auto;
+    }
 }
