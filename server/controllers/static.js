@@ -18,5 +18,14 @@ module.exports = {
         app: {
             name: 'terms'
         }
+    },
+    privacy: {
+        handler: function(request, reply) {
+            // Render the view with the custom greeting
+            reply.view('privacy-policy');
+        },
+        app: {
+            name: 'privacy'
+        }
     }
 };

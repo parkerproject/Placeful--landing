@@ -64,6 +64,10 @@ module.exports = function(server) {
         method: 'GET',
         path: '/terms',
         config: controller.static.terms
+    }, {
+        method: 'GET',
+        path: '/privacy',
+        config: controller.static.privacy
     }];
     return routeTable;
 };
