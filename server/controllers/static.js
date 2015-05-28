@@ -8,5 +8,15 @@ module.exports = {
         app: {
             name: 'index'
         }
+    },
+
+    terms: {
+        handler: function(request, reply) {
+            // Render the view with the custom greeting
+            reply.view('terms-conditions');
+        },
+        app: {
+            name: 'terms'
+        }
     }
 };

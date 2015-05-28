@@ -60,6 +60,10 @@ module.exports = function(server) {
         method: 'GET',
         path: '/how-it-works',
         config: controller.static.index
+    }, {
+        method: 'GET',
+        path: '/terms',
+        config: controller.static.terms
     }];
     return routeTable;
 };
