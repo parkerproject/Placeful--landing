@@ -27,5 +27,14 @@ module.exports = {
         app: {
             name: 'privacy'
         }
+    },
+    points: {
+        handler: function(request, reply) {
+            // Render the view with the custom greeting
+            reply.view('how-to-earn-points');
+        },
+        app: {
+            name: 'points'
+        }
     }
 };
