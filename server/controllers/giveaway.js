@@ -26,28 +26,6 @@ function getUsers(cb) {
 // }
 
 
-// function resetPoints() {
-//     var dt = new Date();
-//     var status = isLastDay(dt); // checks if last day of month
-//     var className = 'User';
-//     var update = {
-//         data: {
-//             points: 0
-//         }
-//     };
-
-//     if (status) {
-//         kaiseki.updateObjects(className, update, function(err, res, body, success) {
-//             console.log('status1');
-//             for (var i = 0; i < body.length; i++) {
-//                 object = body[i];
-//                 console.log('objects updated = at ', object.updatedAt);
-//             }
-//         });
-//     }
-
-// }
-
 
 // var job = new CronJob({
 //     cronTime: '0-59', //'00 30 11 * * 1-7',
@@ -75,7 +53,8 @@ module.exports = {
                 var users = _.shuffle(body);
                 var fiveUsers = _.sample(users, 5);
 
-                reply(fiveUsers);
+                //reply(fiveUsers); uncomment for live
+                reply('testing');
             });
 
         },
