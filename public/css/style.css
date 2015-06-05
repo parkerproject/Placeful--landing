@@ -333,6 +333,7 @@
 	font-size:30px;
 	color:#222222;
 	font-family:gotham-bold;
+	margin: 0;
 }
 .Client p{
 	width:100%;
@@ -364,6 +365,10 @@
 	margin:auto;
 	width:81px;
 }
+
+.Client img {
+  width: 150px;
+}
 /*****Footer*********/
 .footer{
 	clear:both;
@@ -374,7 +379,6 @@
 }
 .left-footer{
 	float:left;
-	width:250px;
 }
 .left-footer p{
 	padding:10px 0px;
@@ -384,7 +388,6 @@
 }
 .right-footer{
 	float:right;
-	width:114px;
 }
 @media (min-width:300px) and (max-width:414px){
 .hide-mobile{
