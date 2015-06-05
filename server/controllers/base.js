@@ -44,14 +44,11 @@ module.exports = {
                     var flatSaved = _.flatten(saved_deals);
                     var uniqueSaved = _.uniq(flatSaved);
 
-                  //  raccoon.mostLiked(function(results) {
-                        reply.view('index', {
-                            title: 'Local deals discovery app - DEALSBOX',
-                           // liked: results.length,
-                            deals_count: numeral(count).format('0,0'),
-                            saved_deals: uniqueSaved.length
-                        });
-                  //  });
+                    //  raccoon.mostLiked(function(results) {
+                    reply.view('index', {
+                        title: 'Local deals discovery app - DEALSBOX'
+                    });
+                    //  });
 
                 });
             });
