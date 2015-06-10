@@ -7,7 +7,7 @@ module.exports = {
         handler: function(request, reply) {
 
             reply.view('index', {
-                title: 'Local deals discovery app - DEALSBOX'
+                title: 'Local deals discovery and aggregation app - DEALSBOX'
             });
 
         },
