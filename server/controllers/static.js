@@ -35,6 +35,17 @@ module.exports = {
         },
         app: {
             name: 'points'
-        }
+        },
+
+    },
+    about: {
+        handler: function(request, reply) {
+            // Render the view with the custom greeting
+            reply.view('about');
+        },
+        app: {
+            name: 'about'
+        },
+
     }
 };

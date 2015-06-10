@@ -72,6 +72,10 @@ module.exports = function(server) {
         method: 'GET',
         path: '/points',
         config: controller.static.points
+    }, {
+        method: 'GET',
+        path: '/about',
+        config: controller.static.about
     }];
     return routeTable;
 };
