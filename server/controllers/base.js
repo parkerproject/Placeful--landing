@@ -5,8 +5,8 @@ var swig = require('swig');
 module.exports = {
     index: {
         handler: function(request, reply) {
-
             reply.view('index', {
+
                 title: 'Discover and save on local deals - DEALSBOX'
             });
 
