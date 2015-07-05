@@ -76,6 +76,18 @@ module.exports = function(server) {
         method: 'GET',
         path: '/about',
         config: controller.static.about
+    },{
+        method: 'GET',
+        path: '/newsletter/weekly',
+        config: controller.newsletter.weekly
+    },{
+        method: 'GET',
+        path: '/newsletter/recommended',
+        config: controller.newsletter.recommended
+    },{
+        method: 'GET',
+        path: '/newsletter/unsubscribe',
+        config: controller.newsletter.unsubscribe
     }];
     return routeTable;
 };
