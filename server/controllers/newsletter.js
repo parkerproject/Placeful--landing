@@ -131,7 +131,8 @@ function handlerEmail() {
 
             return new Promise(function (resolve) {
 
-              handlerEmail();
+              //handlerEmail();
+              console.log('started the email program');
 
               resolve();
 
