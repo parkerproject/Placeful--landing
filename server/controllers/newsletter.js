@@ -27,9 +27,9 @@ function getUsers(cb) {
 }
 
 
-function buildUrl(query, zipcode, category, limit){
+function buildUrl(zipcode, category, limit){
   var options = {
-    uri: 'http://api.dealsbox.co/deals/search?q='+query+'&zipcode='+zipcode+'&category='+category+'&limit='+limit,
+    uri: 'http://api.dealsbox.co/deals/newsletter?zipcode='+zipcode+'&category='+category+'&limit='+limit,
     method: 'GET'
   };
 
@@ -57,9 +57,8 @@ function handlerEmail() {
 
       return new Promise(function (resolve) {
         var category = 'Health%2C%20Beauty%20%26%20Fitness';
-        var query = 'health fitness spa';
         var limit = 5;
-        var options = buildUrl(query, zipcode, category, limit);
+        var options = buildUrl(zipcode, category, limit);
 
         rp(options).then(function (res) {
             deals.push(JSON.parse(res));
@@ -67,10 +66,9 @@ function handlerEmail() {
           }).catch(console.error);
       }).then(function () {
         return new Promise(function (resolve) {
-          var category = 'food';
-          var query = 'Food%20%26%20Drinks';
+          var category = 'Food%20%26%20Drinks';
           var limit = 10;
-          var options = buildUrl(query, zipcode, category, limit);
+          var options = buildUrl(zipcode, category, limit);
 
           rp(options).then(function (res) {
               deals.push(JSON.parse(res));
@@ -80,9 +78,8 @@ function handlerEmail() {
       }).then(function () {
       return new Promise(function (resolve) {
           var category = 'Events%20%26%20Activities';
-          var query = 'shows entertainment events';
           var limit = 5;
-          var options = buildUrl(query, zipcode, category, limit);
+          var options = buildUrl(zipcode, category, limit);
 
           rp(options).then(function (res) {
               deals.push(JSON.parse(res));
@@ -163,7 +160,7 @@ function handlerEmail() {
 var job = new CronJob({
   cronTime: '00 30 11 * * 0-7',
   onTick: function() {
-    handlerEmail();
+     handlerEmail();
   },
   start: false,
   timeZone: "America/New_York"

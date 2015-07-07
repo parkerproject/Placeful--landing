@@ -188,7 +188,7 @@ img
 										<tr>
 											<td class="RespoImage_FullW" width="600">
 												<a href="{{ data.url }}" style="width:600px;height:220px;display:block;overflow:hidden;background-image:url({{data.large_image}});background-repeat:no-repeat;">
-													<img alt="{{ data.title }}" border="0" style="max-width:100%;display:none;" class="RespoImage_Full outlook-img" src="{{ data.large_image }}"  width="600" height="220">
+													<img alt="{{ data.title }}" border="0" style="max-width:100%;display:none!important;" class="RespoImage_Full outlook-img" src="{{ data.large_image }}"  height="220">
 													</a>
 											</td>
 										</tr>
@@ -370,7 +370,7 @@ img
 
 										<tr>
 											<td align="left" style="color:#ffffff; font-family: Helvetica, Arial, sans-serif; font-size: 11px; font-weight: normal; line-height: 13px; text-align: center;">
-												<span style="text-decoration:none; color: #000000;">This email was sent to {{ user.email }}.</span>
+												<span style="text-decoration:none; color: #000000;">This email was sent to {{ user.email }}. You can unsubscribe <a href="mailto:unsubscribe@dealsbox.co?Subject=Remove%20me%20from%20your%20list">here</a></span>
 											</td>
 										</tr>
 										<tr>
