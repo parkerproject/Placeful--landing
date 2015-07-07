@@ -104,8 +104,10 @@ function handlerEmail() {
             }
             var payload = new sendgrid.Email({
               to: user.email,
-              from: 'daily@dealsbox.co',
+              from: 'deals@dealsbox.co',
+              fromname: 'DEALSBOX',
               subject: 'Enjoy today\'s local deals',
+              //subject: _.first(deals).title
               html: content
             });
 
