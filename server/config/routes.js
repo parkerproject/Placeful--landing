@@ -84,10 +84,6 @@ module.exports = function(server) {
         method: 'GET',
         path: '/newsletter/recommended',
         config: controller.newsletter.recommended
-    },{
-        method: 'GET',
-        path: '/newsletter/unsubscribe',
-        config: controller.newsletter.unsubscribe
     }];
     return routeTable;
 };

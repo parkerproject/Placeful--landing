@@ -12,36 +12,6 @@ var Promise = require('es6-promise').Promise;
 
 
 
-var payload = {
-  to: 'parkerproject@gmail.com',
-  from: 'from@other.com',
-  subject: 'Saying Hi',
-  html: '<strong>This is my first email through SendGrid</strong>'
-};
-
-// sendgrid.send(payload, function(err, json) {
-//   if (err) { console.error(err); }
-//   console.log(json);
-// });
-
-
-
-
-
-function buildTemplate(deals, cb, tpl) {
-  swig.renderFile(__base + 'server/views/' + tpl + '.html', {
-      deals: JSON.parse(deals)
-    },
-    function (err, content) {
-      if (err) {
-        throw err;
-      }
-      cb(content);
-    });
-
-}
-
-
 
 function getUsers(cb) {
   var params = {
@@ -68,120 +38,131 @@ function buildUrl(query, zipcode, category, limit){
 
 
 
+function handlerEmail() {
+
+  var params = {
+    where: {
+      receive_newsletters: true,
+      objectId: 'He8hQies9q'
+    }
+  };
+
+  kaiseki.getUsers(params, function (err, res, body, success) {
+
+
+    body.forEach(function (user) {
+
+      var zipcode = user.zip;
+      var deals = [];
+
+      return new Promise(function (resolve) {
+        var category = 'Health%2C%20Beauty%20%26%20Fitness';
+        var query = 'health fitness spa';
+        var limit = 5;
+        var options = buildUrl(query, zipcode, category, limit);
+
+        rp(options).then(function (res) {
+            deals.push(JSON.parse(res));
+            resolve();
+          }).catch(console.error);
+      }).then(function () {
+        return new Promise(function (resolve) {
+          var category = 'food';
+          var query = 'Food%20%26%20Drinks';
+          var limit = 10;
+          var options = buildUrl(query, zipcode, category, limit);
+
+          rp(options).then(function (res) {
+              deals.push(JSON.parse(res));
+              resolve();
+            }).catch(console.error);
+       });
+      }).then(function () {
+      return new Promise(function (resolve) {
+          var category = 'Events%20%26%20Activities';
+          var query = 'shows entertainment events';
+          var limit = 5;
+          var options = buildUrl(query, zipcode, category, limit);
+
+          rp(options).then(function (res) {
+              deals.push(JSON.parse(res));
+              resolve();
+            }).catch(console.error);
+       });
+    }).then(function (res) {
+        deals = _.flattenDeep(deals);
+        deals = _.shuffle(deals);
+
+        swig.renderFile(__base + 'server/views/weekly.html', {
+          data: _.first(deals),
+          deals: _.rest(deals),
+          user: user
+          },
+          function (err, content) {
+            if (err) {
+              throw err;
+            }
+            var payload = new sendgrid.Email({
+              to: user.email,
+              from: 'daily@dealsbox.co',
+              subject: 'Enjoy today\'s local deals',
+              html: content
+            });
+
+            sendgrid.send(payload, function(err, json) {
+              if (err) { console.error(err); }
+              console.log(json);
+            });
+          });
+
+      });
+
+    });
+
+  });
+  }
+
+
+  module.exports = {
+      weekly: {
+          handler: function(request, reply) {
+
+            return new Promise(function (resolve) {
+
+              handlerEmail();
+
+              resolve();
+
+            }).then(function () {
+
+             reply('email sent');
+
+            });
+
+          },
+          app: {
+              name: 'weekly'
+          }
+      },
+
+      recommended: {
+        handler: function(request, reply) {
+
+        },
+        app: {
+          name: 'recommend'
+        }
+      }
+
+};
+
 
 var job = new CronJob({
-  cronTime: '0-59', //'00 30 11 * * 1-7',
-  onTick: function () {
-    // Runs every weekday (Monday through Friday)
-    // at 11:30:00 AM. It does not run on Saturday
-    // or Sunday.
-    //getDeals();
-
+  cronTime: '00 30 11 * * 0-7',
+  onTick: function() {
+    handlerEmail();
   },
   start: false,
   timeZone: "America/New_York"
 });
 job.start();
-
-
-
-module.exports = {
-  weekly: {
-    handler: function (request, reply) {
-
-      var users;
-      var deals = [];
-      var zipcode = '07024';
-
-      new Promise(function(resolve) {
-        var params = {
-          where: {
-            receive_newsletters: true,
-            objectId: 'He8hQies9q'
-          }
-        };
-
-        kaiseki.getUsers(params, function (err, res, body, success) {
-          users = body;
-          resolve();
-        });
-
-      }).then(function() {
-          return new Promise(function(resolve) {
-            var category = 'Health%2C%20Beauty%20%26%20Fitness';
-            var query = 'health fitness spa';
-            var limit = 5;
-            var options = buildUrl(query, zipcode, category, limit);
-
-            rp(options)
-              .then(function(res){
-                deals.push(JSON.parse(res));
-                resolve();
-              })
-              .catch(console.error);
-          });
-      }).then(function() {
-          return new Promise(function(resolve) {
-            var category = 'food';
-            var query = 'Food%20%26%20Drinks';
-            var limit = 10;
-            var options = buildUrl(query, zipcode, category, limit);
-
-            rp(options)
-              .then(function(res){
-                deals.push(JSON.parse(res));
-                resolve();
-              })
-              .catch(console.error);
-          });
-      }).then(function() {
-          return new Promise(function(resolve) {
-            var category = 'Events%20%26%20Activities';
-            var query = 'shows entertainment events';
-            var limit = 5;
-            var options = buildUrl(query, zipcode, category, limit);
-
-            rp(options)
-              .then(function(res){
-                deals.push(JSON.parse(res));
-                resolve();
-              })
-              .catch(console.error);
-          });
-      }).then(function() {
-        deals = _.flattenDeep(deals);
-        deals = _.shuffle(deals);
-        console.log(deals.length);
-        reply.view('weekly', {
-          title: 'Discover and save on local deals - DEALSBOX',
-          data: _.first(deals),
-          deals: _.rest(deals),
-          user: _.first(users)
-        });
-      });
-    },
-    app: {
-      name: 'weekly'
-    }
-  },
-
-  recommended: {
-    handler: function (request, reply) {},
-    app: {
-      name: 'recommended'
-    }
-  },
-
-  unsubscribe: {
-    handler: function (request, reply) {
-      var user_id = request.query.user;
-      kaiseki.sessionToken = 'le session token';
-      kaiseki.updateUser(user_id, {receive_newsletters: false}, function(err, res, body, success) {
-        reply('You will no longer receive newsletter');
-      });
-    },
-    app: {
-      name: 'unsubscribe'
-    }
-  }
-};
