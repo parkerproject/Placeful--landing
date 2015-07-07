@@ -106,8 +106,8 @@ function handlerEmail() {
               to: user.email,
               from: 'deals@dealsbox.co',
               fromname: 'DEALSBOX',
-              subject: 'Enjoy today\'s local deals',
-              //subject: _.first(deals).title
+              //subject: 'Enjoy today\'s local deals',
+              subject: _.first(deals).title,
               html: content
             });
 
