@@ -126,19 +126,20 @@ function handlerEmail() {
       weekly: {
           handler: function(request, reply) {
 
-            return new Promise(function (resolve) {
+            // return new Promise(function (resolve) {
+            //
+            //   //handlerEmail();
+            //   console.log('started the email program');
+            //
+            //   resolve();
+            //
+            // }).then(function () {
+            //
+            //  reply('email sent');
+            //
+            // });
 
-              //handlerEmail();
-              console.log('started the email program');
-
-              resolve();
-
-            }).then(function () {
-
-             reply('email sent');
-
-            });
-
+            reply('email sent');
           },
           app: {
               name: 'weekly'
