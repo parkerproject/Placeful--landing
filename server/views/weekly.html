@@ -84,16 +84,28 @@ img
 .appleLinksWhite a {color: #888 !important; text-decoration: none;}
 .appleLinksBlack a {color: #888 !important; text-decoration: none;}
 
+.pattern{
+	height: 220px;
+	overflow: hidden;
+}
+
+/* Image Center Crop Pattern CSS */
+	@media only screen and (max-width: 599px) {
+			div[class="pattern"] {
+		position: relative;
+		overflow: hidden;
+		width: 100%;
+		height: 220px;
+			}
+			div[class="pattern"] img {
+				max-width: 100%;
+			  height: auto !important;
+			}
+	}
+
 
 </style>
 
-<!--[if gte mso 9]>
-    <style type="text/css">
-    .outlook-img. .x_outlook-img{
-		display: block!important;
-	}
-    </style>
-<![endif]-->
 
 </head>
 
@@ -187,9 +199,11 @@ img
 									<table align="center" cellpadding="0" cellspacing="0" width="100%"><tbody>
 										<tr>
 											<td class="RespoImage_FullW" width="600">
-												<a href="{{ data.url }}" style="width:600px;height:220px;display:block;overflow:hidden;background-image:url({{data.large_image}});background-repeat:no-repeat;">
-													<img alt="{{ data.title }}" border="0" style="max-width:100%;display:none!important;" class="RespoImage_Full outlook-img" src="{{ data.large_image }}"  height="220">
+												<div class="pattern">
+												<a href="{{ data.url }}">
+													<img alt="{{ data.title }}" border="0" style="display: block;" src="{{ data.large_image }}"  height="220">
 													</a>
+												</div>
 											</td>
 										</tr>
 
