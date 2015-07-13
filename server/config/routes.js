@@ -84,6 +84,10 @@ module.exports = function(server) {
         method: 'GET',
         path: '/newsletter/recommended',
         config: controller.newsletter.recommended
+    },{
+        method: 'GET',
+        path: '/recommended',
+        config: controller.prediction.like
     }];
     return routeTable;
 };
