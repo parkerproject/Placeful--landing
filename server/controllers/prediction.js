@@ -18,7 +18,9 @@ module.exports = {
       var userId = request.query.user_id;
       var dealId = request.query.deal_id;
       var action = request.query.action;
-      var dataObj = {event:action, user_id: userId, deal_id: dealId};
+      var s = new Date();
+      var timestamp = s.toISOString();
+      var dataObj = {event:action, user_id: userId, deal_id: dealId, timestamp: timestamp};
 
       db_dev.keen_events.find(dataObj).limit(1, function(err, docs) {
 
