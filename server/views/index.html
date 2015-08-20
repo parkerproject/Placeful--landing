@@ -1,41 +1,53 @@
 {% extends './layouts/default.html' %} {% block title %}{{ title }}{% endblock %} {% block content %}
-	<div class="wraper">
-    	<div class="header">
-        	<div class="inerwraper">
-            	<div class="top-header">
-                	<div class="logo"><a href="#"><img src="images/logo.png" /></a></div>
-                	<!-- <div class="getapp"><a href="https://itunes.apple.com/us/app/dealsbox/id944253010?ls=1&mt=8"><img src="images/get-app.png" style="width:100%" /></a></div> -->
-                    <div class="nav">
-                    <nav class="nav-collapse">
-                        <ul>
-                            <li><a href="#about">About</a></li>
-                            <!-- <li><a href="#">Featured on</a></li> -->
-                            <li><a href="http://blog.dealsbox.co">Blog</a></li>
-                        <li><a href="https://www.facebook.com/dealsboxapp">Facebook</a></li>
-                            <li><a href="https://twitter.com/dealsboxapp">Twitter</a></li>
-                            <li><a href="mailto:parker@dealsbox.co">Contact</a></li>
-                            <!-- <li><a href="#">Сities list</a></li> -->
-                        </ul>	
-                    </nav>
-                </div>
-                </div>
-                <div class="banner-area">
-                	<h1>Discover and save on local deals.</h1>
-                    <ul>
-                    	<li><a href="https://itunes.apple.com/us/app/dealsbox/id944253010?ls=1&mt=8"><img src="images/app.png" /></a></li>
-                        <li class="hide-mobile"><a href="#"><img src="images/or.png" /></a></li>
-                        <li class="hide-mobile">
-                        	<div class="email-area">
-                            	<form onsubmit="sendSMS(this); return false;">
-                                <input id="phone" name="phone" type="tel" placeholder="+1(222)785-9087" />
-                                    <button type="submit" class="text-me">text me link</button>
-                                    <span class="only-in-states">only available in United States</span>
-                                </form>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-<!--                 <div class="social">
+<div class="wraper">
+  <div class="header">
+    <div class="inerwraper">
+      <div class="top-header">
+        <div class="logo">
+          <a href="#">
+            <img src="images/logo.png" />
+          </a>
+        </div>
+        <!-- <div class="getapp"><a href="https://itunes.apple.com/us/app/dealsbox/id944253010?ls=1&mt=8"><img src="images/get-app.png" style="width:100%" /></a></div> -->
+        <div class="nav">
+          <nav class="nav-collapse">
+            <ul>
+              <li><a href="#about">About</a></li>
+              <!-- <li><a href="#">Featured on</a></li> -->
+              <li><a href="http://blog.dealsbox.co">Blog</a></li>
+              <li><a href="https://www.facebook.com/dealsboxapp">Facebook</a></li>
+              <li><a href="https://twitter.com/dealsboxapp">Twitter</a></li>
+              <li><a href="mailto:parker@dealsbox.co">Contact</a></li>
+              <!-- <li><a href="#">Сities list</a></li> -->
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="banner-area">
+        <h1>Discover deals around you.</h1>
+        <ul>
+          <li>
+            <a href="https://itunes.apple.com/us/app/dealsbox/id944253010?ls=1&mt=8">
+              <img src="images/app.png" />
+            </a>
+          </li>
+          <li class="hide-mobile">
+            <a href="#">
+              <img src="images/or.png" />
+            </a>
+          </li>
+          <li class="hide-mobile">
+            <div class="email-area">
+              <form onsubmit="sendSMS(this); return false;">
+                <input id="phone" name="phone" type="tel" placeholder="+1(222)785-9087" />
+                <button type="submit" class="text-me">text me link</button>
+                <span class="only-in-states">only available in United States</span>
+              </form>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!--                 <div class="social">
                 	<ul>
                     	<li><a href="#"><img src="images/fac.png" /></a></li>
                     	<li><a href="#"><img src="images/tw.png" /></a></li>
@@ -46,35 +58,40 @@
                     	<li><a href="#"><img src="images/su.png"/></a></li>
                     </ul>
                 </div> -->
-            </div>
-        </div>
-    	<div class="inerwraper">
-        	<div class="about">
-            	<h1 name="about">About DEALSBOX</h1>
-                <p>DEALSBOX is a local deals discovery and deal aggregation engine.</p><p> We make it easy to find deals in one place - You save time and money.</p><p> <a href="https://itunes.apple.com/us/app/dealsbox/id944253010?ls=1&mt=8">Download our app now</a></p>
-                 <div class="iphone"><img src="images/iphone.png" style="width:100%" /></div>
-            </div>
-        </div>
-
-        <div class="inerwraper">
-        	<div class="Client">
-            	<h1>Local deals tailored to your interests.</h1>
-                <p>We use a collaborative filtering recommendation engine to match<br /> local deals from different sources to your interests.</p>
-            </div>
-        </div>
-        <div class="footer">
-        	<div class="inerwraper">
-                <div class="footer">
-                   <ul>
-                    <li><a href="http://dealsbox.co/about">About</a></li>
-                    <li><a href="mailto:parker@dealsbox.co">Contact</a></li>
-                    <li><a href="http://dealsbox.co/privacy">Privacy</a></li>
-                    <li><a href="http://dealsbox.co/terms">Terms</a></li>
-                    <li><a href="https://www.dropbox.com/sh/xgsuaojbjy263ud/AABu0c6eOkkKSHYPPDdu4_fAa?dl=0">Press Kit</a></li>
-                </ul>
-                <p class='copyright'>©2015 DEALSBOX LLC.</p>
-                </div>
-            </div>
-        </div>
     </div>
+  </div>
+  <div class="inerwraper">
+    <div class="about">
+      <h1 name="about">About DEALSBOX</h1>
+      <p>DEALSBOX is a local deals discovery and deal aggregation engine.</p>
+      <p> We make it easy to find deals in one place - You save time and money.</p>
+      <p> <a href="https://itunes.apple.com/us/app/dealsbox/id944253010?ls=1&mt=8">Download our app now</a></p>
+      <div class="iphone">
+        <img src="images/iphone.png" style="width:100%" />
+      </div>
+    </div>
+  </div>
+
+  <div class="inerwraper">
+    <div class="Client">
+      <h1>Local deals tailored to your interests.</h1>
+      <p>We use a collaborative filtering recommendation engine to match
+        <br /> local deals from different sources to your interests.</p>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="inerwraper">
+      <div class="footer">
+        <ul>
+          <li><a href="http://dealsbox.co/about">About</a></li>
+          <li><a href="mailto:parker@dealsbox.co">Contact</a></li>
+          <li><a href="http://dealsbox.co/privacy">Privacy</a></li>
+          <li><a href="http://dealsbox.co/terms">Terms</a></li>
+          <li><a href="https://www.dropbox.com/sh/xgsuaojbjy263ud/AABu0c6eOkkKSHYPPDdu4_fAa?dl=0">Press Kit</a></li>
+        </ul>
+        <p class='copyright'>©2015 DEALSBOX LLC.</p>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
