@@ -50,8 +50,15 @@ module.exports = {
   },
   alerts: {
     handler: function (request, reply) {
-      // Render the view with the custom greeting
-      reply.view('alerts');
+
+      var turnOn = request.query.turnon || 'true';
+      console.log(turnOn);
+      if (turnOn === 'true') {
+        reply.view('alerts');
+      } else {
+        reply('');
+      }
+
     },
     app: {
       name: 'alerts'
