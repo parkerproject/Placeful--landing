@@ -43,7 +43,7 @@
 .nav{
 	float:right;
 	width:55%;
-	
+
 	}
 /* ------------------------------------------
   NAVIGATION STYLES
@@ -185,9 +185,9 @@
 .banner-area h1{
 	font-family:gotham-bold;
 	color:#FFF;
-	font-size:33px;
+	font-size:30px;
 	background-color: rgba(0, 0, 0, 0.6);
-    padding-left: 3px;
+  padding-left: 3px;
 }
 .banner-area ul{
 	margin:30px 0px;
