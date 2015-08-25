@@ -27,9 +27,9 @@ function getUsers(cb) {
 }
 
 
-function buildUrl(zipcode, category, limit){
+function buildUrl(zipcode, category, limit) {
   var options = {
-    uri: 'http://api.dealsbox.co/deals/newsletter?zipcode='+zipcode+'&category='+category+'&limit='+limit,
+    uri: 'http://api.dealsbox.co/deals/newsletter?zipcode=' + zipcode + '&category=' + category + '&limit=' + limit,
     method: 'GET'
   };
 
@@ -61,9 +61,9 @@ function handlerEmail() {
         var options = buildUrl(zipcode, category, limit);
 
         rp(options).then(function (res) {
-            deals.push(JSON.parse(res));
-            resolve();
-          }).catch(console.error);
+          deals.push(JSON.parse(res));
+          resolve();
+        }).catch(console.error);
       }).then(function () {
         return new Promise(function (resolve) {
           var category = 'Food%20%26%20Drinks';
@@ -71,29 +71,29 @@ function handlerEmail() {
           var options = buildUrl(zipcode, category, limit);
 
           rp(options).then(function (res) {
-              deals.push(JSON.parse(res));
-              resolve();
-            }).catch(console.error);
-       });
+            deals.push(JSON.parse(res));
+            resolve();
+          }).catch(console.error);
+        });
       }).then(function () {
-      return new Promise(function (resolve) {
+        return new Promise(function (resolve) {
           var category = 'Events%20%26%20Activities';
           var limit = 5;
           var options = buildUrl(zipcode, category, limit);
 
           rp(options).then(function (res) {
-              deals.push(JSON.parse(res));
-              resolve();
-            }).catch(console.error);
-       });
-    }).then(function (res) {
+            deals.push(JSON.parse(res));
+            resolve();
+          }).catch(console.error);
+        });
+      }).then(function (res) {
         deals = _.flattenDeep(deals);
         deals = _.shuffle(deals);
 
         swig.renderFile(__base + 'server/views/weekly.html', {
-          data: _.first(deals),
-          deals: _.rest(deals),
-          user: user
+            data: _.first(deals),
+            deals: _.rest(deals),
+            user: user
           },
           function (err, content) {
             if (err) {
@@ -108,8 +108,10 @@ function handlerEmail() {
               html: content
             });
 
-            sendgrid.send(payload, function(err, json) {
-              if (err) { console.error(err); }
+            sendgrid.send(payload, function (err, json) {
+              if (err) {
+                console.error(err);
+              }
               console.log(json);
             });
           });
@@ -119,51 +121,51 @@ function handlerEmail() {
     });
 
   });
+}
+
+
+module.exports = {
+  weekly: {
+    handler: function (request, reply) {
+
+      // return new Promise(function (resolve) {
+      //
+      //   //handlerEmail();
+      //   console.log('started the email program');
+      //
+      //   resolve();
+      //
+      // }).then(function () {
+      //
+      //  reply('email sent');
+      //
+      // });
+
+      reply('email sent');
+    },
+    app: {
+      name: 'weekly'
+    }
+  },
+
+  recommended: {
+    handler: function (request, reply) {
+
+    },
+    app: {
+      name: 'recommend'
+    }
   }
-
-
-  module.exports = {
-      weekly: {
-          handler: function(request, reply) {
-
-            // return new Promise(function (resolve) {
-            //
-            //   //handlerEmail();
-            //   console.log('started the email program');
-            //
-            //   resolve();
-            //
-            // }).then(function () {
-            //
-            //  reply('email sent');
-            //
-            // });
-
-            reply('email sent');
-          },
-          app: {
-              name: 'weekly'
-          }
-      },
-
-      recommended: {
-        handler: function(request, reply) {
-
-        },
-        app: {
-          name: 'recommend'
-        }
-      }
 
 };
 
 
-var job = new CronJob({
-  cronTime: '00 30 11 * * 0-7',
-  onTick: function() {
-     handlerEmail();
-  },
-  start: false,
-  timeZone: "America/New_York"
-});
-job.start();
+// var job = new CronJob({
+//   cronTime: '00 30 11 * * 0-7',
+//   onTick: function() {
+//      handlerEmail();
+//   },
+//   start: false,
+//   timeZone: "America/New_York"
+// });
+// job.start();
