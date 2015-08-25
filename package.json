@@ -30,6 +30,8 @@
     "lodash": "^3.10.0",
     "mongojs": "^0.18.0",
     "node-mandrill": "^1.0.1",
+    "node-parse-api": "^0.3.8",
+    "node-schedule": "^0.2.9",
     "numeral": "^1.5.3",
     "raccoon": "^0.2.3",
     "request": "^2.44.0",
