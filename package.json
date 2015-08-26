@@ -37,6 +37,7 @@
     "request": "^2.44.0",
     "request-promise": "^0.3.3",
     "require-directory": "~2.0.0",
+    "rss": "^1.1.1",
     "sendgrid": "^1.8.0",
     "swig": "~1.4.2",
     "underscore": "^1.7.0"
