@@ -19,13 +19,6 @@ var emails;
 
 function handlerEmail() {
 
-  // var params = {
-  //   where: {
-  //     receive_newsletters: true
-  //     //objectId: 'He8hQies9q'
-  //   }
-  // };
-
   parseApp.find('_User', {
     limit: 1000
   }, function (err, response) {
