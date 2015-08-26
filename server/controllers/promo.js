@@ -43,14 +43,13 @@ function handlerEmail() {
           throw err;
         }
         var payload = new sendgrid.Email({
-          to: 'parkerproject@gmail.com', //emails[0],
-          from: 'promo@dealsbox.co',
+          from: 'hello@dealsbox.co',
           fromname: 'DEALSBOX',
-          subject: 'A NEW $10 off promo code starting today',
+          subject: 'A NEW $10 off promo code starting today!',
           html: content
         });
 
-        payload.setBccs(['parkerituk@outlook.com', 'dealsboxapp@gmail.com']);
+        //payload.setTos(emails);
 
         sendgrid.send(payload, function (err, json) {
           if (err) {
@@ -72,7 +71,7 @@ module.exports = {
 
       return new Promise(function (resolve) {
 
-        //  handlerEmail();
+        handlerEmail();
 
         resolve();
 
@@ -89,9 +88,9 @@ module.exports = {
 
 };
 
-schedule.scheduleJob('00 30 11 * * 0-7', function () {
-  handlerEmail();
-});
+// schedule.scheduleJob('00 30 11 * * 0-7', function () {
+//   handlerEmail();
+// });
 
 
 // var job = new CronJob({
