@@ -97,7 +97,7 @@ module.exports = {
 
       for (var i = 0, len = providers.length; i < len; i++) {
         var url = buildUrl(city, providers[i], limit);
-        //  console.log(providers[i], url);
+        console.log(providers[i], url);
         rp(url).then(function (res) {
           deals.push.apply(deals, JSON.parse(res));
           completed_requests++;
@@ -108,9 +108,10 @@ module.exports = {
             //  var item = dealItem();
             var counter = 0;
 
+
+
             for (var k = 0, dlen = deals.length; k < dlen; k++) {
-              //feed.item(deals[i]);
-              feed.item(dealItem(deals[i]));
+              feed.item(dealItem(deals[k]));
               counter++;
             }
             if (counter === deals.length) {
