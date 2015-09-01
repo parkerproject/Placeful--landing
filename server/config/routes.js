@@ -78,14 +78,6 @@ module.exports = function (server) {
     config: controller.static.about
     }, {
     method: 'GET',
-    path: '/newsletter/weekly',
-    config: controller.newsletter.weekly
-    }, {
-    method: 'GET',
-    path: '/newsletter/recommended',
-    config: controller.newsletter.recommended
-    }, {
-    method: 'GET',
     path: '/recommended',
     config: controller.prediction.like
     }, {
