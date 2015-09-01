@@ -92,6 +92,10 @@ module.exports = function (server) {
     method: 'GET',
     path: '/alerts',
     config: controller.static.alerts
-    }];
+   }, {
+    method: 'GET',
+    path: '/deals/feed.xml',
+    config: controller.rss.main
+  }];
   return routeTable;
 };
