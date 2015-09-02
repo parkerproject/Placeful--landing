@@ -80,10 +80,6 @@ module.exports = function (server) {
     method: 'GET',
     path: '/deals/feed.xml',
     config: controller.rss.main
-  }, {
-    method: 'GET',
-    path: '/deals/weekly.json',
-    config: controller.weekly.main
- }];
+  }];
   return routeTable;
 };
