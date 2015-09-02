@@ -58,20 +58,12 @@ module.exports = function (server) {
     config: controller.giveaway.index
     }, {
     method: 'GET',
-    path: '/how-it-works',
-    config: controller.static.index
-    }, {
-    method: 'GET',
     path: '/terms',
     config: controller.static.terms
     }, {
     method: 'GET',
     path: '/privacy',
     config: controller.static.privacy
-    }, {
-    method: 'GET',
-    path: '/points',
-    config: controller.static.points
     }, {
     method: 'GET',
     path: '/about',
@@ -88,6 +80,10 @@ module.exports = function (server) {
     method: 'GET',
     path: '/deals/feed.xml',
     config: controller.rss.main
-  }];
+  }, {
+    method: 'GET',
+    path: '/deals/weekly.json',
+    config: controller.weekly.main
+ }];
   return routeTable;
 };
