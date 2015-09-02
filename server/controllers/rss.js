@@ -35,7 +35,8 @@ function feedOptions() {
     pubDate: today,
     ttl: '60',
     custom_namespaces: {
-      'media': 'http://example.com'
+      'media': 'http://example.com',
+      'dc': 'author'
     },
   });
 
@@ -46,7 +47,7 @@ function dealItem(obj) {
   return {
 
     title: obj.title,
-    description: obj.description,
+    description: obj.merchant_address,
     url: obj.url,
     guid: obj.deal_id,
     date: obj.insert_date,
@@ -62,21 +63,18 @@ function dealItem(obj) {
         }
       },
       {
-        'new_price': obj.new_price
+        'comments': obj.new_price
       },
       {
-        'provider_name': obj.provider_name
+        'source': obj.provider_name
       },
       {
-        'merchant_name': obj.merchant_name
-      },
-      {
-        'merchant_address': obj.merchant_address
+        'dc:creator': obj.merchant_name
       }
 
     ]
 
-  }
+  };
 }
 
 
@@ -97,7 +95,7 @@ module.exports = {
 
       for (var i = 0, len = providers.length; i < len; i++) {
         var url = buildUrl(city, providers[i], limit);
-        console.log(providers[i], url);
+
         rp(url).then(function (res) {
           deals.push.apply(deals, JSON.parse(res));
           completed_requests++;
