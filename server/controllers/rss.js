@@ -53,6 +53,9 @@ function dealItem(obj) {
     date: obj.insert_date,
     lat: obj.loc.coordinates[1],
     long: obj.loc.coordinates[0],
+    enclosure: {
+      url: obj.small_image
+    },
     custom_elements: [
       {
         'media:content': {
