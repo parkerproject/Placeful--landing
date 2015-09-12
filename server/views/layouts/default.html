@@ -87,6 +87,14 @@
       var s = document.getElementsByTagName('script')[0];
       s.parentNode.insertBefore(pa, s);
     })();
+
+    $('.text-me').on('click', function() {
+      ga('send', 'event', 'button', 'click', 'text-me-button');
+    });
+
+    $('.download-button').on('click', function() {
+      ga('send', 'event', 'button', 'click', 'download-button');
+    });
   </script>
 
 </body>
