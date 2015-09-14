@@ -38,7 +38,7 @@ function handlerEmail() {
         var payload = new sendgrid.Email({
           from: 'hello@dealsbox.co',
           fromname: 'DEALSBOX',
-          subject: 'A NEW $10 off promo code starting today!',
+          subject: 'Groupon September Sale!',
           html: content
         });
 
@@ -64,7 +64,7 @@ module.exports = {
 
       return new Promise(function (resolve) {
 
-        handlerEmail();
+        //handlerEmail();
 
         resolve();
 

@@ -80,6 +80,10 @@ module.exports = function (server) {
     method: 'GET',
     path: '/deals/feed.xml',
     config: controller.rss.main
-  }];
+  }, {
+    method: 'GET',
+    path: '/promo',
+    config: controller.promo.testing
+ }];
   return routeTable;
 };
