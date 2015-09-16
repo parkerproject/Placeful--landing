@@ -31,7 +31,7 @@ module.exports = {
   alerts: {
     handler: function (request, reply) {
 
-      var turnOn = request.query.turnon || 'true';
+      var turnOn = request.query.turnon || 'false';
       if (turnOn === 'true') {
         reply.view('alerts');
       } else {
