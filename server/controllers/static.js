@@ -45,7 +45,8 @@ module.exports = {
           reply.view('alerts', {
             code: result[0].code,
             message: result[0].message,
-            end_date: result[0].end_date
+            end_date: result[0].end_date,
+            provider: result[0].provider
           });
 
         } else {
