@@ -45,6 +45,10 @@ module.exports = function (server) {
     path: '/bower_components/{path*}',
     config: controller.assets.bower
     }, {
+    method: 'GET',
+    path: '/merchant/{path*}',
+    config: controller.assets.merchant
+  }, {
     method: 'POST',
     path: '/process_email/{email*2}',
     config: controller.email.storeEmail
@@ -84,6 +88,14 @@ module.exports = function (server) {
     method: 'GET',
     path: '/promo',
     config: controller.promo.testing
- }];
+ }, {
+    method: 'GET',
+    path: '/business',
+    config: controller.merchant.index
+}, {
+    method: 'GET',
+    path: '/business/login',
+    config: controller.merchant.login
+}];
   return routeTable;
 };
