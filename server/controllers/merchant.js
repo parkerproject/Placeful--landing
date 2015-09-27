@@ -2,12 +2,12 @@
 require('dotenv').load();
 var swig = require('swig');
 var collections = ['merchants'];
-var db = require("mongojs").connect(process.env.DEALSBOX_MONGODB_URL,
-  collections);
+var db = require("mongojs").connect(process.env.DEALSBOX_MONGODB_URL, collections);
+var bcrypt = require('bcrypt');
 
 module.exports = {
   index: {
-    handler: function (request, reply) {
+    handler: function(request, reply) {
 
       reply.view('merchant/index', {
 
@@ -21,7 +21,7 @@ module.exports = {
   },
 
   login: {
-    handler: function (request, reply) {
+    handler: function(request, reply) {
 
       reply.view('merchant/login', {
 
@@ -35,13 +35,7 @@ module.exports = {
     }
   },
   register: {
-    handler: function (request, reply) {
-
-      if (request.payload) {
-
-        console.log(request.payload);
-        reply('posted');
-      }
+    handler: function(request, reply) {
 
       reply.view('merchant/register', {
 
@@ -52,6 +46,38 @@ module.exports = {
     },
     app: {
       name: 'register'
+    }
+  },
+	
+	register_post: {
+    handler: function(request, reply) {
+
+      if (request.payload) {
+        var password = request.payload.password;
+        var salt = bcrypt.genSaltSync(10);
+        var hash = bcrypt.hashSync(password, salt);
+
+        db.merchants.find({
+          business_email: request.payload.business_email
+        }).limit(1, function(err, results) {
+
+          if (results.length === 0) {
+            db.merchants.save({
+              business_name: request.payload.business_name,
+              business_email: request.payload.business_email,
+              password: hash
+            }, function() {
+              reply('Registration successful. Login to access account');
+            });
+          }else{
+						reply('Already registered, Login to access account');
+					}
+        });
+      }
+
+    },
+    app: {
+      name: 'register_post'
     }
   }
 

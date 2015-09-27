@@ -102,8 +102,8 @@ module.exports = function (server) {
     config: controller.merchant.register
   }, {
     method: 'POST',
-    path: '/business/register',
-    config: controller.merchant.register
+    path: '/business/register_post',
+    config: controller.merchant.register_post
   }];
   return routeTable;
 };

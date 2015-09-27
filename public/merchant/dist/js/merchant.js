@@ -47,10 +47,10 @@ function sendEmail(email, name, password) {
     'password': password
   };
 
-  $.post('/business/register', post_data, function (response) {
+  $.post('/business/register_post', post_data, function (response) {
 
     if (response.status !== 'failed') {
-      console.log('done');
+      $('.login-box-body').html('<a href="/business/login">'+response+'</a>');
     } else {
       document.querySelector('.error').innerHTML =
         'An error occured. Please try again later.';
