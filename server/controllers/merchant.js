@@ -5,9 +5,20 @@ var collections = ['merchants'];
 var db = require("mongojs").connect(process.env.DEALSBOX_MONGODB_URL, collections);
 var bcrypt = require('bcrypt');
 
+
+// server.register(require('hapi-auth-cookie'), function (err) {
+//
+//   server.auth.strategy('session', 'cookie', {
+//     password: 'secret',
+//     cookie: 'sid-example',
+//     redirectTo: '/login',
+//     isSecure: false
+//   });
+// });
+
 module.exports = {
   index: {
-    handler: function(request, reply) {
+    handler: function (request, reply) {
 
       reply.view('merchant/index', {
 
@@ -21,7 +32,7 @@ module.exports = {
   },
 
   login: {
-    handler: function(request, reply) {
+    handler: function (request, reply) {
 
       reply.view('merchant/login', {
 
@@ -35,7 +46,7 @@ module.exports = {
     }
   },
   register: {
-    handler: function(request, reply) {
+    handler: function (request, reply) {
 
       reply.view('merchant/register', {
 
@@ -48,9 +59,9 @@ module.exports = {
       name: 'register'
     }
   },
-	
-	register_post: {
-    handler: function(request, reply) {
+
+  register_post: {
+    handler: function (request, reply) {
 
       if (request.payload) {
         var password = request.payload.password;
@@ -59,19 +70,19 @@ module.exports = {
 
         db.merchants.find({
           business_email: request.payload.business_email
-        }).limit(1, function(err, results) {
+        }).limit(1, function (err, results) {
 
           if (results.length === 0) {
             db.merchants.save({
               business_name: request.payload.business_name,
               business_email: request.payload.business_email,
               password: hash
-            }, function() {
+            }, function () {
               reply('Registration successful. Login to access account');
             });
-          }else{
-						reply('Already registered, Login to access account');
-					}
+          } else {
+            reply('Already registered, Login to access account');
+          }
         });
       }
 

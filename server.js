@@ -1,8 +1,8 @@
 /**
-* Dependencies.
-*/
+ * Dependencies.
+ */
 var Hapi = require('hapi'),
-    config = require('./server/config/settings');
+  config = require('./server/config/settings');
 
 global.__base = __dirname + '/';
 
@@ -21,8 +21,8 @@ var routes = require('./server/config/routes')(server);
 server.route(routes);
 
 //Start the server
-server.start(function() {
-    //Log to the console the host and port info
-    console.log('Server started at: ' + server.info.uri);
-   
+server.start(function () {
+  //Log to the console the host and port info
+  console.log('Server started at: ' + server.info.uri);
+
 });
