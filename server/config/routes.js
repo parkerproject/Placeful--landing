@@ -93,9 +93,13 @@ module.exports = function (server) {
     path: '/business',
     config: controller.merchant.index
   }, {
-    method: 'GET',
+    method: ['GET', 'POST'],
     path: '/business/login',
     config: controller.merchant.login
+  }, {
+    method: 'GET',
+    path: '/business/logout',
+    config: controller.merchant.logout
   }, {
     method: 'GET',
     path: '/business/register',

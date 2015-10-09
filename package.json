@@ -23,11 +23,13 @@
     "dotenv": "0.4.0",
     "es6-promise": "^2.3.0",
     "good": "~2.2.3",
-    "hapi": "~6.7.1",
+    "hapi": "^10.4.0",
     "hapi-assets": "~0.2.1",
     "hapi-auth-cookie": "^3.1.0",
     "hapi-cache-buster": "~0.2.0",
     "hapi-named-routes": "~0.2.0",
+    "hapi-swagger": "^2.1.0",
+    "inert": "^3.0.2",
     "kaiseki": "^0.5.6",
     "lodash": "^3.10.0",
     "mongojs": "^0.18.2",
@@ -42,7 +44,8 @@
     "rss": "^1.1.1",
     "sendgrid": "^1.8.0",
     "swig": "~1.4.2",
-    "underscore": "^1.7.0"
+    "underscore": "^1.7.0",
+    "vision": "^3.0.0"
   },
   "devDependencies": {
     "gulp": "~3.8.7",

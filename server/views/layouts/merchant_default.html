@@ -58,6 +58,34 @@
     .register-box-body {
       border: 1px solid #ccc;
     }
+    
+    .logout {
+      float: right;
+      color: white;
+      position: relative;
+      right: 20px;
+      top: 9px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    
+    .logout:hover {
+      color: gray;
+    }
+    
+    .error {
+      color: red;
+      font-weight: normal;
+    }
+    
+    .btn-primary {
+      background-color: #DB462C;
+      border-color: #DB462C;
+    }
+    
+    a {
+      color: #DB462C
+    }
   </style>
 </head>
 
@@ -75,6 +103,17 @@
   <script src="/merchant/dist/js/app.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="/merchant/dist/js/merchant.js"></script>
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+
+  <script>
+    $("#profileForm").validate({
+      messages: {
+        dd1: {
+          required: "This field is required",
+        },
+      }
+    });
+  </script>
 </body>
 
 </html>

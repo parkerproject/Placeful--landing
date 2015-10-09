@@ -4,46 +4,95 @@ var swig = require('swig');
 var collections = ['merchants'];
 var db = require("mongojs").connect(process.env.DEALSBOX_MONGODB_URL, collections);
 var bcrypt = require('bcrypt');
+var salt = bcrypt.genSaltSync(10);
 
 
-// server.register(require('hapi-auth-cookie'), function (err) {
-//
-//   server.auth.strategy('session', 'cookie', {
-//     password: 'secret',
-//     cookie: 'sid-example',
-//     redirectTo: '/login',
-//     isSecure: false
-//   });
-// });
+var replyFn = function (reply, message) {
+
+  return reply.view('merchant/login', {
+    _class: 'login-page',
+    message: message
+  });
+
+};
+
+var login = function (request, reply) {
+
+  if (request.auth.isAuthenticated) {
+    return reply.redirect('/business');
+  }
+
+  var message = '';
+  var account = null;
+  var passwordStatus;
+
+  if (request.method === 'post') {
+
+    if (!request.payload.username || !request.payload.password) {
+      message = 'Missing username or password';
+
+    } else {
+      db.merchants.find({
+        business_email: request.payload.username
+      }).limit(1, function (err, user) {
+        if (err) console.log(err);
+        account = user[0];
+
+        if (user.length === 0 || !bcrypt.compareSync(request.payload.password, account.password)) {
+          message = 'Invalid username or password';
+          replyFn(reply, message);
+        } else {
+          request.auth.session.set(account);
+          return reply.redirect('/business');
+        }
+
+      });
+    }
+  }
+
+  if (request.method === 'get' || message) {
+    replyFn(reply, message);
+  }
+
+  // request.auth.session.set(account);
+  // return reply.redirect('/business');
+
+};
+
+
+var loginOptions = {
+  handler: login,
+  auth: {
+    mode: 'try',
+    strategy: 'session'
+  },
+  plugins: {
+    'hapi-auth-cookie': {
+      redirectTo: false
+    }
+  }
+};
+
+
+var logout = function (request, reply) {
+
+  request.auth.session.clear();
+  return reply.redirect('/business/login');
+};
 
 module.exports = {
   index: {
     handler: function (request, reply) {
 
-      reply.view('merchant/index', {
-
-        title: 'Discover and save on local deals - DEALSBOX'
-      });
+      reply.view('merchant/index', {});
 
     },
-    app: {
-      name: 'index'
-    }
+    auth: 'session'
   },
 
-  login: {
-    handler: function (request, reply) {
-
-      reply.view('merchant/login', {
-
-        title: 'Discover and save on local deals - DEALSBOX',
-        _class: 'login-page'
-      });
-
-    },
-    app: {
-      name: 'login'
-    }
+  login: loginOptions,
+  logout: {
+    handler: logout
   },
   register: {
     handler: function (request, reply) {
@@ -65,7 +114,6 @@ module.exports = {
 
       if (request.payload) {
         var password = request.payload.password;
-        var salt = bcrypt.genSaltSync(10);
         var hash = bcrypt.hashSync(password, salt);
 
         db.merchants.find({
