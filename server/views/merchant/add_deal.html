@@ -1,0 +1,168 @@
+{% extends '../layouts/merchant_default.html' %} {% block title %}{{ title }}{% endblock %} {% block content %}
+<!-- Site wrapper -->
+<div class="wrapper">
+
+  {% include '../includes/merchant_head.html' %} {% include '../includes/merchant_sidebar.html' %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="box">
+        <div class="box-header with-border">
+          <h2>Add a Deal</h2>
+          <p>A quick deal builder, you can enter all the information about your deal on this page.</p>
+        </div>
+
+        <div class="box-body">
+          <form action="/business/deal/builder" method="post" id="dealForm" enctype="multipart/form-data">
+            <div class="form-group has-feedback">
+              <label for="">Deal title</label>
+              <input type="text" class="form-control" placeholder="deal title" name="title" required>
+            </div>
+            <div class="form-group has-feedback">
+              <label for="">Deal description</label>
+              <textarea class="form-control" rows="3" placeholder="give your deal some meat:)" name="description" required></textarea>
+            </div>
+            <div class="form-group has-feedback">
+              <label for="">Fine Print</label>
+              <textarea class="form-control" rows="3" placeholder="fine print about the deal" name="fine_print"></textarea>
+            </div>
+            <div class="form-group has-feedback">
+              <label for="">Deal price</label>
+              <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input type="text" class="form-control" name="deal_price" required>
+                <span class="input-group-addon">.00</span>
+              </div>
+            </div>
+
+            <div class="form-group has-feedback">
+              <label for="">Price</label>
+              <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input type="text" class="form-control" name="normal_price" required>
+                <span class="input-group-addon">.00</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>When do you want this deal to run:</label>
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar"></i>
+                </div>
+                <input type="text" class="form-control pull-right" name="deal_date" id="reservation" required>
+              </div>
+              <!-- /.input group -->
+            </div>
+
+            <div class="form-group">
+              <label>Deal category</label>
+              <select class="form-control" name="category" id="category" required>
+                <option></option>
+                <option>Food &amp; Drinks</option>
+                <option>Health, Beauty &amp; Fitness</option>
+                <option>Events &amp; Activities</option>
+                <option>Services</option>
+                <option>Shopping</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputFile">Add Deal image</label>
+              <input type="file" id="exampleInputFile" name="file">
+              <p class="help-block">(Image should be at least 750px wide)</p>
+            </div>
+
+            <div class="row">
+              <!-- /.col -->
+              <div class="col-xs-4">
+                <input type="hidden" name="business_email" value={{business_email}} />
+                <input type="hidden" name="yelp_URL" value={{yelp_URL}} />
+
+                <button type="submit" class="btn btn-primary btn-block btn-flat preview-js">Preview Deal</button>
+              </div>
+              <!-- /.col -->
+            </div>
+          </form>
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 2.3.0
+    </div>
+    <strong>Copyright &copy; 2014-2015 DEALSBOX.</strong> All rights reserved.
+  </footer>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">
+            <h2>Ticket to our town's the art of food</h2>
+          </h4>
+        </div>
+        <div class="modal-body">
+          <div class="location">
+            <header class="business_name"></header>
+            <address class="dealAddress"></address>
+            <strong>Tel</strong>:
+            <span class="dealPhone"></span>
+          </div>
+
+          <img src="https://img.grouponcdn.com/deal/dud7uRSVvYf8VxRH3jJk/o7-2048x1228/v1/c700x420.jpg" alt="">
+          <section>
+            <div style="margin: 5px 0;text-align: right;font-size: 1.3em;">
+              <strong>Deal Price</strong>: $
+              <span class="normalPrice text-danger">50</span>
+              <span class="dealPrice text-success">10</span>
+            </div>
+            <p>
+              <h4 style="border-bottom:1px solid #e1e1e1;font-weight: bold;">Description</h4>
+              <span class "dealDescription">A dentist of the Academy of General Dentistry and American Dental Association cleans teeth and supplies patients with home whitening tools"</span>
+            </p>
+            <p>
+              <h4 style="border-bottom:1px solid #e1e1e1;font-weight: bold;">Fine Print</h4>
+              <span class="finePrint">A dentist of the Academy of General Dentistry and American Dental Association cleans teeth and supplies patients with home whitening tools"</span>
+            </p>
+            <div class="dealDate">
+              <strong>Deal Date
+              </strong>:
+              <span>10/20/2015</span>
+            </div>
+            <div class="dealCategory">
+              <strong>Deal Category</strong>:
+              <span></span>
+            </div>
+          </section>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Publish Deal</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Add the sidebar's background. This div must be placed
+         immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+{% endblock %}

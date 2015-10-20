@@ -20,6 +20,16 @@ module.exports = {
       name: 'images'
     }
   },
+  deal_images: {
+    handler: {
+      directory: {
+        path: './server/controllers/deal_images'
+      }
+    },
+    app: {
+      name: 'images'
+    }
+  },
   css: {
     handler: {
       directory: {

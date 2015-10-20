@@ -11,21 +11,30 @@
     <p class="error text-danger"></p>
     <form action="" method="post">
       <div class="form-group has-feedback">
+        <label for="">Business Name</label>
         <input type="text" class="form-control" placeholder="Business Name" name="business_name">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
+        <label for="">Business Email</label>
         <input type="email" class="form-control" placeholder="Business Email" name="business_email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
+        <label for="">Yelp Business Page URL
+          <small style="font-weight:normal;">(http://www.yelp.com/biz/...)</small>
+        </label>
+        <input type="text" class="form-control" placeholder="e.g http://www.yelp.com/biz/..." name="business_url">
+      </div>
+      <div class="form-group has-feedback">
+        <label for="">Password</label>
         <input type="password" class="form-control" placeholder="Password" name="password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
 
         <!-- /.col -->
-        <div class="col-xs-4">
+        <div class="col-xs-8">
           <button type="submit" class="btn btn-primary btn-block btn-flat cta">Register</button>
         </div>
         <!-- /.col -->

@@ -33,10 +33,11 @@ server.register([Inert, Vision, Hapi_auth, {
   });
 
   server.auth.strategy('session', 'cookie', {
-    password: 'secret',
+    password: 'dancingtomorrow',
     cookie: 'sid-dealsbox',
     redirectTo: '/business/login',
-    isSecure: false
+    isSecure: false,
+    ttl: 24 * 60 * 60 * 1000
   });
   server.route(routes);
   server.start(function () {

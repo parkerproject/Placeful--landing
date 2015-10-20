@@ -30,6 +30,10 @@ module.exports = function (server) {
     config: controller.assets.images
   }, {
     method: 'GET',
+    path: '/deal_images/{path*}',
+    config: controller.assets.deal_images
+  }, {
+    method: 'GET',
     path: '/css/{path*}',
     config: controller.assets.css
   }, {
@@ -108,6 +112,22 @@ module.exports = function (server) {
     method: 'POST',
     path: '/business/register_post',
     config: controller.merchant.register_post
+  }, {
+    method: 'GET',
+    path: '/business/deal',
+    config: controller.merchant_deal.index
+  }, {
+    method: 'POST',
+    path: '/business/deal/builder',
+    config: controller.merchant_deal.builder
+  }, {
+    method: 'GET',
+    path: '/lab/yelp',
+    config: controller.merchant_deal.yelp
+  }, {
+    method: 'POST',
+    path: '/lab/payment',
+    config: controller.payment.index
   }];
   return routeTable;
 };

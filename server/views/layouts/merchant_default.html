@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="/merchant/plugins/daterangepicker/daterangepicker-bs3.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/merchant/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="/merchant/dist/css/skins/skin-red.min.css">
@@ -78,18 +79,115 @@
       font-weight: normal;
     }
     
-    .btn-primary {
+    .btn-primary,
+    .btn-primary:hover,
+    .btn-primary:focus,
+    .btn-primary:active {
       background-color: #DB462C;
       border-color: #DB462C;
+      font-weight: bold;
     }
     
-    a {
+    a,
+    a:hover,
+    a:focus,
+    a:active {
       color: #DB462C
+    }
+    
+    body {
+      font-family: sans-serif;
+    }
+    
+    .status {
+      position: absolute;
+      top: 0;
+      font-size: 20px;
+      display: none;
+    }
+    
+    #myModal img {
+      max-width: 100%;
+    }
+    
+    .dealPrice,
+    .normalPrice {
+      padding: 2px 0;
+    }
+    
+    address {
+      margin: 0;
+    }
+    
+    .business_name {
+      font-weight: bold;
+    }
+    
+    .location {
+      margin-bottom: 10px;
+    }
+    
+    .normalPrice {
+      text-decoration: line-through;
+    }
+    
+    .pricing {
+      padding-left: 0;
+      text-align: right;
+      font-size: 8rem;
+      display: inline;
+    }
+    
+    .pricing-currency {
+      text-align: right;
+      padding-right: 0;
+      top: -1.5rem;
+      position: relative;
+      font-size: 4rem;
+    }
+    
+    .pricing-period {
+      position: relative;
+      font-size: 3rem;
+    }
+    
+    .get-started {
+      text-transform: capitalize;
+    }
+    
+    .plan-info {
+      font-size: 1.5rem;
+      margin-left: 50px;
+    }
+    
+    .full .box-title {
+      font-weight: bold;
+    }
+    
+    #stripe-form .form-row {
+      margin: 17px 0;
+    }
+    
+    .modal-footer {
+      margin-top: 20px;
+    }
+    
+    #stripe-form .row {
+      margin-bottom: 10px;
+    }
+    
+    .card-wrapper {
+      margin-bottom: 20px;
+    }
+    
+    .cc-text {
+      font-weight: bold;
     }
   </style>
 </head>
 
 <body class="hold-transition skin-red sidebar-mini {{_class}}">
+  <span class="status text-danger">Processing...</span>
   {% block content %}{% endblock %}
   <!-- jQuery 2.1.4 -->
   <script src="/merchant/plugins/jQuery/jQuery-2.1.4.min.js"></script>
@@ -100,20 +198,15 @@
   <!-- FastClick -->
   <script src="/merchant/plugins/fastclick/fastclick.min.js"></script>
   <!-- AdminLTE App -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+  <script src="/merchant/plugins/daterangepicker/daterangepicker.js"></script>
   <script src="/merchant/dist/js/app.min.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="/merchant/dist/js/merchant.js"></script>
+  <script src="/merchant/dist/js/startswith.js"></script>
   <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+  <script src="/merchant/dist/js/card.js"></script>
+  <script src="/merchant/dist/js/merchant.js"></script>
 
-  <script>
-    $("#profileForm").validate({
-      messages: {
-        dd1: {
-          required: "This field is required",
-        },
-      }
-    });
-  </script>
 </body>
 
 </html>

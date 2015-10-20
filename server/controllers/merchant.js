@@ -1,11 +1,11 @@
-// This is the base controller. Used for base routes, such as the default index/root path, 404 error pages, and others.
 require('dotenv').load();
 var swig = require('swig');
 var collections = ['merchants'];
-var db = require("mongojs").connect(process.env.DEALSBOX_MONGODB_URL, collections);
+var db = require("mongojs").connect(process.env.DEALSBOX_MONGODB_URL,
+  collections);
 var bcrypt = require('bcrypt');
 var salt = bcrypt.genSaltSync(10);
-
+var randtoken = require('rand-token');
 
 var replyFn = function (reply, message) {
 
@@ -38,7 +38,8 @@ var login = function (request, reply) {
         if (err) console.log(err);
         account = user[0];
 
-        if (user.length === 0 || !bcrypt.compareSync(request.payload.password, account.password)) {
+        if (user.length === 0 || !bcrypt.compareSync(request.payload.password,
+            account.password)) {
           message = 'Invalid username or password';
           replyFn(reply, message);
         } else {
@@ -53,9 +54,6 @@ var login = function (request, reply) {
   if (request.method === 'get' || message) {
     replyFn(reply, message);
   }
-
-  // request.auth.session.set(account);
-  // return reply.redirect('/business');
 
 };
 
@@ -84,8 +82,10 @@ module.exports = {
   index: {
     handler: function (request, reply) {
 
-      reply.view('merchant/index', {});
-
+      reply.view('merchant/index', {
+        business_name: request.auth.credentials.business_name,
+        business_email: request.auth.credentials.business_email,
+      });
     },
     auth: 'session'
   },
@@ -98,7 +98,6 @@ module.exports = {
     handler: function (request, reply) {
 
       reply.view('merchant/register', {
-
         title: 'Discover and save on local deals - DEALSBOX',
         _class: 'login-page'
       });
@@ -117,26 +116,43 @@ module.exports = {
         var hash = bcrypt.hashSync(password, salt);
 
         db.merchants.find({
-          business_email: request.payload.business_email
+          $or: [{
+            business_email: request.payload.business_email
+          }, {
+            business_name: request.payload.business_name
+          }]
         }).limit(1, function (err, results) {
 
           if (results.length === 0) {
             db.merchants.save({
               business_name: request.payload.business_name,
               business_email: request.payload.business_email,
-              password: hash
+              password: hash,
+              yelp_URL: request.payload.Yelp_URL,
+              business_id: randtoken.generate(10)
             }, function () {
-              reply('Registration successful. Login to access account');
+              reply(
+                'Registration successful. Login to access account'
+              );
             });
           } else {
             reply('Already registered, Login to access account');
           }
         });
+
       }
 
-    },
-    app: {
-      name: 'register_post'
+    }
+
+  },
+
+  forgot_pass: {
+    handler: function (request, reply) {
+      if (request.method === 'get') {
+        return reply.view('merchant/forgotPass', {
+          _class: 'login-page'
+        });
+      }
     }
   }
 

@@ -1,0 +1,153 @@
+<div class="pull-left">
+  <section>
+    <span class="pricing-currency">$</span>
+    <h2 class="pricing">49.99</h2>
+    <span class="pricing-period">/month</span>
+  </section>
+  <form action="/lab/payment" method="POST">
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_test_38o72mxE5rPuPUpZTDJVmKKv" data-image="https://dl.dropboxusercontent.com/s/3pmt3totxquslep/avatar_b9d0ace3edc0_64.png?dl=0" data-name="DEALSBOX for BUSINESS"
+    data-description="Standard Plan ($49.99)" data-amount="4999">
+    </script>
+  </form>
+</div>
+<div class="pull-left plan-info">
+  <h4>Standard plan includes:</h4>
+  <ul id="accordion">
+    <li><a href="#unlimitedcoupons">Unlimited Coupons</a></li>
+    <li><a href="#freepromo">Free promotion via our Networks</a></li>
+    <li><a href="#sales">You keep 100% of your sales</a></li>
+    <li><a href="#marketing">Marketing Dashboard</a></li>
+    <li><a href="#anytypedeals">Supports Any Type of Deal</a></li>
+    <li><a href="#builder">Free Deal Builder</a></li>
+  </ul>
+</div>
+
+<div style="clear:both"></div>
+
+<section class="full">
+  <div class="box-body">
+    <div class="box-header">
+      <h3 class="box-title" id="unlimitedcoupons">Unlimited Coupons</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <p>Publish unlimited coupons and make changes at any time to attract a broader range of consumers.</p>
+    </div>
+    <!-- /.box-body -->
+  </div>
+
+  <div class="box-body">
+    <div class="box-header">
+      <h3 class="box-title" id="freepromo">Free promotion via our Networks</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <p>Publish unlimited coupons and make changes at any time to attract a broader range of consumers.</p>
+    </div>
+    <!-- /.box-body -->
+  </div>
+
+  <div class="box-body">
+    <div class="box-header">
+      <h3 class="box-title" id="sales">You keep 100% of your sales</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <p>Publish unlimited coupons and make changes at any time to attract a broader range of consumers.</p>
+    </div>
+    <!-- /.box-body -->
+  </div>
+
+  <div class="box-body">
+    <div class="box-header">
+      <h3 class="box-title" id="marketing">Marketing Dashboard</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <p>Publish unlimited coupons and make changes at any time to attract a broader range of consumers.</p>
+    </div>
+    <!-- /.box-body -->
+  </div>
+
+  <div class="box-body">
+    <div class="box-header">
+      <h3 class="box-title" id="anytypedeals">Supports Any Type of Deal</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <p>Publish unlimited coupons and make changes at any time to attract a broader range of consumers.</p>
+    </div>
+    <!-- /.box-body -->
+  </div>
+
+  <div class="box-body">
+    <div class="box-header">
+      <h3 class="box-title" id="builder">Free Deal Builder</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <p>Publish unlimited coupons and make changes at any time to attract a broader range of consumers.</p>
+    </div>
+    <!-- /.box-body -->
+  </div>
+</section>
+
+<div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3>Payment Details</h3>
+        <div class="alert alert-danger alert-dismissable" id="error" style="display:none;">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <h4><i class="icon fa fa-ban"></i>
+            <span class="text"></span</h4>
+        </div>
+        <div class="alert alert-success alert-dismissable" id="success" style="display:none;">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <h4> <i class="icon fa fa-check"></i>
+            <span>Payment was successful!</span>
+          </h4>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="card-wrapper"></div>
+        <div id="stripe-form">
+          <form action="/lab/payment" method="POST" id="payment-form">
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="cc-text">Fullname</div>
+                <input type="text" size="30" class="card-name" name="card_name" required />
+              </div>
+              <div class="col-xs-6">
+                <div class="cc-text">Card Number</div>
+                <input type="text" size="30" autocomplete="off" class="card-number" name="card_number" required />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="cc-text">Expiration (MM/YYYY)</div>
+                <input type="text" size="10" name="expiry" value="" class="card-expiry" placeholder="MM/YYYY" required />
+              </div>
+              <div class="col-xs-6">
+                <div class="cc-text">CVC</div>
+                <input type="text" size="4" autocomplete="off" class="card-cvc" name="card_cvc" required />
+              </div>
+            </div>
+            <input type="hidden" name="amount" value="4999" id="cc-amount">
+            <input type="hidden" name="email" value="{{business_email}}" id="email">
+            <div class="modal-footer">
+              <img src="/images/stripe-image.png" alt="" style="width:100px;" class="pull-left" />
+              <button type="submit" class="submit-button btn btn-success">
+                <strong>Submit Payment</strong>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,3 +13,4 @@ pids
 results
 npm-debug.log
 node_modules
+server/controller/uploads
