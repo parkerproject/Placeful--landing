@@ -105,6 +105,14 @@ module.exports = function (server) {
     path: '/business/logout',
     config: controller.merchant.logout
   }, {
+    method: ['GET', 'POST'],
+    path: '/business/forgotpass',
+    config: controller.merchant.forgot_pass
+  }, {
+    method: ['GET', 'POST'],
+    path: '/business/password_reset',
+    config: controller.merchant.password_reset
+  }, {
     method: 'GET',
     path: '/business/register',
     config: controller.merchant.register

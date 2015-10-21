@@ -39,10 +39,16 @@
     .login-logo a,
     .register-logo a {
       background: url('/images/newsletter_logo.png') no-repeat;
-      display: block;
       text-indent: -9999px;
       width: 250px;
-      margin: 0 auto;
+      float: left;
+    }
+    
+    .for-merchant {
+      color: gray;
+      font-size: 30px;
+      font-weight: bold;
+      float: left;
     }
     
     .login-page,
@@ -53,6 +59,11 @@
     .login-logo,
     .register-logo {
       margin-bottom: 0;
+    }
+    
+    .login-box,
+    .register-box {
+      width: 390px;
     }
     
     .login-box-body,
@@ -183,11 +194,24 @@
     .cc-text {
       font-weight: bold;
     }
+    
+    .clearfix:after {
+      content: ".";
+      visibility: hidden;
+      display: block;
+      height: 0;
+      clear: both;
+    }
+    
+    .btn-primary[disabled] {
+      background-color: #d27241!important;
+      border-color: #d27241!important;
+    }
   </style>
+  <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 
 <body class="hold-transition skin-red sidebar-mini {{_class}}">
-  <span class="status text-danger">Processing...</span>
   {% block content %}{% endblock %}
   <!-- jQuery 2.1.4 -->
   <script src="/merchant/plugins/jQuery/jQuery-2.1.4.min.js"></script>
@@ -204,7 +228,6 @@
   <script src="/merchant/dist/js/startswith.js"></script>
   <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
   <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-  <script src="/merchant/dist/js/card.js"></script>
   <script src="/merchant/dist/js/merchant.js"></script>
 
 </body>

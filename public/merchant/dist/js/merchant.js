@@ -29,7 +29,7 @@ function validateEmail(email) {
 function checkEmail() {
   var business_name = $('input[name=business_name]').val();
   var business_email = $('input[name=business_email]').val();
-  var business_yelp = $('input[name=business_url]').val();
+  var business_yelp = $('input[name=yelp_url]').val();
   var password = $('input[name=password]').val();
   var yelpFlag = false;
 
@@ -64,24 +64,17 @@ function checkEmail() {
 
 function sendEmail(email, name, password, yelp) {
   $('.error').text('');
-  $('.status').show();
+  $('.cta').attr("disabled", "disabled");
+  $('.cta').text('Processing');
 
-  var post_data = {
-    'business_email': email,
-    'business_name': name,
-    'password': password,
-    'Yelp_URL': yelp
-  };
+  var form = $('#register-form');
 
-  $.post('/business/register_post', post_data, function (response) {
+  $.post('/business/register_post', form.serialize(), function (response) {
 
     if (response.status !== 'failed') {
       $('.login-box-body').html('<a href="/business/login">' + response + '</a>');
-      $('.status').hide();
     } else {
-      document.querySelector('.error').innerHTML =
-        'An error occured. Please try again later.';
-      $('.status').hide();
+      document.querySelector('.error').innerHTML = 'An error occured. Please try again later.';
     }
 
   });
@@ -101,8 +94,6 @@ $("#profileForm, #dealForm").validate({
       data[x.name] = x.value;
     });
     var myModal = $('#myModal');
-
-    console.log(data);
 
     $.get('/lab/yelp', {
       yelp_URL: data.yelp_URL

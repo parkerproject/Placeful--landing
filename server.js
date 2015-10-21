@@ -1,6 +1,7 @@
 var Hapi = require('hapi');
 var Inert = require('inert');
 var Vision = require('vision');
+var path = require('path');
 var Hapi_auth = require('hapi-auth-cookie');
 var HapiSwagger = require('hapi-swagger');
 var swaggerOptions = {
@@ -13,6 +14,8 @@ server.connection({
 });
 // Require the routes and pass the server object.
 var routes = require('./server/config/routes')(server);
+
+global.appRoot = path.resolve(__dirname);
 
 // Export the server to be required elsewhere.
 module.exports = server;
@@ -37,7 +40,7 @@ server.register([Inert, Vision, Hapi_auth, {
     cookie: 'sid-dealsbox',
     redirectTo: '/business/login',
     isSecure: false,
-    ttl: 24 * 60 * 60 * 1000
+    ttl: 15 * 60 * 60 * 1000
   });
   server.route(routes);
   server.start(function () {

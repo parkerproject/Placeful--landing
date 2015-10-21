@@ -1,17 +1,18 @@
 {% extends '../layouts/merchant_default.html' %} {% block title %}{{ title }}{% endblock %} {% block content %}
 <div class="login-box">
-  <div class="login-logo">
+  <div class="login-logo clearfix">
     <a><b>Admin</b>LTE</a>
+    <span class="for-merchant">Merchant</span>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
     <h4 class="login-box-msg">
       <strong>Reset Password</strong>
     </h4>
-    <form action="/business/login" method="post">
+    <form action="/business/forgotpass" method="post">
       <span class="text-danger">{{message}}</span>
       <div class="form-group has-feedback">
-        <input type="username" class="form-control" placeholder="Email" name="username">
+        <input type="email" class="form-control" placeholder="Email" name="email" required>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="row">
@@ -28,9 +29,7 @@
 
     <!-- <a href="#">I forgot my password</a> -->
     <br>
-    <a href="/business/register" class="text-center">Register as a merchant</a>
-    <br />
-    <a href="#">I forgot my password</a>
+    <a href="/business/register" class="text-center">Register as a Merchant</a>
 
   </div>
   <!-- /.login-box-body -->

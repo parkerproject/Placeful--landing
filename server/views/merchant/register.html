@@ -1,15 +1,21 @@
 {% extends '../layouts/merchant_default.html' %} {% block title %}{{ title }}{% endblock %} {% block content %}
 <div class="login-box">
-  <div class="login-logo">
+  <div class="login-logo clearfix">
     <a><b>Admin</b>LTE</a>
+    <span class="for-merchant">Merchant</span>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
     <h4 class="login-box-msg">
-      <strong>Register as a Merchant</strong>
+      <p class="lead">Register as a Merchant</p>
+      <p>
+        <small>
+          <strong>You must be a local business</strong>.
+        </small>
+        <p/>
     </h4>
     <p class="error text-danger"></p>
-    <form action="" method="post">
+    <form action="" method="post" id="register-form">
       <div class="form-group has-feedback">
         <label for="">Business Name</label>
         <input type="text" class="form-control" placeholder="Business Name" name="business_name">
@@ -24,13 +30,14 @@
         <label for="">Yelp Business Page URL
           <small style="font-weight:normal;">(http://www.yelp.com/biz/...)</small>
         </label>
-        <input type="text" class="form-control" placeholder="e.g http://www.yelp.com/biz/..." name="business_url">
+        <input type="text" class="form-control" placeholder="e.g http://www.yelp.com/biz/..." name="yelp_url">
       </div>
       <div class="form-group has-feedback">
         <label for="">Password</label>
         <input type="password" class="form-control" placeholder="Password" name="password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
+      <div class="g-recaptcha" data-sitekey="6LeQMw8TAAAAADJ4ky7GrOeWNJbNAjKpR5TyOlak"></div>
       <div class="row">
 
         <!-- /.col -->
