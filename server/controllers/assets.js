@@ -23,7 +23,7 @@ module.exports = {
   deal_images: {
     handler: {
       directory: {
-        path: './server/controllers/deal_images'
+        path: './deal_images'
       }
     },
     app: {

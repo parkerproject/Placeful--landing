@@ -12,78 +12,110 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h2>Add a Deal</h2>
-          <p>A quick deal builder, you can enter all the information about your deal on this page.</p>
+          <h2>Create a Deal</h2>
+          <p class="lead">A quick deal builder, Enter your deal details to generate a coupon on the app.</p>
         </div>
 
         <div class="box-body">
-          <form action="/business/deal/builder" method="post" id="dealForm" enctype="multipart/form-data">
-            <div class="form-group has-feedback">
-              <label for="">Deal title</label>
-              <input type="text" class="form-control" placeholder="deal title" name="title" required>
-            </div>
-            <div class="form-group has-feedback">
-              <label for="">Deal description</label>
-              <textarea class="form-control" rows="3" placeholder="give your deal some meat:)" name="description" required></textarea>
-            </div>
-            <div class="form-group has-feedback">
-              <label for="">Fine Print</label>
-              <textarea class="form-control" rows="3" placeholder="fine print about the deal" name="fine_print"></textarea>
-            </div>
-            <div class="form-group has-feedback">
-              <label for="">Deal price</label>
-              <div class="input-group">
-                <span class="input-group-addon">$</span>
-                <input type="text" class="form-control" name="deal_price" required>
-                <span class="input-group-addon">.00</span>
-              </div>
-            </div>
+          <form action="/business/deal/builder" method="post" id="dealForm" enctype="multipart/form-data" name="dealForm">
 
-            <div class="form-group has-feedback">
-              <label for="">Price</label>
-              <div class="input-group">
-                <span class="input-group-addon">$</span>
-                <input type="text" class="form-control" name="normal_price" required>
-                <span class="input-group-addon">.00</span>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label>When do you want this deal to run:</label>
-              <div class="input-group">
-                <div class="input-group-addon">
-                  <i class="fa fa-calendar"></i>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group has-feedback">
+                  <label for="">Deal title</label>
+                  <input type="text" class="form-control" placeholder="ex. $10 Off $30" name="title" required>
                 </div>
-                <input type="text" class="form-control pull-right" name="deal_date" id="reservation" required>
               </div>
-              <!-- /.input group -->
+              <div class="col-md-6">
+                <input type="hidden" name="coupon_code" value="">
+                <p class="text-center">Coupon Code:
+                  <span class="coupon_code"></span>
+                </p>
+              </div>
             </div>
 
-            <div class="form-group">
-              <label>Deal category</label>
-              <select class="form-control" name="category" id="category" required>
-                <option></option>
-                <option>Food &amp; Drinks</option>
-                <option>Health, Beauty &amp; Fitness</option>
-                <option>Events &amp; Activities</option>
-                <option>Services</option>
-                <option>Shopping</option>
-              </select>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group has-feedback">
+                  <label for="">Deal description</label>
+                  <textarea class="form-control" rows="3" placeholder="give your deal some meat:)" name="description" required></textarea>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group has-feedback">
+                  <label for="">Fine Print</label>
+                  <textarea class="form-control" rows="3" placeholder="fine print about the deal" name="fine_print"></textarea>
+                </div>
+              </div>
             </div>
 
-            <div class="form-group">
-              <label for="exampleInputFile">Add Deal image</label>
-              <input type="file" id="exampleInputFile" name="file">
-              <p class="help-block">(Image should be at least 750px wide)</p>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <label for="">Deal value</label>
+                    <input type="text" class="form-control" placeholder="ex. 5" name="discount_value" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="">Deal value Off ($ or %)</label>
+                    <div class="form-group">
+                      <label class="label-radio">
+                        <input type="radio" name="discount_type" value="%" class="minimal-red" checked> %
+                      </label>
+                      <label class="label-radio">
+                        <input type="radio" name="discount_type" value="$" class="minimal-red"> $
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>When do you want this deal to run:</label>
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" name="deal_date" id="reservation" required>
+                  </div>
+                  <!-- /.input group -->
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Deal category</label>
+                  <select class="form-control" name="category" id="category" required>
+                    <option></option>
+                    <option>Food &amp; Drinks</option>
+                    <option>Health, Beauty &amp; Fitness</option>
+                    <option>Events &amp; Activities</option>
+                    <option>Services</option>
+                    <option>Shopping</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="exampleInputFile">Add Deal image</label>
+                  <input type="file" id="exampleInputFile" name="file" required>
+                  <p class="help-block">(Image must be between 750px and 1024px wide)</p>
+                </div>
+              </div>
+
             </div>
 
             <div class="row">
               <!-- /.col -->
               <div class="col-xs-4">
+                <input type="hidden" name="business_id" value={{business_id}} />
                 <input type="hidden" name="business_email" value={{business_email}} />
                 <input type="hidden" name="yelp_URL" value={{yelp_URL}} />
 
-                <button type="submit" class="btn btn-primary btn-block btn-flat preview-js">Preview Deal</button>
+                <button type="submit" class="btn btn-warning btn-block btn-flat preview-js">Preview Deal</button>
               </div>
               <!-- /.col -->
             </div>
@@ -124,16 +156,15 @@
             <span class="dealPhone"></span>
           </div>
 
-          <img src="https://img.grouponcdn.com/deal/dud7uRSVvYf8VxRH3jJk/o7-2048x1228/v1/c700x420.jpg" alt="">
+          <img src="" alt="" class="deal_image">
           <section>
             <div style="margin: 5px 0;text-align: right;font-size: 1.3em;">
-              <strong>Deal Price</strong>: $
-              <span class="normalPrice text-danger">50</span>
-              <span class="dealPrice text-success">10</span>
+              <strong>Deal</strong>:
+              <span class="offer text-success">50</span>
             </div>
             <p>
               <h4 style="border-bottom:1px solid #e1e1e1;font-weight: bold;">Description</h4>
-              <span class "dealDescription">A dentist of the Academy of General Dentistry and American Dental Association cleans teeth and supplies patients with home whitening tools"</span>
+              <span class="dealDescription">A dentist of the Academy of General Dentistry and American Dental Association cleans teeth and supplies patients with home whitening tools"</span>
             </p>
             <p>
               <h4 style="border-bottom:1px solid #e1e1e1;font-weight: bold;">Fine Print</h4>
@@ -151,8 +182,8 @@
           </section>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Publish Deal</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Save Deal</button>
+          <button type="button" class="btn btn-success publish_deal">Publish Deal</button>
         </div>
       </div>
     </div>

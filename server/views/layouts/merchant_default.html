@@ -14,6 +14,8 @@
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="/merchant/plugins/daterangepicker/daterangepicker-bs3.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="/merchant/plugins/iCheck/all.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/merchant/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="/merchant/dist/css/skins/skin-red.min.css">
@@ -207,6 +209,32 @@
       background-color: #d27241!important;
       border-color: #d27241!important;
     }
+    
+    .text-center {
+      text-align: center;
+      position: relative;
+    }
+    
+    .or {
+      position: absolute;
+      font-size: 23px;
+      top: 21px;
+      left: 30px;
+    }
+    
+    .label-radio {
+      font-weight: normal;
+      padding-right: 10px;
+    }
+    
+    .coupon_code {
+      font-size: 3rem;
+      color: #cf4127;
+    }
+    
+    .btn {
+      font-weight: bold;
+    }
   </style>
   <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
@@ -227,6 +255,7 @@
   <script src="/merchant/dist/js/app.min.js"></script>
   <script src="/merchant/dist/js/startswith.js"></script>
   <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+  <script src="/merchant/plugins/iCheck/icheck.min.js"></script>
   <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
   <script src="/merchant/dist/js/merchant.js"></script>
 

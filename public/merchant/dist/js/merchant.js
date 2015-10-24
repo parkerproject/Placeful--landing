@@ -17,7 +17,53 @@ $(function () {
     }
   });
 
+  $("#exampleInputFile").change(function () {
+
+    var image, file;
+    var _URL = window.URL || window.webkitURL;
+
+    if ((file = this.files[0])) {
+      image = new Image();
+      image.onload = function () {
+        if (this.width < 750 || this.width > 1024) {
+          alert('Image must be between 750px and 1024 wide');
+          $('.preview-js').attr("disabled", "disabled");
+        } else {
+          $('.preview-js').removeAttr("disabled");
+        }
+      };
+      image.src = _URL.createObjectURL(file);
+      readURL(this);
+    }
+
+  });
+
+  function makeid() {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (var i = 0; i < 5; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+  }
+  var coupon_code = makeid();
+  $('.coupon_code').text(coupon_code.toLowerCase());
+  $('input[name=coupon_code]').val(coupon_code.toLowerCase());
+
 });
+
+function readURL(input) {
+
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      $('.deal_image').attr('src', e.target.result);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
 
 function validateEmail(email) {
   var re =
@@ -84,8 +130,14 @@ function sendEmail(email, name, password, yelp) {
 $("#profileForm, #dealForm").validate({
   messages: {
     category: {
-      required: "This field is required",
+      required: "category is required",
     },
+  },
+
+  rules: {
+    discount_value: {
+      digits: true
+    }
   },
   submitHandler: function (form) {
     $('.preview-js').text('Processing...');
@@ -101,8 +153,12 @@ $("#profileForm, #dealForm").validate({
       myModal.find('h2').text(data.title);
       myModal.find('.business_name').text(res.name);
       myModal.find('.finePrint').text(data.fine_print);
-      myModal.find('.dealPrice').text(data.deal_price);
-      myModal.find('.normalPrice').text(data.normal_price);
+      if (data.discount_type === '%') {
+        myModal.find('.offer').text(data.discount_value + data.discount_type + ' Off');
+      }
+      if (data.discount_type === '$') {
+        myModal.find('.offer').text(data.discount_type + data.discount_value + ' Off');
+      }
       myModal.find('.dealDescription').text(data.description);
       myModal.find('.dealDate span').text(data.deal_date);
       myModal.find('.dealPhone').text(res.display_phone);
@@ -115,16 +171,17 @@ $("#profileForm, #dealForm").validate({
   }
 });
 
+$('.publish_deal').click(function () {
+  $(this).attr("disabled", "disabled").text('Processing...');
+  document.forms.dealForm.submit();
+});
 
 
 //Date range picker
-$('#reservation').daterangepicker();
-//Date range picker with time picker
-$('#reservationtime').daterangepicker({
-  timePicker: true,
-  timePickerIncrement: 30,
-  format: 'MM/DD/YYYY h:mm A'
+$('#reservation').daterangepicker({
+  minDate: moment().format('L')
 });
+
 //Date range as a button
 $('#daterange-btn').daterangepicker({
     ranges: {
@@ -142,3 +199,15 @@ $('#daterange-btn').daterangepicker({
     $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
   }
 );
+
+
+//iCheck for checkbox and radio inputs
+$('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+  checkboxClass: 'icheckbox_minimal-blue',
+  radioClass: 'iradio_minimal-blue'
+});
+//Red color scheme for iCheck
+$('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+  checkboxClass: 'icheckbox_minimal-red',
+  radioClass: 'iradio_minimal-red'
+});
