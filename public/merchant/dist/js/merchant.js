@@ -25,8 +25,8 @@ $(function () {
     if ((file = this.files[0])) {
       image = new Image();
       image.onload = function () {
-        if (this.width < 750 || this.width > 1024) {
-          alert('Image must be between 750px and 1024 wide');
+        if (this.width < 500 || this.width > 1500) {
+          alert('Image must be between 500px and 1500 wide');
           $('.preview-js').attr("disabled", "disabled");
         } else {
           $('.preview-js').removeAttr("disabled");
@@ -48,8 +48,8 @@ $(function () {
     return text;
   }
   var coupon_code = makeid();
-  $('.coupon_code').text(coupon_code.toLowerCase());
-  $('input[name=coupon_code]').val(coupon_code.toLowerCase());
+  $('.coupon_code').text(coupon_code.toUpperCase());
+  $('input[name=coupon_code]').val(coupon_code.toUpperCase());
 
 });
 
@@ -172,6 +172,13 @@ $("#profileForm, #dealForm").validate({
 });
 
 $('.publish_deal').click(function () {
+  $("#dealForm").find('input[name=publish]').val('yes');
+  $(this).attr("disabled", "disabled").text('Processing...');
+  document.forms.dealForm.submit();
+});
+
+$('.save_deal').click(function () {
+  $("#dealForm").find('input[name=publish]').val('no');
   $(this).attr("disabled", "disabled").text('Processing...');
   document.forms.dealForm.submit();
 });

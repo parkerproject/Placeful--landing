@@ -136,6 +136,10 @@ module.exports = function (server) {
     method: 'POST',
     path: '/lab/payment',
     config: controller.payment.index
+  }, {
+    method: 'GET',
+    path: '/business/manage_deals',
+    config: controller.merchant_deal.deals
   }];
   return routeTable;
 };

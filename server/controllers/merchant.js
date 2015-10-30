@@ -13,7 +13,7 @@ var sendEmail = function (email, subject, content) {
     message: {
       to: [{
         email: email
-            }],
+      }],
       from_email: 'noreply@dealsbox.co',
       from_name: 'DEALSBOX',
       subject: subject,
@@ -163,15 +163,21 @@ module.exports = {
                   yelp_URL: request.payload.yelp_url,
                   business_id: randtoken.generate(20)
                 }, function () {
-                  reply('<span style="font-size: 2em;width: 50%;margin: 10% auto 0 auto;text-align: center;display: block;border: 1px solid #cf4127;padding:10px 0;">Registration successful. <a href="/business/login">Login to access account</a>.</span>');
+                  reply(
+                    '<span style="font-size: 2em;margin: 10% auto 0 auto;text-align: center;display: block;border: 1px solid #cf4127;padding:10px 0;">Registration successful. <a href="/business/login">Login to access account</a>.</span>'
+                  );
                 });
               } else {
-                reply('<span style="font-size: 2em;width: 50%;margin: 10% auto 0 auto;text-align: center;display: block;border: 1px solid #cf4127;padding:10px 0;">You failed the captcha question, <a href="/business/register">try again</a></span>');
+                reply(
+                  '<span style="font-size: 2em;margin: 10% auto 0 auto;text-align: center;display: block;border: 1px solid #cf4127;padding:10px 0;">You failed the reCAPTCHA question, <a href="/business/register">try again</a></span>'
+                );
               }
 
             });
           } else {
-            reply('<span style="font-size: 2em;width: 50%;margin: 10% auto 0 auto;text-align: center;display: block;border: 1px solid #cf4127;padding:10px 0;">Already registered, Login to access account</span>');
+            reply(
+              '<span style="font-size: 2em;margin: 10% auto 0 auto;text-align: center;display: block;border: 1px solid #cf4127;padding:10px 0;">Already registered, Login to access account</span>'
+            );
           }
         });
 
@@ -208,12 +214,16 @@ module.exports = {
                   throw err;
                 }
                 sendEmail(email, subject, content);
-                reply('<span style="font-size: 2em;width: 50%;margin: 10% auto 0 auto;text-align: center;display: block;border: 1px solid #cf4127;padding:10px 0;">Check your email to reset password.</span>');
+                reply(
+                  '<span style="font-size: 2em;margin: 10% auto 0 auto;text-align: center;display: block;border: 1px solid #cf4127;padding:10px 0;">Check your email to reset password.</span>'
+                );
               });
           }
 
           if (result.length === 0) {
-            reply('<span style="font-size: 2em;width: 50%;margin: 10% auto 0 auto;text-align: center;display: block;border: 1px solid #cf4127;padding:10px 0;">Your email is not in our system.</span>');
+            reply(
+              '<span style="font-size: 2em;margin: 10% auto 0 auto;text-align: center;display: block;border: 1px solid #cf4127;padding:10px 0;">Your email is not in our system.</span>'
+            );
           }
         });
       }
@@ -237,7 +247,9 @@ module.exports = {
           },
           new: true
         }, function (err, doc, lastErrorObject) {
-          reply('<span style="font-size: 2em;width: 50%;margin: 10% auto 0 auto;text-align: center;display: block;border: 1px solid #cf4127;padding:10px 0;">Password updated. <a href="/business/login">Login</a></span>');
+          reply(
+            '<span style="font-size: 2em;width: 50%;margin: 10% auto 0 auto;text-align: center;display: block;border: 1px solid #cf4127;padding:10px 0;">Password updated. <a href="/business/login">Login</a></span>'
+          );
         });
 
       }

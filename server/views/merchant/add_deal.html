@@ -23,7 +23,7 @@
               <div class="col-md-6">
                 <div class="form-group has-feedback">
                   <label for="">Deal title</label>
-                  <input type="text" class="form-control" placeholder="ex. $10 Off $30" name="title" required>
+                  <input type="text" class="form-control" placeholder="ex. $10 Off $30" name="title" autocomplete="off" required>
                 </div>
               </div>
               <div class="col-md-6">
@@ -37,8 +37,8 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group has-feedback">
-                  <label for="">Deal description</label>
-                  <textarea class="form-control" rows="3" placeholder="give your deal some meat:)" name="description" required></textarea>
+                  <label for="">Deal Description</label>
+                  <textarea class="form-control" rows="3" placeholder="Tell us more about your deal" name="description" required></textarea>
                 </div>
               </div>
               <div class="col-md-6">
@@ -53,11 +53,11 @@
               <div class="col-md-6">
                 <div class="row">
                   <div class="col-md-6">
-                    <label for="">Deal value</label>
-                    <input type="text" class="form-control" placeholder="ex. 5" name="discount_value" required>
+                    <label for="">Deal Value</label>
+                    <input type="text" class="form-control" placeholder="ex. 5" name="discount_value" autocomplete="off" required>
                   </div>
                   <div class="col-md-6">
-                    <label for="">Deal value Off ($ or %)</label>
+                    <label for="">Deal Value Off ($ or %)</label>
                     <div class="form-group">
                       <label class="label-radio">
                         <input type="radio" name="discount_type" value="%" class="minimal-red" checked> %
@@ -102,7 +102,7 @@
                 <div class="form-group">
                   <label for="exampleInputFile">Add Deal image</label>
                   <input type="file" id="exampleInputFile" name="file" required>
-                  <p class="help-block">(Image must be between 750px and 1024px wide)</p>
+                  <p class="help-block">(Image must be between 500px and 1500px wide)</p>
                 </div>
               </div>
 
@@ -114,6 +114,8 @@
                 <input type="hidden" name="business_id" value={{business_id}} />
                 <input type="hidden" name="business_email" value={{business_email}} />
                 <input type="hidden" name="yelp_URL" value={{yelp_URL}} />
+                <input type="hidden" name="nonhumans" value="" />
+                <input type="hidden" name="publish" value="" />
 
                 <button type="submit" class="btn btn-warning btn-block btn-flat preview-js">Preview Deal</button>
               </div>
@@ -182,7 +184,7 @@
           </section>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Save Deal</button>
+          <button type="button" class="btn btn-default save_deal" data-dismiss="modal">Save Deal</button>
           <button type="button" class="btn btn-success publish_deal">Publish Deal</button>
         </div>
       </div>
