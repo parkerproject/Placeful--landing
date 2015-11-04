@@ -159,6 +159,7 @@ module.exports = {
                 db.merchants.save({
                   business_name: request.payload.business_name,
                   business_email: request.payload.business_email,
+                  subscriber: "no",
                   password: hash,
                   yelp_URL: request.payload.yelp_url,
                   business_id: randtoken.generate(20)

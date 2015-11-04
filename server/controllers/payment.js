@@ -13,10 +13,24 @@ module.exports = {
         metadata: {
           business_id: request.auth.credentials.business_id
         },
-        plan: 'standard001'
+        plan: 'merchant00'
       }, function (err, customer) {
         if (err) console.log(err);
-        reply('customer created');
+
+        db.merchants.findAndModify({
+          query: {
+            business_id: request.auth.credentials.business_id
+          },
+          update: {
+            $set: {
+              subscriber: 'yes'
+            }
+          },
+          new: true
+        }, function (err, doc, lastErrorObject) {
+          return reply.redirect('/business/deal');
+        });
+
       });
 
     },

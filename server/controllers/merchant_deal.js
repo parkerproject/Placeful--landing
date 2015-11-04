@@ -10,6 +10,8 @@ var http = require('http');
 var https = require('https');
 var _request = require('request');
 var querystring = require('querystring');
+var Promise = require('es6-promise').Promise;
+
 
 http.globalAgent.maxSockets = https.globalAgent.maxSockets = 20;
 var yelp = require("yelp").createClient({
@@ -25,6 +27,7 @@ var s3_client = s3.createClient({
     secretAccessKey: process.env.AMAZON_SECRET_ACCESS_KEY
   },
 });
+
 
 var uploadToAmazon = function (file, file_name) {
 
@@ -66,9 +69,149 @@ module.exports = {
         business_email: request.auth.credentials.business_email,
         yelp_URL: request.auth.credentials.yelp_URL,
         business_name: request.auth.credentials.business_name,
-        business_id: request.auth.credentials.business_id,
+        business_id: request.auth.credentials.business_id
       });
 
+    },
+    auth: 'session'
+  },
+
+  edit: {
+    handler: function (request, reply) {
+
+      if (!request.auth.isAuthenticated) {
+        return reply.redirect('/business/login');
+      }
+
+      if (request.query.id) {
+        db.DEALSBOX_deals.find({
+          deal_id: request.query.id,
+          merchant_id: request.auth.credentials.business_id
+        }).limit(1, function (err, result) {
+          if (err) console.log(err);
+          if (result === undefined) reply.redirect('/business/deal');
+          reply.view('merchant/edit_deal', {
+            _class: 'login-page',
+            business_email: request.auth.credentials.business_email,
+            yelp_URL: request.auth.credentials.yelp_URL,
+            business_name: request.auth.credentials.business_name,
+            business_id: request.auth.credentials.business_id,
+            deal: result[0]
+          });
+
+        });
+      } else {
+        reply('How did you arrive here?');
+      }
+
+    },
+    auth: 'session'
+  },
+
+  edit_post: {
+    payload: {
+      output: 'stream',
+      parse: true,
+      allow: 'multipart/form-data'
+    },
+    handler: function (request, reply) {
+
+      if (!request.auth.isAuthenticated) {
+        return reply.redirect('/business/login');
+      }
+
+      var payload = request.payload;
+      if (payload.nonhumans.length === 0) {
+        var start_date = payload.deal_date.split('-')[0];
+        var end_date = payload.deal_date.split('-')[1];
+        var d = new Date();
+        var date_edited = d.toISOString();
+        var deal_id = payload.deal_id;
+
+        var deal = {
+          title: payload.title,
+          description: payload.description,
+          fine_print: payload.fine_print,
+          expires_at: end_date.trim(),
+          published: payload.publish,
+          start_date: start_date.trim(),
+          date_edited: date_edited
+        };
+
+
+        if (payload.file && payload.file.hapi.filename.length !== 0) {
+          var filename = payload.file.hapi.filename;
+          filename = deal_id + path.extname(filename);
+          var imagePath = appRoot + "/deal_images/" + filename;
+          var file = fs.createWriteStream(imagePath);
+
+          // begin amazon image upload processing
+          payload.file.pipe(file);
+          //stream.pipe(res);
+
+          file.on('close', function () {
+            uploader = uploadToAmazon(imagePath, deal_id);
+
+            uploader.on('error', function (err) {
+              console.error("unable to upload:", err.stack);
+            });
+            uploader.on('progress', function () {
+              console.log("progress", uploader.progressMd5Amount,
+                uploader.progressAmount, uploader.progressTotal);
+            });
+            uploader.on('end', function () {
+              fs.unlinkSync(imagePath);
+            });
+          });
+        }
+
+        db.DEALSBOX_deals.findAndModify({
+          query: {
+            deal_id: deal_id,
+            merchant_id: request.auth.credentials.business_id
+          },
+          update: {
+            $set: deal
+          },
+          new: true
+        }, function (err, doc, lastErrorObject) {
+          return reply.redirect('/business/manage_deals');
+        });
+      }
+
+    },
+    auth: 'session'
+  },
+
+  delete_deal: {
+    handler: function (request, reply) {
+      var deal_id = request.payload.deal_id;
+      var merchant_id = request.payload.merchant_id;
+
+      var params = {
+        s3Params: {
+          Bucket: "dealsbox",
+          Delete: {
+            Objects: [
+              {
+                Key: deal_id,
+              }
+            ]
+          }
+        }
+      };
+
+      s3_client.deleteObjects(params.s3Params, function (err, data) {
+        if (err) console.log(err);
+        console.log('deleted deal from amazon');
+      });
+
+      db.DEALSBOX_deals.remove({
+        deal_id: deal_id,
+        merchant_id: merchant_id
+      }, {}, function () {
+        reply('deal deleted');
+      });
     },
     auth: 'session'
   },
@@ -80,7 +223,6 @@ module.exports = {
       allow: 'multipart/form-data'
     },
     handler: function (request, reply) {
-      console.log(request.payload);
 
       var deal_id = '';
       deal_id = randtoken.generate(12);

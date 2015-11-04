@@ -125,6 +125,18 @@ module.exports = function (server) {
     path: '/business/deal',
     config: controller.merchant_deal.index
   }, {
+    method: 'GET',
+    path: '/business/deal/edit',
+    config: controller.merchant_deal.edit
+  }, {
+    method: 'POST',
+    path: '/business/deal/edit_post',
+    config: controller.merchant_deal.edit_post
+  }, {
+    method: 'POST',
+    path: '/business/deal/delete_deal',
+    config: controller.merchant_deal.delete_deal
+  }, {
     method: 'POST',
     path: '/business/deal/builder',
     config: controller.merchant_deal.builder

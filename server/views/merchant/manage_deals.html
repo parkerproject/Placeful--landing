@@ -50,9 +50,7 @@
                       <td>{{deal.published}}</td>
                       <td>
                         <a href="#" data-offer="{{deal.offer}}" data-code="{{deal.coupon_code}}" data-title="{{deal.title}}" data-description="{{deal.description}}" data-fineprint="{{deal.fine_print}}" data-expires="{{deal.expires_at}}" data-largeimage="{{deal.large_image}}"
-                        data-smallimage="{{deal.small_image}}" style="margin-right:10px;">View</a> {% if deal.published == 'yes'}
-                        <a href="#">Deactivate</a> {% endif %} {% if deal.published == 'no'}
-                        <a href="#">Activate</a> {% endif %}
+                        data-smallimage="{{deal.small_image}}" data-deal_id="{{deal.deal_id}}" style="margin-right:10px;" class="view-modal">View</a>
                       </td>
                     </tr>
                     {% endfor %}
@@ -71,6 +69,64 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+
+  <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style="border:none;">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="padding:0;">
+          <div class="box-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="panel panel-default coupon">
+                  <div class="panel-heading clearfix" id="head">
+                    <div class="panel-title" id="title">
+                      <img src="" class="small_image">
+                      <span class="hidden-xs title"></span>
+                      <span class="visible-xs title"></span>
+                    </div>
+                  </div>
+                  <div class="panel-body">
+                    <img src="" class="coupon-img img-rounded">
+                    <div class="col-md-12">
+                      <div class="offer number"></div>
+                    </div>
+                    <div class="col-md-12">
+                      <h3>Deal Description</h3>
+                      <span class="description"></span>
+                    </div>
+                    <div class="col-md-12">
+                      <h3>The Fine Print</h3>
+                      <p class="disclosure"></p>
+                    </div>
+                  </div>
+                  <div class="panel-footer">
+                    <div class="coupon-code">
+                      Code:
+                      <span class="code"></span>
+                    </div>
+                    <div class="exp">Expires:
+                      <span class="expiry_date"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn btn-warning edit_deal" href="">Edit Deal</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class=" main-footer ">
     <div class="pull-right hidden-xs ">

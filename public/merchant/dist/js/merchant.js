@@ -48,7 +48,7 @@ $(function () {
     return text;
   }
   var coupon_code = makeid();
-  $('.coupon_code').text(coupon_code.toUpperCase());
+  $('.coupon-js').text(coupon_code.toUpperCase());
   $('input[name=coupon_code]').val(coupon_code.toUpperCase());
 
 });
@@ -217,4 +217,43 @@ $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
 $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
   checkboxClass: 'icheckbox_minimal-red',
   radioClass: 'iradio_minimal-red'
+});
+
+// view deal in modal on manage deal page
+$('.view-modal').click(function () {
+  var self = $(this);
+  var viewModal = $('#viewModal');
+  viewModal.find('.title').text(self.data('title'));
+  viewModal.find('.offer').text(self.data('offer'));
+  viewModal.find('.description').text(self.data('description'));
+  viewModal.find('.disclosure').text(self.data('fineprint'));
+  viewModal.find('.coupon-img').attr('src', self.data('largeimage'));
+  viewModal.find('.small_image').attr('src', self.data('smallimage'));
+  viewModal.find('.code').text(self.data('code'));
+  viewModal.find('.expiry_date').text(self.data('expires'));
+  viewModal.find('.edit_deal').attr('href', '/business/deal/edit?id=' + self.data('deal_id'));
+  viewModal.modal();
+});
+
+// make edit to deal
+$('.delete-deal-js').click(function (e) {
+  e.preventDefault();
+  var result = confirm("Are you sure about deleting this deal?");
+  if (result) {
+    $('.delete-deal-js').text('Deleting deal...');
+    var deal_id = $("#editForm").find('input[name=deal_id]').val();
+    var merchant_id = $("#editForm").find('input[name=business_id]').val();
+    $.post("/business/deal/delete_deal", {
+      deal_id: deal_id,
+      merchant_id: merchant_id
+    }, function (data, status) {
+      if (status === 'success') {
+        window.location = '/business/manage_deals';
+      }
+    });
+  }
+});
+
+$('.save-change-js').click(function () {
+  $(this).text('Saving deal...');
 });
