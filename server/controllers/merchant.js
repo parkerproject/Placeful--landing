@@ -100,10 +100,23 @@ var logout = function (request, reply) {
 module.exports = {
   index: {
     handler: function (request, reply) {
-      reply.view('merchant/index', {
-        business_name: request.auth.credentials.business_name,
-        business_email: request.auth.credentials.business_email,
+      var price;
+
+      db.merchants.find({
         business_id: request.auth.credentials.business_id
+      }).limit(1, function (err, result) {
+
+        if (err) console.log(err);
+        price = (result[0].subscriber === 'no') ? '2999' : '4999';
+
+        reply.view('merchant/index', {
+          business_name: request.auth.credentials.business_name,
+          business_email: request.auth.credentials.business_email,
+          business_id: request.auth.credentials.business_id,
+          subscriber: result[0].subscriber,
+          price: price
+        });
+
       });
     },
     auth: 'session'

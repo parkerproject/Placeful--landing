@@ -97,6 +97,10 @@ module.exports = function (server) {
     path: '/business',
     config: controller.merchant.index
   }, {
+    method: 'GET',
+    path: '/business/payment',
+    config: controller.merchant.index
+  }, {
     method: ['GET', 'POST'],
     path: '/business/login',
     config: controller.merchant.login

@@ -2,20 +2,26 @@ require('dotenv').load();
 var collections = ['merchants'];
 var db = require("mongojs").connect(process.env.DEALSBOX_MONGODB_URL, collections);
 var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+var moment = require('moment');
 
 module.exports = {
   index: {
     handler: function (request, reply) {
-
-      stripe.customers.create({
+      var customer = {
         email: request.payload.stripeEmail,
         source: request.payload.stripeToken,
         metadata: {
           business_id: request.auth.credentials.business_id
         },
         plan: 'merchant00'
-      }, function (err, customer) {
+      };
+
+      if (request.payload.subscribe === 'no') customer.coupon = 'START40';
+
+      stripe.customers.create(customer, function (err, customer) {
         if (err) console.log(err);
+
+        var current_period_end = moment.unix(customer.subscriptions.data[0].current_period_end);
 
         db.merchants.findAndModify({
           query: {
@@ -23,7 +29,8 @@ module.exports = {
           },
           update: {
             $set: {
-              subscriber: 'yes'
+              subscriber: 'yes',
+              current_period_end: current_period_end.format()
             }
           },
           new: true

@@ -1,13 +1,27 @@
+{% if subscriber === 'no' %}
+<div class="callout callout-info">
+  <h4>Save 40% today on your first month payment!</h4>
+  <p>Code:
+    <strong>START40</strong> applied to account</p>
+</div>
+{% endif %}
 <div class="pull-left">
   <section>
     <span class="pricing-currency">$</span>
+    {% if subscriber === 'no' %}
+    <h2 class="pricing">
+      <span style="text-decoration:line-through">49</span> 29<sup style="font-size:28px;">.99</sup></h2>
+    {% endif %} {% if subscriber === 'yes' %}
     <h2 class="pricing">49<sup style="font-size:28px;">.99</sup></h2>
+    {% endif %}
+
     <span class="pricing-period">/month</span>
   </section>
   <form action="/lab/payment" method="POST">
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_test_38o72mxE5rPuPUpZTDJVmKKv" data-image="https://dl.dropboxusercontent.com/s/3pmt3totxquslep/avatar_b9d0ace3edc0_64.png?dl=0" data-name="DEALSBOX for Merchants"
-    data-description="Standard Plan ($49.99)" data-amount="4999">
+    data-description="Standard Plan ($49.99)" data-amount="{{price}}">
     </script>
+    <input type="hidden" value="{{subscriber}}" name="subscribe" />
   </form>
   <small>Powered by Stripe</small>
 </div>

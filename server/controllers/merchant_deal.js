@@ -64,12 +64,22 @@ module.exports = {
         return reply.redirect('/business/login');
       }
 
-      reply.view('merchant/add_deal', {
-        _class: 'login-page',
-        business_email: request.auth.credentials.business_email,
-        yelp_URL: request.auth.credentials.yelp_URL,
-        business_name: request.auth.credentials.business_name,
+      db.merchants.find({
         business_id: request.auth.credentials.business_id
+      }).limit(1, function (err, result) {
+        var now = new Date();
+        now = now.toISOString();
+        if (result[0].current_period_end < now || result[0].subscriber === 'no') {
+          return reply.redirect('/business/payment');
+        } else {
+          reply.view('merchant/add_deal', {
+            _class: 'login-page',
+            business_email: request.auth.credentials.business_email,
+            yelp_URL: request.auth.credentials.yelp_URL,
+            business_name: request.auth.credentials.business_name,
+            business_id: request.auth.credentials.business_id
+          });
+        }
       });
 
     },
@@ -330,13 +340,26 @@ module.exports = {
 
   deals: {
     handler: function (request, reply) {
-      db.DEALSBOX_deals.find({
-        merchant_id: request.auth.credentials.business_id
-      }, function (err, deals) {
-        reply.view('merchant/manage_deals', {
-          deals: deals
-        });
+      db.merchants.find({
+        business_id: request.auth.credentials.business_id
+      }).limit(1, function (err, result) {
+        if (err) console.log(err);
+        var now = new Date();
+        now = now.toISOString();
+        if (result[0].current_period_end < now || result[0].subscriber === 'no') {
+          return reply.redirect('/business/payment');
+        } else {
+          db.DEALSBOX_deals.find({
+            merchant_id: request.auth.credentials.business_id
+          }, function (err, deals) {
+            reply.view('merchant/manage_deals', {
+              deals: deals
+            });
+          });
+        }
+
       });
+
     },
     auth: 'session'
   }
