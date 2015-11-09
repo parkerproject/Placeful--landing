@@ -17,6 +17,7 @@ module.exports = {
       };
 
       if (request.payload.subscribe === 'no') customer.coupon = 'START40';
+      if (request.payload.subscribe === 'no' || request.payload.code_status === 'valid') customer.coupon = 'SAVE40';
 
       stripe.customers.create(customer, function (err, customer) {
         if (err) console.log(err);
@@ -30,7 +31,8 @@ module.exports = {
           update: {
             $set: {
               subscriber: 'yes',
-              current_period_end: current_period_end.format()
+              current_period_end: current_period_end.format(),
+              referral_code_redeemed: 1
             }
           },
           new: true

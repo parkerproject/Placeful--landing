@@ -7,6 +7,8 @@ var salt = bcrypt.genSaltSync(10);
 var randtoken = require('rand-token');
 var mandrill = require('node-mandrill')(process.env.MANDRILL);
 var _request = require('request');
+var Kaiseki = require('kaiseki');
+var kaiseki = new Kaiseki(process.env.PARSE_APP_ID, process.env.PARSE_REST_API_KEY);
 
 var sendEmail = function (email, subject, content) {
   mandrill('/messages/send', {
@@ -100,24 +102,47 @@ var logout = function (request, reply) {
 module.exports = {
   index: {
     handler: function (request, reply) {
-      var price;
+      var price, referral_code, code_status;
 
       db.merchants.find({
         business_id: request.auth.credentials.business_id
       }).limit(1, function (err, result) {
 
         if (err) console.log(err);
-        price = (result[0].subscriber === 'no') ? '2999' : '4999';
 
-        reply.view('merchant/index', {
-          business_name: request.auth.credentials.business_name,
-          business_email: request.auth.credentials.business_email,
-          business_id: request.auth.credentials.business_id,
-          subscriber: result[0].subscriber,
-          price: price
-        });
+        if (result[0].referral_code) {
+          kaiseki.getUser(result[0].referral_code, function (err, res, body, success) {
+            if (body.hasOwnProperty('error')) {
+              code_status = 'invalid';
+              price = (result[0].subscriber === 'no') ? '2999' : '4999';
+            } else {
+              code_status = 'valid';
+              price = (result[0].subscriber === 'no' || result[0].referral_code_redeemed === 0) ? '0000' : '4999';
+            }
 
+            reply.view('merchant/index', {
+              business_name: request.auth.credentials.business_name,
+              business_email: request.auth.credentials.business_email,
+              business_id: request.auth.credentials.business_id,
+              subscriber: result[0].subscriber,
+              price: price,
+              referral_code: result[0].referral_code,
+              code_status: code_status
+            });
+
+          });
+        } else {
+          price = (result[0].subscriber === 'no') ? '2999' : '4999';
+          reply.view('merchant/index', {
+            business_name: request.auth.credentials.business_name,
+            business_email: request.auth.credentials.business_email,
+            business_id: request.auth.credentials.business_id,
+            subscriber: result[0].subscriber,
+            price: price
+          });
+        }
       });
+
     },
     auth: 'session'
   },
@@ -174,12 +199,25 @@ module.exports = {
                   business_email: request.payload.business_email,
                   subscriber: "no",
                   password: hash,
+                  referral_code: request.payload.referral_code,
+                  referral_code_redeemed: 0,
                   yelp_URL: request.payload.yelp_url,
                   business_id: randtoken.generate(20)
                 }, function () {
-                  reply(
-                    '<span style="font-size: 2em;margin: 10% auto 0 auto;text-align: center;display: block;border: 1px solid #cf4127;padding:10px 0;">Registration successful. <a href="/business/login">Login to access account</a>.</span>'
-                  );
+                  var subject = 'Welcome to DEALSBOX Merchant';
+
+                  swig.renderFile(appRoot + '/server/views/merchant/welcome_email.html', {
+                      name: request.payload.business_name
+                    },
+                    function (err, content) {
+                      if (err) {
+                        throw err;
+                      }
+                      sendEmail(request.payload.business_email, subject, content);
+                      reply(
+                        '<span style="font-size: 2em;margin: 10% auto 0 auto;text-align: center;display: block;border: 1px solid #cf4127;padding:10px 0;">Registration successful. <a href="/business/login">Login to access account</a>.</span>'
+                      );
+                    });
                 });
               } else {
                 reply(
@@ -276,6 +314,46 @@ module.exports = {
       }
 
     }
+  },
+
+  profile: {
+    handler: function (request, reply) {
+
+      if (request.method === 'get') {
+        db.merchants.find({
+          business_id: request.auth.credentials.business_id
+        }).limit(1, function (err, result) {
+          var merchant = result[0];
+          reply.view('merchant/profile', {
+            business_name: merchant.business_name,
+            business_id: merchant.business_id,
+            business_email: merchant.business_email,
+            yelp_URL: merchant.yelp_URL,
+            current_period_end: merchant.current_period_end
+          });
+        });
+      }
+
+      if (request.method === 'post') {
+        var merchant = {};
+        if (request.payload.yelp_URL) merchant.yelp_URL = request.payload.yelp_URL;
+        if (request.payload.business_email) merchant.business_email = request.payload.business_email;
+        db.merchants.findAndModify({
+          query: {
+            business_id: request.payload.business_id
+          },
+          update: {
+            $set: merchant
+          },
+          new: true
+        }, function (err, doc, lastErrorObject) {
+          reply('profile updated');
+        });
+      }
+
+
+    },
+    auth: 'session'
   }
 
 };

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="/merchant/bootstrap/css/bootstrap.min.css">
+  <style>
+    section {
+      padding: 1% 0
+    }
+    
+    .alizarin {
+      background: #e74c3c
+    }
+    
+    .midnight-blue {
+      background: #2c3e50
+    }
+    
+    .dl {
+      padding: 30px 0;
+      border-radius: 20px;
+      position: relative;
+      border: 1px dashed #cf4127
+    }
+    
+    .dl:before {
+      content: " ";
+      height: 20px;
+      width: 20px;
+      background: #ddd;
+      border-radius: 20px;
+      position: absolute;
+      left: 50%;
+      top: 20px;
+      margin-left: -10px
+    }
+    
+    .dl .brand {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      padding: 10px 15px;
+      margin-top: 10px;
+      text-align: center;
+      min-height: 100px
+    }
+    
+    .dl .discount {
+      min-height: 50px;
+      position: relative;
+      font-size: 80px;
+      line-height: 80px;
+      text-align: center;
+      font-weight: 700;
+      padding: 20px 15px 0;
+      color: #fff;
+    }
+    
+    .dl .discount:after {
+      content: " ";
+      border-right: 20px solid transparent;
+      border-left: 20px solid transparent;
+      position: absolute;
+      bottom: -20px;
+      left: 20%
+    }
+    
+    .dl .discount.alizarin:after {
+      border-top: 20px solid #e74c3c
+    }
+    
+    .dl .discount .type {
+      font-size: 20px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: -30px
+    }
+    
+    .dl .descr {
+      margin-top: 10px;
+      padding: 20px 15px
+    }
+    
+    .dl .ends {
+      padding: 0 15px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    
+    .dl .coupon {
+      min-height: 50px;
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 18px;
+      padding: 20px 15px
+    }
+    
+    .dl .coupon a.open-code {
+      color: #fff
+    }
+    
+    .dl .coupon .code {
+      letter-spacing: 1px;
+      border-radius: 4px;
+      margin-top: 10px;
+      padding: 10px 15px;
+      color: #fff;
+      font-size: 25px;
+    }
+    
+    .descr li {
+      padding-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <section id="labels">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-3" style="margin: 0 auto;float:none;">
+          <div class="dl">
+            <div class="brand">
+              <h2>
+                <img src="https://dl.dropbox.com/s/902su9h1gjjggyk/dealsbox_logo.png?dl=0" alt="Welcome to DEALSBOX" style="max-width:100%;width:150px;" />
+                <small>Merchant</small>
+              </h2>
+            </div>
+            <div class="discount alizarin">
+              $40
+              <div class="type">
+                off
+              </div>
+            </div>
+            <div class="descr">
+              <ol>
+                <li>Register on <a href="https://dealsbox.co/business">https://dealsbox.co/business</a></li>
+                <li> Enter the referral code to save $40 on your first month</li>
+              </ol>
+            </div>
+            <div class="ends">
+              <small>
+                * Only valid for new merchants.
+              </small>
+            </div>
+            <div class="coupon midnight-blue">
+              <div id="code-1" class="code">
+                <small style="font-size:12px;">Referral code:</small>
+                {{code}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+
+</html>

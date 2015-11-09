@@ -332,7 +332,7 @@ module.exports = {
   yelp: {
     handler: function (request, reply) {
       yelp.business(getYelpId(request.query.yelp_URL), function (error, data) {
-        console.log(error);
+        if (error) console.log(error);
         reply(data);
       });
     }
@@ -353,7 +353,8 @@ module.exports = {
             merchant_id: request.auth.credentials.business_id
           }, function (err, deals) {
             reply.view('merchant/manage_deals', {
-              deals: deals
+              deals: deals,
+              business_name: request.auth.credentials.business_name
             });
           });
         }

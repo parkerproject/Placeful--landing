@@ -257,3 +257,53 @@ $('.delete-deal-js').click(function (e) {
 $('.save-change-js').click(function () {
   $(this).text('Saving deal...');
 });
+
+
+$('.profile-js').click(function (e) {
+  e.preventDefault();
+  var yelp_URL = $('input[name=yelp_URL]').val();
+  var business_id = $('input[name=business_id]').val();
+  var business_email = $('input[name=business_email]').val();
+  var business_name = $('input[name=business_name]')
+
+
+  if (!validateEmail(business_email)) {
+    $('.error').text('Enter valid business email');
+    $('.error').show();
+  } else {
+    $('.error').hide();
+    $('.profile-js').text('Updating...');
+    $.post("/business/profile", {
+      business_id: business_id,
+      business_email: business_email
+    }, function (data, status) {
+      if (status === 'success') {
+        $('.success-js').show();
+        $('.profile-js').text('Update Profile');
+      }
+    });
+
+
+
+
+    // $.get('/lab/yelp', {
+    //   yelp_URL: yelp_URL
+    // }, function (res) {
+    //   business_name.val(res.name);
+    //
+    //   $.post("/business/profile", {
+    //     business_id: business_id,
+    //     business_email: business_email,
+    //     yelp_URL: yelp_URL,
+    //     business_name: business_name.val(res.name)
+    //   }, function (data, status) {
+    //     if (status === 'success') {
+    //       $('.success-js').show();
+    //       $('.profile-js').text('Update Profile');
+    //     }
+    //   });
+    //
+    // });
+  }
+
+});

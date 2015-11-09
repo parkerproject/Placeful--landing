@@ -58,7 +58,7 @@ module.exports = function (server) {
     config: controller.email.storeEmail
   }, {
     method: 'POST',
-    path: '/welcome_email/{user*2}',
+    path: '/welcome_email',
     config: controller.email.welcomeEmail
   }, {
     method: 'GET',
@@ -156,6 +156,14 @@ module.exports = function (server) {
     method: 'GET',
     path: '/business/manage_deals',
     config: controller.merchant_deal.deals
+  }, {
+    method: ['GET', 'POST'],
+    path: '/business/profile',
+    config: controller.merchant.profile
+  }, {
+    method: 'GET',
+    path: '/user/coupon',
+    config: controller.coupon.index
   }];
   return routeTable;
 };

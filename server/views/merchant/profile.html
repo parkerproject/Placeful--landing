@@ -12,54 +12,59 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <p class="lead" style="margin:0;">Manage Deals</p>
-          <span>You can view, edit all your deals from this page</span>
+          <p class="lead" style="margin:0;">Manage Your Profile</p>
+          <span>You can view, edit your email</span>
         </div>
-        <div class="box-body">
-          <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-            <!-- <div class="row">
-              <div class="col-sm-6">
-                <div id="example1_filter" class="dataTables_filter">
-                  <label>Search:
-                    <input type="search" class="form-control input-sm" placeholder="search for deal, coupon code, etc." aria-controls="example1" style="width:300px;">
-                  </label>
-                </div>
-              </div>
-            </div> -->
-            <div class="row">
-              <div class="col-sm-12">
-                <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
-                  <thead>
-                    <tr role="row">
-                      <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 101px;">Coupon code</th>
-                      <th class="sorting" rowspan="1" colspan="1" style="width: 140px;">Offer</th>
-                      <th class="sorting" rowspan="1" colspan="1" style="width: 240px;">Title</th>
-                      <th class="sorting" rowspan="1" colspan="1" style="width: 140px;">Start Date</th>
-                      <th class="sorting" rowspan="1" colspan="1" style="width: 101px;">End Date</th>
-                      <th class="sorting" rowspan="1" colspan="1" style="width: 101px;">Active</th>
-                      <th class="sorting" rowspan="1" colspan="1" style="width: 140px;"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% for deal in deals %}
-                    <tr role=" row " class=" ">
-                      <td class="sorting_1 ">{{deal.coupon_code}}</td>
-                      <td>{{deal.offer}}</td>
-                      <td>{{deal.title}}</td>
-                      <td>{{deal.start_date}}</td>
-                      <td>{{deal.expires_at}}</td>
-                      <td>{{deal.published}}</td>
-                      <td>
-                        <a href="#" data-offer="{{deal.offer}}" data-code="{{deal.coupon_code}}" data-title="{{deal.title}}" data-description="{{deal.description}}" data-fineprint="{{deal.fine_print}}" data-expires="{{deal.expires_at}}" data-largeimage="{{deal.large_image}}"
-                        data-smallimage="{{deal.small_image}}" data-deal_id="{{deal.deal_id}}" style="margin-right:10px;" class="view-modal">View</a>
-                      </td>
-                    </tr>
-                    {% endfor %}
-                  </tbody>
-                </table>
-              </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="alert alert-info alert-dismissable success-js" style="display: none;">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+              <h4> <i class="icon fa fa-check"></i> Your email has been updated!</h4>
             </div>
           </div>
+        </div>
+        <div class="box-body">
+          <form method="post" action="/business/profile" name="updateProfileForm" id="updateProfileForm">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="">Business Name
+                    <small class="text-light-blue">Your business name on Yelp</small>
+                  </label>
+                  <input type="text" class="form-control" value="{{business_name}}" name="business_name" required disabled>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="">Business Email</label>
+                  <input type="text" class="form-control" value="{{business_email}}" name="business_email" required>
+                  <span class="error" style="display: none;"></span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="">Yelp Business URL
+                    <small class="text-light-blue"><a href="mailto:hello@87digital.com?subject=Yelp URL change request">Email us to change this URL</a></small>
+                  </label>
+                  <input type="text" class="form-control" value="{{yelp_URL}}" name="yelp_URL" required disabled>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <!-- /.col -->
+              <div class="col-xs-4">
+                <input type="hidden" name="business_id" value={{business_id}} />
+                <input type="hidden" name="nonhumans" value="" />
+
+                <button type="submit" class="btn btn-success btn-block btn-flat profile-js">Update Profile</button>
+              </div>
+              <!-- /.col -->
+            </div>
+          </form>
         </div>
 
         <!-- /.box-body -->
