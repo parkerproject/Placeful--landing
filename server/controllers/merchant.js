@@ -138,7 +138,8 @@ module.exports = {
             business_email: request.auth.credentials.business_email,
             business_id: request.auth.credentials.business_id,
             subscriber: result[0].subscriber,
-            price: price
+            price: price,
+            code_status: 'invalid'
           });
         }
       });
