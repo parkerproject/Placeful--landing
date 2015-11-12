@@ -51,7 +51,9 @@ $(function () {
   $('.coupon-js').text(coupon_code.toUpperCase());
   $('input[name=coupon_code]').val(coupon_code.toUpperCase());
 
-});
+  $('[data-toggle="tooltip"]').tooltip();
+
+}); // end of document ready
 
 function readURL(input) {
 
@@ -102,8 +104,12 @@ function checkEmail() {
     $('.error').text('Oops! Your Yelp URL doesn\'t look right');
   }
 
+  if (!$('input.agreement').is(':checked')) {
+    $('.error').text('You must accept the merchant agreement to register');
+  }
 
-  if (validateEmail(business_email) && business_name !== '' && password !== '' && yelpFlag) {
+
+  if (validateEmail(business_email) && business_name !== '' && password !== '' && yelpFlag && $('input.agreement').is(':checked')) {
     sendEmail(business_email, business_name, password, business_yelp);
   }
 }

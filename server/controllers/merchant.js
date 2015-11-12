@@ -41,7 +41,7 @@ var replyFn = function (reply, message) {
 var login = function (request, reply) {
 
   if (request.auth.isAuthenticated) {
-    return reply.redirect('/business');
+    return reply.redirect('/business/manage_deals');
   }
 
   var message = '';
@@ -65,7 +65,7 @@ var login = function (request, reply) {
           replyFn(reply, message);
         } else {
           request.auth.session.set(account);
-          return reply.redirect('/business');
+          return reply.redirect('/business/manage_deals');
         }
 
       });
@@ -117,7 +117,7 @@ module.exports = {
               price = (result[0].subscriber === 'no') ? '2999' : '4999';
             } else {
               code_status = 'valid';
-              price = (result[0].subscriber === 'no' || result[0].referral_code_redeemed === 0) ? '0000' : '4999';
+              price = (result[0].subscriber === 'no' || result[0].referral_code_redeemed === 0) ? '0900' : '4999';
             }
 
             reply.view('merchant/index', {
@@ -203,7 +203,8 @@ module.exports = {
                   referral_code: request.payload.referral_code,
                   referral_code_redeemed: 0,
                   yelp_URL: request.payload.yelp_url,
-                  business_id: randtoken.generate(20)
+                  business_id: randtoken.generate(20),
+                  agreement: request.payload.agreement
                 }, function () {
                   var subject = 'Welcome to DEALSBOX Merchant';
 

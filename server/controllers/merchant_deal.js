@@ -354,7 +354,8 @@ module.exports = {
           }, function (err, deals) {
             reply.view('merchant/manage_deals', {
               deals: deals,
-              business_name: request.auth.credentials.business_name
+              business_name: request.auth.credentials.business_name,
+              business_email: request.auth.credentials.business_email
             });
           });
         }
