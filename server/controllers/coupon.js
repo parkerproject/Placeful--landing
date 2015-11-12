@@ -7,13 +7,21 @@ var Kaiseki = require('kaiseki');
 var kaiseki = new Kaiseki(process.env.PARSE_APP_ID, process.env.PARSE_REST_API_KEY);
 var Joi = require('joi');
 
+
+
 module.exports = {
   index: {
     handler: function (request, reply) {
-      kaiseki.getUser(request.query.id, function (err, res, body, success) {
+      var params = {
+        where: {
+          email: request.query.email
+        }
+      };
+
+      kaiseki.getUsers(params, function (err, res, body, success) {
         if (!body.hasOwnProperty('error')) {
           reply.view('merchant/referral_coupon', {
-            code: request.query.id
+            code: body[0].objectId
           });
         } else {
           reply('<h2>Invalid referral link</h2>');

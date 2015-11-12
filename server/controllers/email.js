@@ -26,8 +26,8 @@ function sendEmails(email, subject, content) {
       to: [{
         email: email
             }],
-      from_email: 'parker@dealsbox.co',
-      from_name: 'Parker from DEALSBOX',
+      from_email: 'hello@dealsbox.co',
+      from_name: 'DEALSBOX',
       subject: subject,
       html: content
     }
@@ -77,9 +77,9 @@ module.exports = {
       var user_id = request.payload.id;
       var subject = 'Welcome to DEALSBOX';
 
-      swig.renderFile(__base + 'server/views/welcome_email.html', {
+      swig.renderFile(appRoot + '/server/views/welcome_email.html', {
           name: name,
-          user_id: user_id
+          email: email
         },
         function (err, content) {
           if (err) {
