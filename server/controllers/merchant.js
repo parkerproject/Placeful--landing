@@ -112,7 +112,8 @@ module.exports = {
 
         if (result[0].referral_code) {
           kaiseki.getUser(result[0].referral_code, function (err, res, body, success) {
-            if (body.hasOwnProperty('error')) {
+            var compareCases = result[0].referral_code.toUpperCase(); // in case a user typed in lowercase
+            if (body.hasOwnProperty('error') && compareCases !== 'SAVE40') {
               code_status = 'invalid';
               price = (result[0].subscriber === 'no') ? '2999' : '4999';
             } else {
