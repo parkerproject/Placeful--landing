@@ -95,6 +95,10 @@ module.exports = function (server) {
   }, {
     method: 'GET',
     path: '/business',
+    config: controller.merchant.landing
+  }, {
+    method: 'GET',
+    path: '/business/home',
     config: controller.dashboard.index
   }, {
     method: 'GET',

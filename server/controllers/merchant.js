@@ -357,6 +357,14 @@ module.exports = {
 
     },
     auth: 'session'
+  },
+
+  landing: {
+    handler: function (request, reply) {
+
+      reply.view('merchant/landing', {});
+
+    }
   }
 
 };

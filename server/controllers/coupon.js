@@ -28,6 +28,11 @@ module.exports = {
         }
 
       });
+    },
+    validate: {
+      query: {
+        email: Joi.string().required()
+      }
     }
   }
 
