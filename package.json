@@ -33,6 +33,7 @@
     "hapi-swagger": "^2.1.0",
     "html-pdf": "^1.4.0",
     "inert": "^3.0.2",
+    "joi": "^7.0.0",
     "kaiseki": "^0.5.6",
     "lodash": "^3.10.0",
     "mongojs": "^0.18.2",
