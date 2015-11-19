@@ -2,8 +2,6 @@ require('dotenv').load();
 var swig = require('swig');
 var collections = ['merchants'];
 var db = require("mongojs").connect(process.env.DEALSBOX_MONGODB_URL, collections);
-var bcrypt = require('bcrypt');
-var salt = bcrypt.genSaltSync(10);
 var randtoken = require('rand-token');
 var mandrill = require('node-mandrill')(process.env.MANDRILL);
 var _request = require('request');
@@ -32,7 +30,7 @@ var sendEmail = function (email, subject, content) {
 module.exports = {
   index: {
     handler: function (request, reply) {
-      return reply.redirect('/business/manage_deals')
+      return reply.redirect('/business/manage_deals');
     },
     auth: 'session'
   }

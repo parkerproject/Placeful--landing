@@ -104,12 +104,16 @@ function checkEmail() {
     $('.error').text('Oops! Your Yelp URL doesn\'t look right');
   }
 
-  if (!$('input.agreement').is(':checked')) {
-    $('.error').text('You must accept the merchant agreement to register');
-  }
+  // if (!$('input.agreement').is(':checked')) {
+  //   $('.error').text('You must accept the merchant agreement to register');
+  // }
 
+  //
+  // if (validateEmail(business_email) && business_name !== '' && password !== '' && yelpFlag && $('input.agreement').is(':checked')) {
+  //   sendEmail(business_email, business_name, password, business_yelp);
+  // }
 
-  if (validateEmail(business_email) && business_name !== '' && password !== '' && yelpFlag && $('input.agreement').is(':checked')) {
+  if (validateEmail(business_email) && business_name !== '' && password !== '' && yelpFlag) {
     sendEmail(business_email, business_name, password, business_yelp);
   }
 }
