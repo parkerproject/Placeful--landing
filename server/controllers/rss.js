@@ -28,7 +28,7 @@ function feedOptions() {
     site_url: 'http://dealsbox.co',
     image_url: 'http://bit.ly/1NTsqW6',
     managingEditor: 'DEALSBOX',
-    webMaster: 'Parker Ituk',
+    webMaster: 'DEALSBOX',
     copyright: '2015 DEALSBOX',
     language: 'en',
     categories: ['local deals'],
@@ -56,22 +56,18 @@ function dealItem(obj) {
     enclosure: {
       url: obj.small_image
     },
-    custom_elements: [
-      {
+    custom_elements: [{
         'media:content': {
           _attr: {
             href: obj.small_image,
             medium: "image"
           }
         }
-      },
-      {
+      }, {
         'comments': obj.new_price
-      },
-      {
+      }, {
         'source': obj.provider_name
-      },
-      {
+      }, {
         'dc:creator': obj.merchant_name
       }
 
