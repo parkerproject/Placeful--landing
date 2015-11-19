@@ -2,8 +2,8 @@ require('dotenv').load();
 var swig = require('swig');
 var collections = ['merchants'];
 var db = require("mongojs").connect(process.env.DEALSBOX_MONGODB_URL, collections);
-var bcrypt = require('bcrypt');
-var salt = bcrypt.genSaltSync(10);
+var bcrypt = require('bcrypt-nodejs');
+//var salt = bcrypt.genSaltSync(10);
 var randtoken = require('rand-token');
 var mandrill = require('node-mandrill')(process.env.MANDRILL);
 var _request = require('request');
@@ -171,7 +171,7 @@ module.exports = {
     handler: function (request, reply) {
       if (request.payload) {
         var password = request.payload.password;
-        var hash = bcrypt.hashSync(password, salt);
+        var hash = bcrypt.hashSync(password);
 
         db.merchants.find({
           $or: [{
@@ -289,7 +289,7 @@ module.exports = {
     handler: function (request, reply) {
 
       if (request.method === 'post') {
-        var hash = bcrypt.hashSync(request.payload.password, salt);
+        var hash = bcrypt.hashSync(request.payload.password);
 
         db.merchants.findAndModify({
           query: {
