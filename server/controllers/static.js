@@ -40,7 +40,8 @@ module.exports = {
     handler: function (request, reply) {
       db.alerts.find({}).limit(1, function (err, result) {
 
-        if (result[0].status === 'true') {
+        if (result[0].status === 'true' || request.query.status == 'true') {
+          console.log('passed');
 
           var params = {
             where: {
@@ -50,7 +51,6 @@ module.exports = {
           };
 
           kaiseki.getUsers(params, function (err, res, body, success) {
-            console.log(body[0].email);
             if (body.length !== 0) {
               reply.view('alerts', {
                 email: body[0].email
