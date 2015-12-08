@@ -50,6 +50,7 @@ module.exports = {
           };
 
           kaiseki.getUsers(params, function (err, res, body, success) {
+            console.log(body[0].email);
             if (body.length !== 0) {
               reply.view('alerts', {
                 email: body[0].email
