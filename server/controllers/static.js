@@ -1,6 +1,8 @@
 require('dotenv').load();
 var collections = ['alerts', ];
 var db = require("mongojs").connect(process.env.DEALSBOX_MONGODB_URL, collections);
+var Kaiseki = require('kaiseki');
+var kaiseki = new Kaiseki(process.env.PARSE_APP_ID, process.env.PARSE_REST_API_KEY);
 
 
 
@@ -36,17 +38,26 @@ module.exports = {
   },
   alerts: {
     handler: function (request, reply) {
-
-
       db.alerts.find({}).limit(1, function (err, result) {
 
         if (result[0].status === 'true') {
 
-          reply.view('alerts', {
-            code: result[0].code,
-            message: result[0].message,
-            end_date: result[0].end_date,
-            provider: result[0].provider
+          var params = {
+            where: {
+              receive_newsletters: true,
+              objectId: request.query.user_id
+            }
+          };
+
+          kaiseki.getUsers(params, function (err, res, body, success) {
+            if (body.length !== 0) {
+              reply.view('alerts', {
+                email: body[0].email
+              });
+            } else {
+              reply('');
+            }
+
           });
 
         } else {
