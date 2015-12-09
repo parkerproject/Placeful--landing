@@ -194,16 +194,21 @@ module.exports = {
             }, function (err, httpResponse, body) {
 
               if (err) console.log(err);
+              console.log(3);
 
               if (JSON.parse(body).success) {
                 db.merchants.save({
                   business_name: request.payload.business_name,
                   business_email: request.payload.business_email,
+                  business_phone: request.payload.business_phone,
+                  business_lat: request.payload.business_lat,
+                  business_lng: request.payload.business_lng,
+                  business_map: request.payload.business_map,
                   subscriber: "no",
                   password: hash,
                   referral_code: request.payload.referral_code,
                   referral_code_redeemed: 0,
-                  yelp_URL: request.payload.yelp_url,
+                  yelp_URL: request.payload.business_yelp,
                   business_id: randtoken.generate(20),
                   agreement: request.payload.agreement
                 }, function () {

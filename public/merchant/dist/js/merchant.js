@@ -75,34 +75,34 @@ function validateEmail(email) {
 
 
 function checkEmail() {
-  var business_name = $('input[name=business_name]').val();
-  var business_email = $('input[name=business_email]').val();
-  var business_yelp = $('input[name=yelp_url]').val();
-  var password = $('input[name=password]').val();
-  var yelpFlag = false;
+  var businessObj = {};
+  businessObj.business_name = $('input[name=business_place]').val();
+  businessObj.business_email = $('input[name=business_email]').val();
+  businessObj.business_yelp = $('input[name=yelp_url]').val();
+  businessObj.password = $('input[name=password]').val();
+  businessObj.business_address = $('input[name=business_address]').val();
+  businessObj.business_lat = $('input[name=business_lat]').val();
+  businessObj.business_lng = $('input[name=business_lng]').val();
 
-  if (!validateEmail(business_email)) {
+  if (!validateEmail(businessObj.business_email)) {
     $('.error').text('Enter valid business email');
   }
 
-  if (business_name === '') {
+  if ($('input[name=business_name]').val() === '') {
     $('.error').text('Enter business name');
   }
 
-  if (password === '') {
+  if (businessObj.password === '') {
     $('.error').text('Enter password');
   }
 
-  if (business_yelp === '') {
-    $('.error').text('Enter Yelp Business Page Url');
-  }
-
-  if (business_yelp.startsWith('http://www.yelp.com/biz/') || business_yelp.startsWith('www.yelp.com/biz/') || business_yelp.startsWith(
-      'yelp.com/biz/')) {
-    yelpFlag = true;
-  } else {
-    $('.error').text('Oops! Your Yelp URL doesn\'t look right');
-  }
+  // if (businessObj.business_yelp !== '') {
+  //   if (!businessObj.business_yelp.startsWith('http://www.yelp.com/biz/') || !businessObj.business_yelp.startsWith('www.yelp.com/biz/') || !businessObj.business_yelp.startsWith(
+  //       'yelp.com/biz/')) {
+  //     $('.error').text('Oops! Your Yelp URL doesn\'t look right');
+  //     yelpFlag = false;
+  //   }
+  // }
 
   // if (!$('input.agreement').is(':checked')) {
   //   $('.error').text('You must accept the merchant agreement to register');
@@ -113,19 +113,20 @@ function checkEmail() {
   //   sendEmail(business_email, business_name, password, business_yelp);
   // }
 
-  if (validateEmail(business_email) && business_name !== '' && password !== '' && yelpFlag) {
-    sendEmail(business_email, business_name, password, business_yelp);
+  if (validateEmail(businessObj.business_email) && businessObj.business_name !== '' && businessObj.password !== '') {
+    sendEmail(businessObj);
   }
 }
 
-function sendEmail(email, name, password, yelp) {
+function sendEmail(biz) {
+  console.log(biz);
   $('.error').text('');
   $('.cta').attr("disabled", "disabled");
   $('.cta').text('Processing');
 
   var form = $('#register-form');
 
-  $.post('/business/register_post', form.serialize(), function (response) {
+  $.post('/business/register_post', biz, function (response) {
 
     if (response.status !== 'failed') {
       $('.login-box-body').html('<a href="/business/login">' + response + '</a>');
@@ -219,16 +220,17 @@ $('#daterange-btn').daterangepicker({
 
 
 //iCheck for checkbox and radio inputs
-$('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-  checkboxClass: 'icheckbox_minimal-blue',
-  radioClass: 'iradio_minimal-blue'
-});
-//Red color scheme for iCheck
-$('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-  checkboxClass: 'icheckbox_minimal-red',
-  radioClass: 'iradio_minimal-red'
-});
-
+if (typeof iCheck == 'function') {
+  $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+    checkboxClass: 'icheckbox_minimal-blue',
+    radioClass: 'iradio_minimal-blue'
+  });
+  //Red color scheme for iCheck
+  $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+    checkboxClass: 'icheckbox_minimal-red',
+    radioClass: 'iradio_minimal-red'
+  });
+}
 // view deal in modal on manage deal page
 $('.view-modal').click(function () {
   var self = $(this);
@@ -274,7 +276,7 @@ $('.profile-js').click(function (e) {
   var yelp_URL = $('input[name=yelp_URL]').val();
   var business_id = $('input[name=business_id]').val();
   var business_email = $('input[name=business_email]').val();
-  var business_name = $('input[name=business_name]')
+  var business_name = $('input[name=business_name]');
 
 
   if (!validateEmail(business_email)) {
