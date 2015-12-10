@@ -293,6 +293,11 @@
     .btn-primary {
       height: 40px;
     }
+    
+    .cta {
+      width: 250px;
+      margin: 0 auto;
+    }
   </style>
   <script src='https://www.google.com/recaptcha/api.js'></script>
 
@@ -343,6 +348,10 @@
         <input type="hidden" name="business_lat" />
         <input type="hidden" name="business_phone" />
         <input type="hidden" name="business_map" />
+        <input type="hidden" name="business_address" />
+        <input type="hidden" name="business_icon" />
+        <input type="hidden" name="business_locality" />
+
 
         <div class="form-group has-feedback">
           <label for="">Business Place</label>
@@ -358,12 +367,6 @@
         <div class="form-group has-feedback">
           <label for="">Business Address</label>
           <input type="text" class="form-control" placeholder="Enter your address" name="business_address" disabled>
-        </div>
-        <div class="form-group has-feedback">
-          <label for="">Yelp Business Page URL
-            <small style="font-weight:normal;">(http://www.yelp.com/biz/...)</small>
-          </label>
-          <input type="text" class="form-control" placeholder="e.g http://www.yelp.com/biz/..." name="yelp_url">
         </div>
         <div class="form-group has-feedback">
           <label for="">Password</label>
@@ -406,7 +409,7 @@
       <!-- <a href="#">I forgot my password</a> -->
       <br>
 
-      <a href="/business/login" class="text-center">I'm already a Merchant</a>
+      <a href="/business/login" class="text-center" style="display:block;">Login</a>
 
     </div>
     <!-- /.login-box-body -->

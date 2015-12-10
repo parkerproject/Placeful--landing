@@ -150,8 +150,8 @@ module.exports = function (server) {
     config: controller.merchant_deal.builder
   }, {
     method: 'GET',
-    path: '/lab/yelp',
-    config: controller.merchant_deal.yelp
+    path: '/lab/yelp_phone',
+    config: controller.merchant_deal.searchYelpPhone
   }, {
     method: 'POST',
     path: '/lab/payment',
@@ -168,10 +168,6 @@ module.exports = function (server) {
     method: 'GET',
     path: '/user/coupon',
     config: controller.coupon.index
-  }, {
-    method: 'GET',
-    path: '/factual',
-    config: controller.factual.auto
   }];
   return routeTable;
 };

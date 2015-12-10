@@ -92,7 +92,6 @@
     .dl .coupon {
       min-height: 50px;
       text-align: center;
-      text-transform: uppercase;
       font-weight: 700;
       font-size: 18px;
       padding: 20px 15px
@@ -156,12 +155,30 @@
                 <small style="font-size:12px;">Referral code:</small>
                 {{code}}
               </div>
+              <small style="color: white;font-size: 13px;letter-spacing: 0.5px;font-weight: normal;">code is case-sensitive</small>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <script>
+    (function(i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-6101640-31', 'auto');
+    ga('send', 'pageview');
+  </script>
 
 </body>
 

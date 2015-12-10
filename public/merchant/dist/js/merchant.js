@@ -78,11 +78,11 @@ function checkEmail() {
   var businessObj = {};
   businessObj.business_name = $('input[name=business_place]').val();
   businessObj.business_email = $('input[name=business_email]').val();
-  businessObj.business_yelp = $('input[name=yelp_url]').val();
   businessObj.password = $('input[name=password]').val();
   businessObj.business_address = $('input[name=business_address]').val();
   businessObj.business_lat = $('input[name=business_lat]').val();
   businessObj.business_lng = $('input[name=business_lng]').val();
+
 
   if (!validateEmail(businessObj.business_email)) {
     $('.error').text('Enter valid business email');
@@ -96,14 +96,6 @@ function checkEmail() {
     $('.error').text('Enter password');
   }
 
-  // if (businessObj.business_yelp !== '') {
-  //   if (!businessObj.business_yelp.startsWith('http://www.yelp.com/biz/') || !businessObj.business_yelp.startsWith('www.yelp.com/biz/') || !businessObj.business_yelp.startsWith(
-  //       'yelp.com/biz/')) {
-  //     $('.error').text('Oops! Your Yelp URL doesn\'t look right');
-  //     yelpFlag = false;
-  //   }
-  // }
-
   // if (!$('input.agreement').is(':checked')) {
   //   $('.error').text('You must accept the merchant agreement to register');
   // }
@@ -114,19 +106,18 @@ function checkEmail() {
   // }
 
   if (validateEmail(businessObj.business_email) && businessObj.business_name !== '' && businessObj.password !== '') {
-    sendEmail(businessObj);
+    sendEmail();
   }
 }
 
-function sendEmail(biz) {
-  console.log(biz);
+function sendEmail() {
   $('.error').text('');
   $('.cta').attr("disabled", "disabled");
   $('.cta').text('Processing');
 
   var form = $('#register-form');
 
-  $.post('/business/register_post', biz, function (response) {
+  $.post('/business/register_post', form.serialize(), function (response) {
 
     if (response.status !== 'failed') {
       $('.login-box-body').html('<a href="/business/login">' + response + '</a>');
@@ -157,28 +148,23 @@ $("#profileForm, #dealForm").validate({
       data[x.name] = x.value;
     });
     var myModal = $('#myModal');
-
-    $.get('/lab/yelp', {
-      yelp_URL: data.yelp_URL
-    }, function (res) {
-      myModal.find('h2').text(data.title);
-      myModal.find('.business_name').text(res.name);
-      myModal.find('.finePrint').text(data.fine_print);
-      if (data.discount_type === '%') {
-        myModal.find('.offer').text(data.discount_value + data.discount_type + ' Off');
-      }
-      if (data.discount_type === '$') {
-        myModal.find('.offer').text(data.discount_type + data.discount_value + ' Off');
-      }
-      myModal.find('.dealDescription').text(data.description);
-      myModal.find('.dealDate span').text(data.deal_date);
-      myModal.find('.dealPhone').text(res.display_phone);
-      myModal.find('.dealCategory span').text(data.category);
-      myModal.find('.dealAddress').text(res.location.display_address);
-      $('#myModal').modal();
-      $('.preview-js').text('Preview Deal');
-      //form.submit();
-    });
+    myModal.find('h2').text(data.title);
+    myModal.find('.business_name').text(data.business_name);
+    myModal.find('.finePrint').text(data.fine_print);
+    if (data.discount_type === '%') {
+      myModal.find('.offer').text(data.discount_value + data.discount_type + ' Off');
+    }
+    if (data.discount_type === '$') {
+      myModal.find('.offer').text(data.discount_type + data.discount_value + ' Off');
+    }
+    myModal.find('.dealDescription').text(data.description);
+    myModal.find('.dealDate span').text(data.deal_date);
+    myModal.find('.dealPhone').text(data.business_phone);
+    myModal.find('.dealCategory span').text(data.category);
+    myModal.find('.dealAddress').text(data.business_address);
+    $('#myModal').modal();
+    $('.preview-js').text('Preview Deal');
+    //form.submit();
   }
 });
 
@@ -294,28 +280,6 @@ $('.profile-js').click(function (e) {
         $('.profile-js').text('Update Profile');
       }
     });
-
-
-
-
-    // $.get('/lab/yelp', {
-    //   yelp_URL: yelp_URL
-    // }, function (res) {
-    //   business_name.val(res.name);
-    //
-    //   $.post("/business/profile", {
-    //     business_id: business_id,
-    //     business_email: business_email,
-    //     yelp_URL: yelp_URL,
-    //     business_name: business_name.val(res.name)
-    //   }, function (data, status) {
-    //     if (status === 'success') {
-    //       $('.success-js').show();
-    //       $('.profile-js').text('Update Profile');
-    //     }
-    //   });
-    //
-    // });
   }
 
 });

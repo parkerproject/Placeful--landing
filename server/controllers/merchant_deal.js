@@ -11,6 +11,8 @@ var https = require('https');
 var _request = require('request');
 var querystring = require('querystring');
 var Promise = require('es6-promise').Promise;
+var Factual = require('factual-api');
+var factual = new Factual(process.env.FACTUAL_KEY, process.env.FACTUAL_SECRET);
 
 
 http.globalAgent.maxSockets = https.globalAgent.maxSockets = 20;
@@ -46,15 +48,6 @@ var uploadToAmazon = function (file, file_name) {
   return uploader;
 };
 
-var getYelpId = function (url) {
-  var businessUrlOnYelp = url,
-    businessUrlOnYelpLength;
-  businessUrlOnYelp = businessUrlOnYelp.split('?')[0];
-  businessUrlOnYelp = businessUrlOnYelp.split('/');
-  businessUrlOnYelpLength = businessUrlOnYelp.length;
-  return businessUrlOnYelp[businessUrlOnYelpLength - 1];
-};
-
 
 module.exports = {
   index: {
@@ -77,7 +70,14 @@ module.exports = {
             business_email: request.auth.credentials.business_email,
             yelp_URL: request.auth.credentials.yelp_URL,
             business_name: request.auth.credentials.business_name,
-            business_id: request.auth.credentials.business_id
+            business_id: request.auth.credentials.business_id,
+            business_map: request.auth.credentials.business_map,
+            business_lat: request.auth.credentials.business_lat,
+            business_lng: request.auth.credentials.business_lng,
+            business_phone: request.auth.credentials.business_phone,
+            business_address: request.auth.credentials.business_address,
+            business_icon: request.auth.credentials.business_icon,
+            business_locality: request.auth.credentials.business_locality
           });
         }
       });
@@ -237,7 +237,7 @@ module.exports = {
       var deal_id = '';
       deal_id = randtoken.generate(12);
       var payload = request.payload;
-      var yelpBizId = getYelpId(payload.yelp_URL);
+      var yelpBizId;
       var offer;
       var uploader;
 
@@ -254,86 +254,118 @@ module.exports = {
           offer = payload.discount_type + payload.discount_value + ' Off';
         }
 
-        yelp.business(yelpBizId, function (error, data) {
-          if (error) reply(error);
+        var deal = {
+          insert_date: insert_date,
+          coupon: "yes",
+          offer: offer,
+          coupon_code: payload.coupon_code,
+          deal_id: deal_id,
+          loc: {
+            type: "Point",
+            coordinates: [Number(payload.business_lng), Number(payload.business_lat)]
+          },
+          title: payload.title,
+          provider_name: "DEALSBOX",
+          merchant_locality: payload.business_locality,
+          merchant_name: payload.business_name,
+          merchant_id: payload.business_id,
+          large_image: "",
+          description: payload.description,
+          fine_print: payload.fine_print,
+          expires_at: end_date.trim(),
+          published: payload.publish,
+          start_date: start_date.trim(),
+          phone: payload.business_phone,
+          category_name: payload.category,
+          quantity_bought: '',
+          old_price: '',
+          url: 'http://dealsbox.co/',
+          small_image: payload.business_icon,
+          merchant_address: payload.business_address,
+          zip_code: "",
+          Yelp_rating: "",
+          Yelp_categories: "",
+          Yelp_reviews: ""
+        };
+        if (payload.file) {
+          var filename = payload.file.hapi.filename;
+          filename = deal_id + path.extname(filename);
+          var imagePath = appRoot + "/deal_images/" + filename;
+          var file = fs.createWriteStream(imagePath);
 
-          var deal = {
-            insert_date: insert_date,
-            coupon: "yes",
-            offer: offer,
-            coupon_code: payload.coupon_code,
-            deal_id: deal_id,
-            loc: {
-              type: "Point",
-              coordinates: [data.location.coordinate.longitude,
-                data.location.coordinate.latitude
-              ]
-            },
-            title: payload.title,
-            provider_name: "DEALSBOX",
-            merchant_locality: data.location.city,
-            merchant_name: data.name,
-            merchant_id: payload.business_id,
-            large_image: "",
-            description: payload.description,
-            fine_print: payload.fine_print,
-            expires_at: end_date.trim(),
-            published: payload.publish,
-            start_date: start_date.trim(),
-            phone: data.display_phone,
-            category_name: payload.category,
-            quantity_bought: '',
-            old_price: '',
-            url: 'http://dealsbox.co/',
-            small_image: data.image_url,
-            merchant_address: data.location.display_address,
-            zip_code: data.location.postal_code,
-            Yelp_rating: data.rating,
-            Yelp_categories: data.categories,
-            Yelp_reviews: data.reviews
-          };
-          if (payload.file) {
-            var filename = payload.file.hapi.filename;
-            filename = deal_id + path.extname(filename);
-            var imagePath = appRoot + "/deal_images/" + filename;
-            var file = fs.createWriteStream(imagePath);
+          // begin amazon image upload processing
+          payload.file.pipe(file);
+          //stream.pipe(res);
 
-            // begin amazon image upload processing
-            payload.file.pipe(file);
-            //stream.pipe(res);
+          file.on('close', function () {
+            uploader = uploadToAmazon(imagePath, deal_id);
 
-            file.on('close', function () {
-              uploader = uploadToAmazon(imagePath, deal_id);
-
-              uploader.on('error', function (err) {
-                console.error("unable to upload:", err.stack);
-              });
-              uploader.on('progress', function () {
-                console.log("progress", uploader.progressMd5Amount,
-                  uploader.progressAmount, uploader.progressTotal);
-              });
-              uploader.on('end', function () {
-                fs.unlinkSync(imagePath);
-                deal.large_image = 'https://s3.amazonaws.com/dealsbox/' + deal_id;
-                db.DEALSBOX_deals.save(deal, function () {
-                  reply('deal has been saved');
-                });
-              });
+            uploader.on('error', function (err) {
+              console.error("unable to upload:", err.stack);
             });
-          }
+            uploader.on('progress', function () {
+              console.log("progress", uploader.progressMd5Amount,
+                uploader.progressAmount, uploader.progressTotal);
+            });
+            uploader.on('end', function () {
+              fs.unlinkSync(imagePath);
+              deal.large_image = 'https://s3.amazonaws.com/dealsbox/' + deal_id;
 
-        });
+              if (payload.business_phone) { // search yelp for biz using business phone
+                var cleanPhone = payload.business_phone.replace(/[^A-Z0-9]/ig, "");
+                factual.get('/t/places-us', {
+                  q: cleanPhone
+                }, function (error, res) {
+                  if (res.data.length === 1) {
+                    deal.hours = res.data[0].hours_display;
+                    deal.zip_code = res.data[0].postcode;
+                  }
+                  yelp.phone_search({
+                    phone: cleanPhone
+                  }, function (error, data) {
+                    if (data.businesses.length === 1) {
+                      yelp.business(data.businesses[0].id, function (error, data) {
+                        deal.Yelp_rating = data.rating;
+                        deal.Yelp_categories = data.categories;
+                        deal.Yelp_reviews = data.reviews;
+                        deal.small_image = data.image_url;
+                        db.DEALSBOX_deals.save(deal, function () {
+                          return reply.redirect('/business/manage_deals');
+                        });
+                      });
+                    } else {
+                      db.DEALSBOX_deals.save(deal, function () {
+                        return reply.redirect('/business/manage_deals');
+                      });
+                    }
+
+                  });
+
+
+                });
+
+              } else {
+
+              }
+
+            });
+          });
+        }
+
+
       }
 
 
     }
   },
 
-  yelp: {
+  searchYelpPhone: {
     handler: function (request, reply) {
-      yelp.business(getYelpId(request.query.yelp_URL), function (error, data) {
+      yelp.phone_search({
+        phone: request.query.phone
+      }, function (error, data) {
         if (error) console.log(error);
-        reply(data);
+        reply(data.businesses[0]);
       });
     }
   },
@@ -346,19 +378,25 @@ module.exports = {
         if (err) console.log(err);
         var now = new Date();
         now = now.toISOString();
-        if (result[0].current_period_end < now || result[0].subscriber === 'no') {
-          return reply.redirect('/business/payment');
-        } else {
-          db.DEALSBOX_deals.find({
-            merchant_id: request.auth.credentials.business_id
-          }, function (err, deals) {
-            reply.view('merchant/manage_deals', {
-              deals: deals,
-              business_name: request.auth.credentials.business_name,
-              business_email: request.auth.credentials.business_email
+        if (result) {
+          if (result[0].current_period_end < now || result[0].subscriber === 'no') {
+            return reply.redirect('/business/payment');
+          } else {
+            db.DEALSBOX_deals.find({
+              merchant_id: request.auth.credentials.business_id
+            }, function (err, deals) {
+              reply.view('merchant/manage_deals', {
+                deals: deals,
+                business_name: request.auth.credentials.business_name,
+                business_email: request.auth.credentials.business_email
+              });
             });
-          });
+          }
+        } else { // could find session
+          request.auth.session.clear();
+          return reply.redirect('/business/login');
         }
+
 
       });
 
