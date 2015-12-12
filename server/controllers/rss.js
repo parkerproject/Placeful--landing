@@ -59,7 +59,7 @@ function dealItem(obj) {
     custom_elements: [{
         'media:content': {
           _attr: {
-            href: obj.small_image,
+            url: obj.small_image,
             medium: "image"
           }
         }
