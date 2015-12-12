@@ -7,6 +7,7 @@ var collections = ['deals'];
 var db = require("mongojs").connect(process.env.DEALSBOX_MONGODB_URL, collections);
 var today = new Date();
 today = today.toISOString();
+var req = require('request');
 
 function buildUrl(city, provider, limit) {
   var options = {
@@ -90,35 +91,58 @@ module.exports = {
       var limit = 5;
       var deals = [];
       var completed_requests = 0;
+      var feed = feedOptions();
 
-
-      for (var i = 0, len = providers.length; i < len; i++) {
-        var url = buildUrl(city, providers[i], limit);
-
-        rp(url).then(function (res) {
-          deals.push.apply(deals, JSON.parse(res));
-          completed_requests++;
-          if (completed_requests === providers.length) {
-
-            var feed = feedOptions();
-            deals = _.shuffle(deals);
-            //  var item = dealItem();
-            var counter = 0;
-
-
-
-            for (var k = 0, dlen = deals.length; k < dlen; k++) {
-              feed.item(dealItem(deals[k]));
-              counter++;
-            }
-            if (counter === deals.length) {
-              var xml = feed.xml();
-              reply(xml).type('text/xml');
-            }
-
+      return new Promise(function (resolve) {
+        req(buildUrl(city, 'Groupon', 10), function (error, response, body) {
+          if (!error && response.statusCode == 200) {
+            deals.push.apply(deals, JSON.parse(body));
+            resolve(deals);
           }
-        }).catch(console.error);
-      }
+        });
+      }).then(function (res) {
+        return new Promise(function (resolve) {
+          req(buildUrl(city, 'LivingSocial', limit), function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+              deals.push.apply(deals, JSON.parse(body));
+              resolve(deals);
+            }
+          });
+        });
+      }).then(function () {
+        return new Promise(function (resolve) {
+          req(buildUrl(city, 'localsaver', limit), function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+              deals.push.apply(deals, JSON.parse(body));
+              resolve(deals);
+            }
+          });
+        });
+      }).then(function () {
+        return new Promise(function (resolve) {
+          req(buildUrl(city, 'goldstar', limit), function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+              deals.push.apply(deals, JSON.parse(body));
+              resolve(deals);
+            }
+          });
+        });
+      }).then(function () {
+        return new Promise(function (resolve) {
+          req(buildUrl(city, 'yelp', limit), function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+              deals.push.apply(deals, JSON.parse(body));
+              resolve(deals);
+            }
+          });
+        });
+      }).then(function () {
+        deals.forEach(function (deal) {
+          feed.item(dealItem(deal));
+        });
+        var xml = feed.xml();
+        reply(xml).type('text/xml');
+      });
 
     },
     app: {
