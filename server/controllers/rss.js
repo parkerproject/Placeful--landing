@@ -9,9 +9,9 @@ var today = new Date();
 today = today.toISOString();
 var req = require('request');
 
-function buildUrl(city, provider, limit) {
+function buildUrl(city, provider, limit, category) {
   var options = {
-    uri: 'http://api.dealsbox.co/deals?city=' + city + '&provider=' + provider + '&limit=' + limit,
+    uri: 'http://api.dealsbox.co/deals?city=' + city + '&provider=' + provider + '&limit=' + limit + '&category=' + category,
     method: 'GET'
   };
 
@@ -87,14 +87,14 @@ module.exports = {
       var city = request.query.city;
       city = city.replace("-", " ");
       city = encodeURIComponent(city);
-      var providers = ["Groupon", "Yelp", "LivingSocial", "Amazon Local"];
+      var category = encodeURIComponent(request.query.category);
       var limit = 5;
       var deals = [];
       var completed_requests = 0;
       var feed = feedOptions();
 
       return new Promise(function (resolve) {
-        req(buildUrl(city, 'Groupon', 10), function (error, response, body) {
+        req(buildUrl(city, 'Groupon', 10, category), function (error, response, body) {
           if (!error && response.statusCode == 200) {
             deals.push.apply(deals, JSON.parse(body));
             resolve(deals);
@@ -102,7 +102,7 @@ module.exports = {
         });
       }).then(function (res) {
         return new Promise(function (resolve) {
-          req(buildUrl(city, 'LivingSocial', limit), function (error, response, body) {
+          req(buildUrl(city, 'LivingSocial', limit, category), function (error, response, body) {
             if (!error && response.statusCode == 200) {
               deals.push.apply(deals, JSON.parse(body));
               resolve(deals);
@@ -111,7 +111,7 @@ module.exports = {
         });
       }).then(function () {
         return new Promise(function (resolve) {
-          req(buildUrl(city, 'localsaver', limit), function (error, response, body) {
+          req(buildUrl(city, 'localsaver', limit, category), function (error, response, body) {
             if (!error && response.statusCode == 200) {
               deals.push.apply(deals, JSON.parse(body));
               resolve(deals);
@@ -120,7 +120,7 @@ module.exports = {
         });
       }).then(function () {
         return new Promise(function (resolve) {
-          req(buildUrl(city, 'goldstar', limit), function (error, response, body) {
+          req(buildUrl(city, 'goldstar', limit, category), function (error, response, body) {
             if (!error && response.statusCode == 200) {
               deals.push.apply(deals, JSON.parse(body));
               resolve(deals);
@@ -129,7 +129,7 @@ module.exports = {
         });
       }).then(function () {
         return new Promise(function (resolve) {
-          req(buildUrl(city, 'yelp', limit), function (error, response, body) {
+          req(buildUrl(city, 'yelp', limit, category), function (error, response, body) {
             if (!error && response.statusCode == 200) {
               deals.push.apply(deals, JSON.parse(body));
               resolve(deals);
