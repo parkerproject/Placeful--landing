@@ -110,7 +110,7 @@ module.exports = {
         });
       }).then(function () {
         return new Promise(function (resolve) {
-          req(buildUrl(city, 'localsaver', 2, category), function (error, response, body) {
+          req(buildUrl(city, 'amazon local', 2, category), function (error, response, body) {
             if (!error && response.statusCode == 200) {
               deals.push.apply(deals, JSON.parse(body));
               resolve(deals);
