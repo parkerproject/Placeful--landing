@@ -88,13 +88,12 @@ module.exports = {
       city = city.replace("-", " ");
       city = encodeURIComponent(city);
       var category = encodeURIComponent(request.query.category);
-      var limit = 5;
       var deals = [];
       var completed_requests = 0;
       var feed = feedOptions();
 
       return new Promise(function (resolve) {
-        req(buildUrl(city, 'Groupon', 10, category), function (error, response, body) {
+        req(buildUrl(city, 'Groupon', 5, category), function (error, response, body) {
           if (!error && response.statusCode == 200) {
             deals.push.apply(deals, JSON.parse(body));
             resolve(deals);
@@ -102,7 +101,7 @@ module.exports = {
         });
       }).then(function (res) {
         return new Promise(function (resolve) {
-          req(buildUrl(city, 'LivingSocial', limit, category), function (error, response, body) {
+          req(buildUrl(city, 'LivingSocial', 2, category), function (error, response, body) {
             if (!error && response.statusCode == 200) {
               deals.push.apply(deals, JSON.parse(body));
               resolve(deals);
@@ -111,7 +110,7 @@ module.exports = {
         });
       }).then(function () {
         return new Promise(function (resolve) {
-          req(buildUrl(city, 'localsaver', limit, category), function (error, response, body) {
+          req(buildUrl(city, 'localsaver', 2, category), function (error, response, body) {
             if (!error && response.statusCode == 200) {
               deals.push.apply(deals, JSON.parse(body));
               resolve(deals);
@@ -120,7 +119,7 @@ module.exports = {
         });
       }).then(function () {
         return new Promise(function (resolve) {
-          req(buildUrl(city, 'goldstar', limit, category), function (error, response, body) {
+          req(buildUrl(city, 'goldstar', 2, category), function (error, response, body) {
             if (!error && response.statusCode == 200) {
               deals.push.apply(deals, JSON.parse(body));
               resolve(deals);
@@ -129,7 +128,7 @@ module.exports = {
         });
       }).then(function () {
         return new Promise(function (resolve) {
-          req(buildUrl(city, 'yelp', limit, category), function (error, response, body) {
+          req(buildUrl(city, 'yelp', 2, category), function (error, response, body) {
             if (!error && response.statusCode == 200) {
               deals.push.apply(deals, JSON.parse(body));
               resolve(deals);
