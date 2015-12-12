@@ -69,7 +69,7 @@ function dealItem(obj) {
       }, {
         'source': obj.provider_name
       }, {
-        'dc:creator': obj.merchant_name
+        'author': obj.merchant_name
       }
 
     ]
