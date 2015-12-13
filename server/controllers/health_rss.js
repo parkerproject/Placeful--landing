@@ -91,38 +91,42 @@ module.exports = {
       var deals = [];
       var completed_requests = 0;
       var feed = feedOptions();
+      var sample;
 
       return new Promise(function (resolve) {
-        req(buildUrl(city, 'Groupon', 5, category), function (error, response, body) {
+        req(buildUrl(city, 'Groupon', 50, category), function (error, response, body) {
           if (!error && response.statusCode == 200) {
-            deals.push.apply(deals, JSON.parse(body));
+            sample = _.sample(JSON.parse(body), 5);
+            deals.push.apply(deals, sample);
             resolve(deals);
           }
         });
       }).then(function (res) {
         return new Promise(function (resolve) {
-          req(buildUrl(city, 'LivingSocial', 4, category), function (error, response, body) {
+          req(buildUrl(city, 'LivingSocial', 30, category), function (error, response, body) {
             if (!error && response.statusCode == 200) {
-              deals.push.apply(deals, JSON.parse(body));
+              sample = _.sample(JSON.parse(body), 4);
+              deals.push.apply(deals, sample);
               resolve(deals);
             }
           });
         });
       }).then(function () {
         return new Promise(function (resolve) {
-          req(buildUrl(city, 'amazon local', 2, category), function (error, response, body) {
+          req(buildUrl(city, 'amazon local', 20, category), function (error, response, body) {
             if (!error && response.statusCode == 200) {
-              deals.push.apply(deals, JSON.parse(body));
+              sample = _.sample(JSON.parse(body), 2);
+              deals.push.apply(deals, sample);
               resolve(deals);
             }
           });
         });
       }).then(function () {
         return new Promise(function (resolve) {
-          req(buildUrl(city, 'yelp', 2, category), function (error, response, body) {
+          req(buildUrl(city, 'yelp', 20, category), function (error, response, body) {
             if (!error && response.statusCode == 200) {
-              deals.push.apply(deals, JSON.parse(body));
-              deals = _.shuffle(deals);
+              sample = _.sample(JSON.parse(body), 2);
+              deals.push.apply(deals, sample);
               resolve(deals);
             }
           });
