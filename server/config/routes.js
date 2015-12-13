@@ -86,6 +86,10 @@ module.exports = function (server) {
     config: controller.static.alerts
   }, {
     method: 'GET',
+    path: '/deals/feed.xml',
+    config: controller.rss.main
+  }, {
+    method: 'GET',
     path: '/deals-services/feed.xml',
     config: controller.services_rss.main
   }, {
