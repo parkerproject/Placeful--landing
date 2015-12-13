@@ -86,8 +86,24 @@ module.exports = function (server) {
     config: controller.static.alerts
   }, {
     method: 'GET',
-    path: '/deals/feed.xml',
-    config: controller.rss.main
+    path: '/deals-services/feed.xml',
+    config: controller.services_rss.main
+  }, {
+    method: 'GET',
+    path: '/deals-food/feed.xml',
+    config: controller.food_rss.main
+  }, {
+    method: 'GET',
+    path: '/deals-shopping/feed.xml',
+    config: controller.shopping_rss.main
+  }, {
+    method: 'GET',
+    path: '/deals-health/feed.xml',
+    config: controller.health_rss.main
+  }, {
+    method: 'GET',
+    path: '/deals-activities/feed.xml',
+    config: controller.activities_rss.main
   }, {
     method: 'GET',
     path: '/promo',
