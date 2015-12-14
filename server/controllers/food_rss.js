@@ -55,12 +55,12 @@ function dealItem(obj) {
     lat: obj.loc.coordinates[1],
     long: obj.loc.coordinates[0],
     enclosure: {
-      url: obj.small_image
+      url: "http://imagify.co/img?url=" + obj.small_image + "&crop_width=260&crop_height=150"
     },
     custom_elements: [{
         'media:content': {
           _attr: {
-            url: encodeURIComponent("http://imagify.co/img?url=" + obj.small_image + "&crop_width=260&crop_height=150"),
+            url: "http://imagify.co/img?url=" + obj.small_image + "&crop_width=260&crop_height=150",
             medium: "image"
           }
         }
@@ -71,7 +71,6 @@ function dealItem(obj) {
       }, {
         'author': obj.merchant_name
       }
-
     ]
 
   };
