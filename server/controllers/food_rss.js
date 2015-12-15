@@ -93,18 +93,18 @@ module.exports = {
       var sample;
 
       return new Promise(function (resolve) {
-        req(buildUrl(city, 'Groupon', 50, category), function (error, response, body) {
+        req(buildUrl(city, 'Groupon', 20, category), function (error, response, body) {
           if (!error && response.statusCode == 200) {
-            sample = _.sample(JSON.parse(body), 5);
+            sample = _.sample(JSON.parse(body), 2);
             deals.push.apply(deals, sample);
             resolve(deals);
           }
         });
       }).then(function (res) {
         return new Promise(function (resolve) {
-          req(buildUrl(city, 'LivingSocial', 30, category), function (error, response, body) {
+          req(buildUrl(city, 'LivingSocial', 20, category), function (error, response, body) {
             if (!error && response.statusCode == 200) {
-              sample = _.sample(JSON.parse(body), 4);
+              sample = _.sample(JSON.parse(body), 1);
               deals.push.apply(deals, sample);
               resolve(deals);
             }
@@ -114,7 +114,7 @@ module.exports = {
         return new Promise(function (resolve) {
           req(buildUrl(city, 'amazon local', 20, category), function (error, response, body) {
             if (!error && response.statusCode == 200) {
-              sample = _.sample(JSON.parse(body), 2);
+              sample = _.sample(JSON.parse(body), 1);
               deals.push.apply(deals, sample);
               resolve(deals);
             }
@@ -124,7 +124,7 @@ module.exports = {
         return new Promise(function (resolve) {
           req(buildUrl(city, 'restaurant', 20, category), function (error, response, body) {
             if (!error && response.statusCode == 200) {
-              sample = _.sample(JSON.parse(body), 2);
+              sample = _.sample(JSON.parse(body), 1);
               deals.push.apply(deals, sample);
               resolve(deals);
             }
@@ -134,7 +134,7 @@ module.exports = {
         return new Promise(function (resolve) {
           req(buildUrl(city, 'yelp', 20, category), function (error, response, body) {
             if (!error && response.statusCode == 200) {
-              sample = _.sample(JSON.parse(body), 2);
+              sample = _.sample(JSON.parse(body), 1);
               deals.push.apply(deals, sample);
               resolve(deals);
             }
