@@ -60,7 +60,7 @@ function dealItem(obj) {
     custom_elements: [{
         'media:content': {
           _attr: {
-            url: "http://imagify.co/img?url=" + obj.large_image + "&crop_width=260&crop_height=140",
+            url: obj.large_image,
             medium: "image"
           }
         }
