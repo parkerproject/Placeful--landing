@@ -55,12 +55,12 @@ function dealItem(obj) {
     lat: obj.loc.coordinates[1],
     long: obj.loc.coordinates[0],
     enclosure: {
-      url: obj.small_image
+      url: obj.large_image
     },
     custom_elements: [{
         'media:content': {
           _attr: {
-            url: obj.small_image,
+            url: obj.large_image,
             medium: "image"
           }
         }
