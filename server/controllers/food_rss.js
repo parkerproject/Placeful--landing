@@ -55,12 +55,12 @@ function dealItem(obj) {
     lat: obj.loc.coordinates[1],
     long: obj.loc.coordinates[0],
     enclosure: {
-      url: "http://imagify.co/img?url=" + obj.small_image + "&crop_width=260&crop_height=150"
+      url: obj.small_image
     },
     custom_elements: [{
         'media:content': {
           _attr: {
-            url: "http://imagify.co/img?url=" + obj.small_image + "&crop_width=260&crop_height=150",
+            url: obj.small_image,
             medium: "image"
           }
         }
