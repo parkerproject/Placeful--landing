@@ -85,10 +85,11 @@
 .slider-data a{
 	margin-top:20px;
 	display:table;
-	background:#be3b1f;
+	background: #15B358;
 	padding:15px 20px;
 	border-radius:5px;
 	color:#fff;
+	text-transform: uppercase;
 	}
 .asidmiddle{
 	width:100%;
@@ -387,15 +388,22 @@ br{
 	text-align:center;
 	}
 .profit-right1{
-	width:80%;
-	padding-left:10%;
-	padding-right:10%;
-	text-align:center;
+	width: 100%;
+	padding: 0;
+	text-align: left;
 	}
 .profit-right1 p{
-	padding-left:20px;
-	padding-right:20px;
-	margin-left:0px;
+  padding: 0
+	}
+
+	.profit{
+		padding: 10px;
+    text-align: left;
+	}
+
+	.button_footer{
+		top: -20px!important;
+		margin: 0!important;
 	}
 
 }
@@ -474,12 +482,13 @@ h1 br{
 
 .button_footer a{
     display: block;
-    background: #15B358;
+    background: #be3b1f;
     padding: 15px 20px;
     border-radius: 5px;
     color: #fff;
     width: 250px;
     margin: 0 auto;
+		text-transform: uppercase;
 }
 
 #animatedModal{
