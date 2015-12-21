@@ -222,9 +222,7 @@ module.exports = {
                         throw err;
                       }
                       sendEmail(request.payload.business_email, subject, content);
-                      reply(
-                        '<span style="font-size: 2em;margin: 10% auto 0 auto;text-align: center;display: block;border: 1px solid #cf4127;padding:10px 0;">Registration successful. <a href="/business/login">Login to access account</a>.</span>'
-                      );
+                      reply('success');
                     });
                 });
               } else {

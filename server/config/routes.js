@@ -10,7 +10,7 @@ module.exports = function (server) {
   // Array of routes for Hapi
   var routeTable = [{
     method: 'GET',
-    path: '/fbconfirm',
+    path: '/business/thankyou',
     config: controller.base.fbconfirm
   }, {
     method: 'GET',
