@@ -20,6 +20,26 @@ module.exports = {
       name: 'images'
     }
   },
+  skins: {
+    handler: {
+      directory: {
+        path: './public/skins'
+      }
+    },
+    app: {
+      name: 'skins'
+    }
+  },
+  features: {
+    handler: {
+      directory: {
+        path: './public/images/features'
+      }
+    },
+    app: {
+      name: 'skins'
+    }
+  },
   deal_images: {
     handler: {
       directory: {
