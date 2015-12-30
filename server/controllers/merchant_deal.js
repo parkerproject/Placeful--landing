@@ -202,11 +202,9 @@ module.exports = {
         s3Params: {
           Bucket: "dealsbox",
           Delete: {
-            Objects: [
-              {
-                Key: deal_id,
-              }
-            ]
+            Objects: [{
+              Key: deal_id,
+            }]
           }
         }
       };
@@ -361,11 +359,21 @@ module.exports = {
 
   searchYelpPhone: {
     handler: function (request, reply) {
+      var cleanPhone = request.query.phone.replace(/[^A-Z0-9]/ig, "");
       yelp.phone_search({
-        phone: request.query.phone
+        phone: cleanPhone
       }, function (error, data) {
-        if (error) console.log(error);
-        reply(data.businesses[0]);
+        if (error) console.log({
+          error_message: error
+        });
+        if (data.businesses && data.businesses[0].id) {
+          yelp.business(data.businesses[0].id, function (err, data) {
+            if (err) return console.log(error);
+            reply(data);
+          });
+        } else {
+          reply(null);
+        }
       });
     }
   },

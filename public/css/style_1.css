@@ -253,8 +253,8 @@ Home
     color: #fff;
     position: relative;
     overflow: hidden;
-    background-color: #d73924;
-	background-image:url(../images/home/cloud.png);
+    /*background-color: #d73924;
+	  background-image:url(../images/home/cloud.png);*/
     background-position: 0 0;
     background-repeat: repeat-x;
 }
@@ -293,12 +293,12 @@ Home
 
 .home-container{
     background-image: url(../images/home/city.png);
-    background-position: bottom center;
     background-repeat: no-repeat;
     padding-top: 240px;
-	padding-bottom: 370px;
+	padding-bottom: 70px;
 	width:100%;
 	display:block;
+  background-size: cover;
 }
 
 .grid-padding{
