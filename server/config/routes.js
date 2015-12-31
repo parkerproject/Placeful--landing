@@ -188,6 +188,10 @@ module.exports = function (server) {
     method: 'GET',
     path: '/user/coupon',
     config: controller.coupon.index
+  }, {
+    method: 'GET',
+    path: '/deal/{deal_id}',
+    config: controller.deal.index
   }];
   return routeTable;
 };

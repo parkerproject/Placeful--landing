@@ -1,0 +1,205 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <title>{{deal.title}} - DEALSBOX</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:url" content="{{deal.url}}" />
+  <meta property="og:type" content="product.item" />
+  <meta property="og:title" content="{{deal.title}}" />
+  <meta property="og:description" content="{{deal.description}}" />
+  <meta property="og:image" content="{{deal.large_image}}" />
+  <meta property="al:ios:app_store_id" content="944253010" />
+  <meta property="al:ios:url" content="dealsbox://deal/{{deal.deal_id}}" />
+  <meta property="al:ios:app_name" content="DEALSBOX" />
+  <!-- <meta property="al:android:package" content="com.imdb.mobile" />
+  <meta property="al:android:url" content="imdb://title/tt0117500" />
+  <meta property="al:android:app_name" content="IMDb Movies & TV" /> -->
+  <meta name="twitter:card" content="app">
+  <meta name="twitter:site" content="@dealsboxapp">
+  <meta name="twitter:description" content="{{deal.description}}">
+  <meta name="twitter:app:country" content="US">
+  <meta name="twitter:app:name:iphone" content="DEALSBOX">
+  <meta name="twitter:app:id:iphone" content="944253010">
+  <meta name="twitter:app:url:iphone" content="dealsbox://deal/{{deal.deal_id}}">
+  <meta name="twitter:app:name:ipad" content="DEALSBOX">
+  <meta name="twitter:app:id:ipad" content="944253010">
+  <meta name="twitter:app:url:ipad" content="dealsbox://deal/{{deal.deal_id}}">
+  <!-- <meta name="twitter:app:name:googleplay" content="Cannonball">
+  <meta name="twitter:app:id:googleplay" content="io.fabric.samples.cannonball">
+  <meta name="twitter:app:url:googleplay" content="http://cannonball.fabric.io/poem/5149e249222f9e600a7540ef"> -->
+  <link rel="stylesheet" href="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+
+  <style>
+    .download img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    
+    .tabs-title>a,
+    a {
+      color: #DB462C
+    }
+    
+    .top-bar,
+    .top-bar ul {
+      background-color: #DB462C;
+    }
+  </style>
+
+  <script type="text/javascript">
+    (function(h, l, i, n, k, s) {
+      s = h.createElement(i);
+      s.type = "text/javascript";
+      s.async = 1;
+      s.src = l + n + ".js";
+      k = h.getElementsByTagName(i)[0];
+      k.parentNode.insertBefore(s, k);
+    })(document, "//cdn.hokolinks.com/banner/v1/", "script", "7c5a5d6c4ef99e88");
+  </script>
+</head>
+
+<body>
+
+  <div class="top-bar">
+    <div class="row">
+      <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu>
+          <li class="menu-text">
+            <img src="https://dealsbox.co/images/newsletter_logo2.png" alt="" width="200px" />
+          </li>
+        </ul>
+      </div>
+      <div class="top-bar-right">
+        <ul class="menu">
+          <li class="download">
+            <img src="https://d2kfjaekmjmy1l.cloudfront.net/images/websites/public/app-store-black-on-color@2x-vd3eb32e86e4d.png" alt="" />
+          </li>
+          <li>
+            <button type="button" class="button">Merchants</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="medium-6 columns">
+      <img class="thumbnail" src="{{deal.large_image}}">
+      <address>
+        {{deal.merchant_name}}
+        <br /> {{deal.merchant_address}}
+        <br /> Tel: <a href="tel:{{deal.phone}}">{{deal.phone}}</a>
+      </address>
+    </div>
+    <div class="medium-6 large-5 columns">
+      <h3>{{deal.title}}</h3>
+      <p>{{deal.description}}</p>
+      <label class="stat">$
+        <span style="color:red;text-decoration:line-through">{{deal.old_price}}</span>
+        <span style="color:green;">{{deal.new_price}}</span>
+      </label>
+      <a href="{{deal.url}}" class="success button large expanded">BUY FROM {{deal.provider_name}}</a>
+      <div class="small secondary expanded">
+        <a style="margin-right:10px;" href="https://www.facebook.com/dialog/share?app_id=692286700888072&amp;display=popup&amp;href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F&amp;redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer">Share on
+          <img src="https://dl.dropbox.com/s/7athby3eqlipc87/facebook.png?dl=0" alt="" width="30px" />
+        </a>
+        <a href="">Share on
+          <img src="https://dl.dropbox.com/s/uk4f9ov0vz0y2l4/twitter.png?dl=0" alt="" width="30px" />
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="column row">
+    <hr>
+    <ul class="tabs" data-tabs id="example-tabs">
+      <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Reviews</a></li>
+      <li class="tabs-title"><a href="#panel2">Similar Deals</a></li>
+    </ul>
+    <div class="tabs-content" data-tabs-content="example-tabs">
+      <div class="tabs-panel is-active" id="panel1">
+        <h4>Reviews</h4>
+        {% for review in deal.yelp.reviews %}
+        <div class="media-object stack-for-small">
+          <div class="media-object-section">
+            <img class="thumbnail" src="{{review.user.image_url}}" width="70px">
+          </div>
+          <div class="media-object-section">
+            <h5>{{review.user.name}}</h5>
+            <p>{{review.excerpt}}</p>
+          </div>
+        </div>
+        {% endfor %}
+        <label>
+          My Review
+          <textarea placeholder="None"></textarea>
+        </label>
+        <button class="button">Submit Review</button>
+      </div>
+      <div class="tabs-panel" id="panel2">
+        <div class="row medium-up-3 large-up-5">
+          <div class="column">
+            <img class="thumbnail" src="http://placehold.it/350x200">
+            <h5>Other Product
+              <small>$22</small>
+            </h5>
+            <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam.</p>
+            <a href="#" class="button hollow tiny expanded">Buy Now</a>
+          </div>
+          <div class="column">
+            <img class="thumbnail" src="http://placehold.it/350x200">
+            <h5>Other Product
+              <small>$22</small>
+            </h5>
+            <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam.</p>
+            <a href="#" class="button hollow tiny expanded">Buy Now</a>
+          </div>
+          <div class="column">
+            <img class="thumbnail" src="http://placehold.it/350x200">
+            <h5>Other Product
+              <small>$22</small>
+            </h5>
+            <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam.</p>
+            <a href="#" class="button hollow tiny expanded">Buy Now</a>
+          </div>
+          <div class="column">
+            <img class="thumbnail" src="http://placehold.it/350x200">
+            <h5>Other Product
+              <small>$22</small>
+            </h5>
+            <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam.</p>
+            <a href="#" class="button hollow tiny expanded">Buy Now</a>
+          </div>
+          <div class="column">
+            <img class="thumbnail" src="http://placehold.it/350x200">
+            <h5>Other Product
+              <small>$22</small>
+            </h5>
+            <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam.</p>
+            <a href="#" class="button hollow tiny expanded">Buy Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row column">
+    <hr>
+    <ul class="menu">
+      <li>Yeti Store</li>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+      <li class="float-right">Copyright 2016</li>
+    </ul>
+  </div>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+</body>
+
+</html>
