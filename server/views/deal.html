@@ -85,6 +85,10 @@
 
   <div class="row">
     <div class="medium-6 columns">
+      <p>
+        <img src="{{deal.yelp.rating_img_url}}" alt="" />
+        <small>{{deal.yelp.review_count}} Yelp reviews</small>
+      </p>
       <img class="thumbnail" src="{{deal.large_image}}">
       <address>
         {{deal.merchant_name}}
@@ -117,7 +121,9 @@
             <img class="thumbnail thumbnail_1" src="{{review.user.image_url}}" width="70px">
           </div>
           <div class="media-object-section">
-            <h5>{{review.user.name}}</h5>
+            <h5>{{review.user.name}} -
+              <img src="{{review.rating_image_url}}" alt="" />
+            </h5>
             <p>{{review.excerpt}}</p>
           </div>
         </div>
