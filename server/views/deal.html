@@ -32,11 +32,6 @@
   <link rel="stylesheet" href="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
 
   <style>
-    .download img {
-      height: 40px;
-      margin-right: 10px;
-    }
-    
     .tabs-title>a,
     a {
       color: #DB462C
@@ -45,6 +40,15 @@
     .top-bar,
     .top-bar ul {
       background-color: #DB462C;
+    }
+    
+    .thumbnail_1 {
+      width: 70px!important;
+    }
+    
+    .button.hollow.secondary {
+      border: 1px solid #fff;
+      color: #fff;
     }
   </style>
 
@@ -74,10 +78,14 @@
       <div class="top-bar-right">
         <ul class="menu">
           <li class="download">
-            <img src="https://d2kfjaekmjmy1l.cloudfront.net/images/websites/public/app-store-black-on-color@2x-vd3eb32e86e4d.png" alt="" />
+            <a href="https://app.appsflyer.com/id944253010?pid=landing_page" class="" target="_blank">
+              <img src="https://dl.dropbox.com/s/le1m692ix9y6tlc/applestore.png?dl=0" width="150px">
+            </a>
           </li>
           <li>
-            <button type="button" class="button">Merchants</button>
+            <a href="http://bit.ly/1iKdE8o" class="btn btn-primary waiting-list" target="_blank">
+              <img src="https://dl.dropbox.com/s/xfqdyqw1p44tkhw/googleplay.png?dl=0" alt="" width="150px" />
+            </a>
           </li>
         </ul>
       </div>
@@ -117,7 +125,7 @@
     <hr>
     <ul class="tabs" data-tabs id="example-tabs">
       <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Reviews</a></li>
-      <li class="tabs-title"><a href="#panel2">Similar Deals</a></li>
+      <!-- <li class="tabs-title"><a href="#panel2">Similar Deals</a></li> -->
     </ul>
     <div class="tabs-content" data-tabs-content="example-tabs">
       <div class="tabs-panel is-active" id="panel1">
@@ -125,7 +133,7 @@
         {% for review in deal.yelp.reviews %}
         <div class="media-object stack-for-small">
           <div class="media-object-section">
-            <img class="thumbnail" src="{{review.user.image_url}}" width="70px">
+            <img class="thumbnail thumbnail_1" src="{{review.user.image_url}}" width="70px">
           </div>
           <div class="media-object-section">
             <h5>{{review.user.name}}</h5>
@@ -133,13 +141,8 @@
           </div>
         </div>
         {% endfor %}
-        <label>
-          My Review
-          <textarea placeholder="None"></textarea>
-        </label>
-        <button class="button">Submit Review</button>
       </div>
-      <div class="tabs-panel" id="panel2">
+      <!-- <div class="tabs-panel" id="panel2">
         <div class="row medium-up-3 large-up-5">
           <div class="column">
             <img class="thumbnail" src="http://placehold.it/350x200">
@@ -149,49 +152,24 @@
             <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam.</p>
             <a href="#" class="button hollow tiny expanded">Buy Now</a>
           </div>
-          <div class="column">
-            <img class="thumbnail" src="http://placehold.it/350x200">
-            <h5>Other Product
-              <small>$22</small>
-            </h5>
-            <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam.</p>
-            <a href="#" class="button hollow tiny expanded">Buy Now</a>
-          </div>
-          <div class="column">
-            <img class="thumbnail" src="http://placehold.it/350x200">
-            <h5>Other Product
-              <small>$22</small>
-            </h5>
-            <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam.</p>
-            <a href="#" class="button hollow tiny expanded">Buy Now</a>
-          </div>
-          <div class="column">
-            <img class="thumbnail" src="http://placehold.it/350x200">
-            <h5>Other Product
-              <small>$22</small>
-            </h5>
-            <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam.</p>
-            <a href="#" class="button hollow tiny expanded">Buy Now</a>
-          </div>
-          <div class="column">
-            <img class="thumbnail" src="http://placehold.it/350x200">
-            <h5>Other Product
-              <small>$22</small>
-            </h5>
-            <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam.</p>
-            <a href="#" class="button hollow tiny expanded">Buy Now</a>
-          </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="row column">
     <hr>
     <ul class="menu">
-      <li>Yeti Store</li>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
+      <li>DEALSBOX</li>
+      <li class="download">
+        <a href="https://app.appsflyer.com/id944253010?pid=landing_page" class="" target="_blank">
+          <img src="https://dl.dropbox.com/s/le1m692ix9y6tlc/applestore.png?dl=0" width="150px">
+        </a>
+      </li>
+      <li>
+        <a href="http://bit.ly/1iKdE8o" class="btn btn-primary waiting-list" target="_blank">
+          <img src="https://dl.dropbox.com/s/xfqdyqw1p44tkhw/googleplay.png?dl=0" alt="" width="150px" />
+        </a>
+      </li>
       <li class="float-right">Copyright 2016</li>
     </ul>
   </div>
