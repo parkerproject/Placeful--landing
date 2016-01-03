@@ -10,6 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="msvalidate.01" content="CD2BB719CB6AAFA4DF4543C1E76575AE" />
   <meta name="google-site-verification" content="sbhX7BD_Ie45cQvi2MDithEjO_ReZIZbrlclq_JDMFw" />
+  <meta name="p:domain_verify" content="1f572a4ad91d54963d3382f6d00feda8" />
   <link href="https://lh3.googleusercontent.com/H26NnLsqQbqVavqKrJRA_hyPvZ765vpvghdaBfhAbtprR3f17508o42ebj5XmTqeFqILHxyftXNGjrtwZcBKXn-d22ZKr7c" rel="shortcut icon" type="image/x-icon">
 
   <meta name="description" content="#1 Deals app in your locality.
@@ -249,10 +250,10 @@ DEALSBOX is your guide to places with deals around you. Find the best food &amp;
 
               </p>
               <div style="text-align:center;">
-                <a href="https://app.appsflyer.com/id944253010?pid=landing_page" class="" target="_blank">
+                <a href="https://app.appsflyer.com/id944253010?pid=landing_page" class="download-button" target="_blank">
                   <img src="https://dl.dropbox.com/s/le1m692ix9y6tlc/applestore.png?dl=0" width="180px">
                 </a>
-                <a href="http://bit.ly/1iKdE8o" class="" target="_blank">
+                <a href="http://bit.ly/1iKdE8o" class="download-button" target="_blank">
                   <img src="https://dl.dropbox.com/s/xfqdyqw1p44tkhw/googleplay.png?dl=0" alt="" width="180px" />
                 </a>
               </div>
@@ -326,10 +327,10 @@ DEALSBOX is your guide to places with deals around you. Find the best food &amp;
                 <br>• Read short reviews about the deals you want.
                 <br>• Save deals you like for later, so you never forget.
                 <br>• Search easily for the deals you want across all deals providers.</p>
-              <a href="https://app.appsflyer.com/id944253010?pid=landing_page" class="" target="_blank">
+              <a href="https://app.appsflyer.com/id944253010?pid=landing_page" class="download-button" target="_blank">
                 <img src="https://dl.dropbox.com/s/le1m692ix9y6tlc/applestore.png?dl=0" width="180px">
               </a>
-              <a href="http://bit.ly/1iKdE8o" class="" target="_blank">
+              <a href="http://bit.ly/1iKdE8o" class="download-button" target="_blank">
                 <img src="https://dl.dropbox.com/s/xfqdyqw1p44tkhw/googleplay.png?dl=0" alt="" width="180px" />
               </a>
 
@@ -499,12 +500,14 @@ DEALSBOX is your guide to places with deals around you. Find the best food &amp;
       s.parentNode.insertBefore(pa, s);
     })();
 
-    $('.text-me').on('click', function() {
-      ga('send', 'event', 'button', 'click', 'text-me-button');
-    });
+    // $('.text-me').on('click', function() {
+    //   ga('send', 'event', 'button', 'click', 'text-me-button');
+    // });
 
     $('.download-button').on('click', function() {
       ga('send', 'event', 'button', 'click', 'download-button');
+      window._pq = window._pq || [];
+      _pq.push(['track', 'download']);
     });
   </script>
 </body>
