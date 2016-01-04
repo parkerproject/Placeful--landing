@@ -3,7 +3,7 @@ google.maps.event.addDomListener(window, 'load', function () {
   google.maps.event.addListener(places, 'place_changed', function () {
     var place = places.getPlace();
     var addressArr = place.address_components;
-    console.log(place);
+    businessFound = "true";
     var address = place.formatted_address;
     var latitude = place.geometry.location.lat();
     var longitude = place.geometry.location.lng();

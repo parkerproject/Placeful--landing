@@ -192,11 +192,11 @@ module.exports = {
               formData: data
             }, function (err, httpResponse, body) {
               if (err) console.log(err);
-
+              var business_name = (request.payload.business_place !== "") ? request.payload.business_place : request.payload.business_name;
 
               if (JSON.parse(body).success) {
                 db.merchants.save({
-                  business_name: request.payload.business_place,
+                  business_name: business_name,
                   business_email: request.payload.business_email,
                   business_phone: request.payload.business_phone,
                   business_lat: request.payload.business_lat,

@@ -1,3 +1,4 @@
+var businessFound = "false";
 $(function () {
   $(document).on('click', '.cta', function (e) {
     e.preventDefault();
@@ -76,12 +77,14 @@ function validateEmail(email) {
 
 function checkEmail() {
   var businessObj = {};
-  businessObj.business_name = $('input[name=business_place]').val();
+  console.log(businessFound);
+  businessObj.business_name = (businessFound === "true") ? $('input[name=business_place]').val() : $('input[name=business_name]').val()
   businessObj.business_email = $('input[name=business_email]').val();
   businessObj.password = $('input[name=password]').val();
   businessObj.business_address = $('input[name=business_address]').val();
   businessObj.business_lat = $('input[name=business_lat]').val();
   businessObj.business_lng = $('input[name=business_lng]').val();
+  businessObj.business_phone = $('input[name=business_phone]').val();
 
 
   if (!validateEmail(businessObj.business_email)) {
@@ -96,6 +99,10 @@ function checkEmail() {
     $('.error').text('Enter password');
   }
 
+  if (businessObj.business_phone === '') {
+    $('.error').text('Enter business phone number');
+  }
+
   // if (!$('input.agreement').is(':checked')) {
   //   $('.error').text('You must accept the merchant agreement to register');
   // }
@@ -104,8 +111,8 @@ function checkEmail() {
   // if (validateEmail(business_email) && business_name !== '' && password !== '' && yelpFlag && $('input.agreement').is(':checked')) {
   //   sendEmail(business_email, business_name, password, business_yelp);
   // }
-
-  if (validateEmail(businessObj.business_email) && businessObj.business_name !== '' && businessObj.password !== '') {
+  if (validateEmail(businessObj.business_email) && businessObj.business_name !== '' && businessObj.password !== '' && businessObj.business_phone !==
+    '') {
     sendEmail();
   }
 }

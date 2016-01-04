@@ -275,8 +275,6 @@ module.exports = {
           start_date: start_date.trim(),
           phone: payload.business_phone,
           category_name: payload.category,
-          quantity_bought: '',
-          old_price: '',
           url: 'http://dealsbox.co/',
           small_image: payload.business_icon,
           merchant_address: payload.business_address,
@@ -327,6 +325,18 @@ module.exports = {
                         deal.Yelp_categories = data.categories;
                         deal.Yelp_reviews = data.reviews;
                         deal.small_image = data.image_url;
+
+                        if (payload.business_lng == '' || payload.business_lat == '') {
+                          deal.loc = {
+                            type: "Point",
+                            coordinates: [data.location.coordinate.longitude, data.location.coordinate.latitude]
+                          }
+                        }
+
+                        if (payload.business_locality == '') {
+                          deal.merchant_locality = data.location.city;
+                        }
+
                         db.DEALSBOX_deals.save(deal, function () {
                           return reply.redirect('/business/manage_deals');
                         });
