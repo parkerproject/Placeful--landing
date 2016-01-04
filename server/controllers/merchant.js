@@ -174,11 +174,7 @@ module.exports = {
         var hash = bcrypt.hashSync(password);
 
         db.merchants.find({
-          $or: [{
-            business_email: request.payload.business_email
-          }, {
-            business_name: request.payload.business_name
-          }]
+          business_email: request.payload.business_email
         }).limit(1, function (err, results) {
 
           if (results.length === 0) {
@@ -226,16 +222,11 @@ module.exports = {
                     });
                 });
               } else {
-                reply(
-                  '<span style="font-size: 2em;margin: 10% auto 0 auto;text-align: center;display: block;border: 1px solid #cf4127;padding:10px 0;">You failed the reCAPTCHA question, <a href="/business/register">try again</a></span>'
-                );
+                reply('You failed the reCAPTCHA question, try again');
               }
-
             });
           } else {
-            reply(
-              '<span style="font-size: 2em;margin: 10% auto 0 auto;text-align: center;display: block;border: 1px solid #cf4127;padding:10px 0;">Already registered, Login to access account</span>'
-            );
+            reply('Already registered, Login to access account');
           }
         });
 

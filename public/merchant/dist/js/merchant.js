@@ -126,11 +126,12 @@ function sendEmail() {
 
   $.post('/business/register_post', form.serialize(), function (response) {
 
-    if (response.status !== 'failed') {
-      //  $('.login-box-body').html('<a href="/business/login">' + response + '</a>');
+    if (response.status !== 'failed' && response == 'success') {
       window.location = "/business/thankyou";
     } else {
-      document.querySelector('.error').innerHTML = 'An error occured. Please try again later.';
+      document.querySelector('.error').innerHTML = response;
+      $('.cta').removeAttr("disabled");
+      $('.cta').text('Register');
     }
 
   });
