@@ -23,7 +23,9 @@ module.exports = {
                 deal: deal,
                 button_text: button_text,
                 button_url: button_url,
-                price: price
+                price: price,
+                facebook_url: facebook_url,
+                facebook_image_url: facebook_image_url
               });
 
             }
