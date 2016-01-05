@@ -1,6 +1,8 @@
 require('dotenv').load();
 var _ = require('lodash');
 var req = require('request');
+var collections = ['deals'];
+var db = require("mongojs").connect(process.env.DEALSBOX_MONGODB_URL, collections);
 
 module.exports = {
   index: {
@@ -9,15 +11,25 @@ module.exports = {
       req("http://api.dealsbox.co/deal?id=" + request.params.deal_id, function (error, response, body) {
         if (!error && response.statusCode == 200) {
           var deal = JSON.parse(body);
+          var button_text = (deal.provider_name === 'DEALSBOX') ? 'View coupon in app' : 'BUY FROM ' + deal.provider_name;
+          var button_url = (deal.provider_name === 'DEALSBOX') ? 'https://app.appsflyer.com/id944253010?pid=deal_page' : deal.url;
+          var price = (deal.provider_name === 'DEALSBOX') ? deal.offer : '$' + deal.new_price;
           req("https://dealsbox.co/lab/yelp_phone?phone=" + JSON.parse(body).phone, function (err, res, data) {
             if (!err && res.statusCode == 200) {
               deal.yelp = JSON.parse(data);
               reply.view("deal", {
-                deal: deal
+                deal: deal,
+                button_text: button_text,
+                button_url: button_url,
+                price: price
               });
 
             }
           });
+
+
+
+
         }
       });
 

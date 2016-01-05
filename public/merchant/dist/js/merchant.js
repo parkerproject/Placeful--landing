@@ -26,8 +26,8 @@ $(function () {
     if ((file = this.files[0])) {
       image = new Image();
       image.onload = function () {
-        if (this.width < 500 || this.width > 1500) {
-          alert('Image must be between 500px and 1500 wide');
+        if (this.width < 300 || this.width > 1500) {
+          alert('Image must be between 300px and 1500 wide');
           $('.preview-js').attr("disabled", "disabled");
         } else {
           $('.preview-js').removeAttr("disabled");

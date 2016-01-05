@@ -95,7 +95,7 @@
       </p>
       <img class="thumbnail" src="{{deal.large_image}}">
       <address>
-        {{deal.merchant_name}}
+        <strong>{{deal.merchant_name}}</strong>
         <br /> {{deal.merchant_address}}
         <br /> Tel: <a href="tel:{{deal.phone}}">{{deal.phone}}</a>
       </address>
@@ -103,11 +103,18 @@
     <div class="medium-6 large-5 columns">
       <h3>{{deal.title}}</h3>
       <p>{{deal.description}}</p>
-      <label class="stat">$
-        <span style="color:red;text-decoration:line-through">{{deal.old_price}}</span>
-        <span style="color:green;">{{deal.new_price}}</span>
+
+      <p style="padding-bottom:10px;">
+        <small>Deal Category:
+          <strong>{{deal.category_name}}</strong>
+        </small>
+      </p>
+      <label class="stat" style="padding-bottom: 10px;">
+        <span style="color:green;">{{price}}</span>
       </label>
-      <a href="{{deal.url}}" class="success button large expanded">BUY FROM {{deal.provider_name}}</a>
+      <a href="{{button_url}}" class="button large expanded" style="background-color: #27ae60;">
+        <strong>{{button_text}}</strong>
+      </a>
     </div>
   </div>
   <div class="column row">
