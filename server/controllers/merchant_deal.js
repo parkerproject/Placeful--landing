@@ -1,6 +1,6 @@
 require('dotenv').load();
 var swig = require('swig');
-var collections = ['merchants', 'DEALSBOX_deals'];
+var collections = ['merchants', 'deals'];
 var db = require("mongojs").connect(process.env.DEALSBOX_MONGODB_URL, collections);
 var randtoken = require('rand-token');
 var fs = require('fs');
@@ -94,7 +94,7 @@ module.exports = {
       }
 
       if (request.query.id) {
-        db.DEALSBOX_deals.find({
+        db.deals.find({
           deal_id: request.query.id,
           merchant_id: request.auth.credentials.business_id
         }).limit(1, function (err, result) {
@@ -175,7 +175,7 @@ module.exports = {
           });
         }
 
-        db.DEALSBOX_deals.findAndModify({
+        db.deals.findAndModify({
           query: {
             deal_id: deal_id,
             merchant_id: request.auth.credentials.business_id
@@ -214,7 +214,7 @@ module.exports = {
         console.log('deleted deal from amazon');
       });
 
-      db.DEALSBOX_deals.remove({
+      db.deals.remove({
         deal_id: deal_id,
         merchant_id: merchant_id
       }, {}, function () {
@@ -337,12 +337,12 @@ module.exports = {
                           deal.merchant_locality = data.location.city;
                         }
 
-                        db.DEALSBOX_deals.save(deal, function () {
+                        db.deals.save(deal, function () {
                           return reply.redirect('/business/manage_deals');
                         });
                       });
                     } else {
-                      db.DEALSBOX_deals.save(deal, function () {
+                      db.deals.save(deal, function () {
                         return reply.redirect('/business/manage_deals');
                       });
                     }
@@ -400,7 +400,7 @@ module.exports = {
           if (result[0].current_period_end < now || result[0].subscriber === 'no') {
             return reply.redirect('/business/payment');
           } else {
-            db.DEALSBOX_deals.find({
+            db.deals.find({
               merchant_id: request.auth.credentials.business_id
             }, function (err, deals) {
               reply.view('merchant/manage_deals', {
