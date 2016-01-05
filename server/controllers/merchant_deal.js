@@ -62,24 +62,31 @@ module.exports = {
       }).limit(1, function (err, result) {
         var now = new Date();
         now = now.toISOString();
-        if (result[0].current_period_end < now || result[0].subscriber === 'no') {
-          return reply.redirect('/business/payment');
+        if (result[0] != null) {
+          if (result[0].current_period_end < now || result[0].subscriber === 'no') {
+            return reply.redirect('/business/payment');
+          } else {
+            reply.view('merchant/add_deal', {
+              _class: 'login-page',
+              business_email: request.auth.credentials.business_email,
+              yelp_URL: request.auth.credentials.yelp_URL,
+              business_name: request.auth.credentials.business_name,
+              business_id: request.auth.credentials.business_id,
+              business_map: request.auth.credentials.business_map,
+              business_lat: request.auth.credentials.business_lat,
+              business_lng: request.auth.credentials.business_lng,
+              business_phone: request.auth.credentials.business_phone,
+              business_address: request.auth.credentials.business_address,
+              business_icon: request.auth.credentials.business_icon,
+              business_locality: request.auth.credentials.business_locality
+            });
+          }
+
         } else {
-          reply.view('merchant/add_deal', {
-            _class: 'login-page',
-            business_email: request.auth.credentials.business_email,
-            yelp_URL: request.auth.credentials.yelp_URL,
-            business_name: request.auth.credentials.business_name,
-            business_id: request.auth.credentials.business_id,
-            business_map: request.auth.credentials.business_map,
-            business_lat: request.auth.credentials.business_lat,
-            business_lng: request.auth.credentials.business_lng,
-            business_phone: request.auth.credentials.business_phone,
-            business_address: request.auth.credentials.business_address,
-            business_icon: request.auth.credentials.business_icon,
-            business_locality: request.auth.credentials.business_locality
-          });
+          request.auth.session.clear();
+          return reply.redirect('/business/login');
         }
+
       });
 
     },
@@ -99,7 +106,7 @@ module.exports = {
           merchant_id: request.auth.credentials.business_id
         }).limit(1, function (err, result) {
           if (err) console.log(err);
-          if (result === undefined) reply.redirect('/business/deal');
+          if (result == null) reply.redirect('/business/deal');
           reply.view('merchant/edit_deal', {
             _class: 'login-page',
             business_email: request.auth.credentials.business_email,
@@ -396,7 +403,7 @@ module.exports = {
         if (err) console.log(err);
         var now = new Date();
         now = now.toISOString();
-        if (result) {
+        if (result[0] != null) {
           if (result[0].current_period_end < now || result[0].subscriber === 'no') {
             return reply.redirect('/business/payment');
           } else {
