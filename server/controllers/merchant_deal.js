@@ -376,7 +376,7 @@ module.exports = {
         if (error) console.log({
           error_message: error
         });
-        if (data.businesses && data.businesses[0].id) {
+        if (data.businesses[0] != null) {
           yelp.business(data.businesses[0].id, function (err, data) {
             if (err) return console.log(error);
             reply(data);
