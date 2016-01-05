@@ -319,6 +319,7 @@ module.exports = {
                 factual.get('/t/places-us', {
                   q: cleanPhone
                 }, function (error, res) {
+                  if (error) console.log(error);
                   if (res.data.length === 1) {
                     deal.hours = res.data[0].hours_display;
                     deal.zip_code = res.data[0].postcode;
@@ -326,6 +327,7 @@ module.exports = {
                   yelp.phone_search({
                     phone: cleanPhone
                   }, function (error, data) {
+                    if (error) console.log(error);
                     if (data.businesses.length === 1) {
                       yelp.business(data.businesses[0].id, function (error, data) {
                         deal.Yelp_rating = data.rating;
@@ -410,6 +412,7 @@ module.exports = {
             db.deals.find({
               merchant_id: request.auth.credentials.business_id
             }, function (err, deals) {
+              if (err) console.log(err);
               reply.view('merchant/manage_deals', {
                 deals: deals,
                 business_name: request.auth.credentials.business_name,

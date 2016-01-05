@@ -33,11 +33,12 @@
                   <thead>
                     <tr role="row">
                       <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 101px;">Coupon code</th>
-                      <th class="sorting" rowspan="1" colspan="1" style="width: 140px;">Offer</th>
+                      <th class="sorting" rowspan="1" colspan="1" style="width: 140px;">Offer Code</th>
                       <th class="sorting" rowspan="1" colspan="1" style="width: 240px;">Title</th>
                       <th class="sorting" rowspan="1" colspan="1" style="width: 140px;">Start Date</th>
                       <th class="sorting" rowspan="1" colspan="1" style="width: 101px;">End Date</th>
                       <th class="sorting" rowspan="1" colspan="1" style="width: 101px;">Active</th>
+                      <th class="sorting" rowspan="1" colspan="1" style="width: 101px;">Deal URL</th>
                       <th class="sorting" rowspan="1" colspan="1" style="width: 140px;"></th>
                     </tr>
                   </thead>
@@ -50,9 +51,10 @@
                       <td>{{deal.start_date}}</td>
                       <td>{{deal.expires_at}}</td>
                       <td>{{deal.published}}</td>
+                      <td><a href="https://dealsbox.co/deal/{{deal.deal_id}}" target="_blank">https://dealsbox.co/deal/{{deal.deal_id}}</a></td>
                       <td>
                         <a href="#" data-offer="{{deal.offer}}" data-code="{{deal.coupon_code}}" data-title="{{deal.title}}" data-description="{{deal.description}}" data-fineprint="{{deal.fine_print}}" data-expires="{{deal.expires_at}}" data-largeimage="{{deal.large_image}}"
-                        data-smallimage="{{deal.small_image}}" data-deal_id="{{deal.deal_id}}" style="margin-right:10px;" class="view-modal">View</a>
+                        data-smallimage="{{deal.small_image}}" data-deal_id="{{deal.deal_id}}" style="margin-right:10px;" class="btn btn-success view-modal">Edit</a>
                       </td>
                     </tr>
                     {% endfor %}
