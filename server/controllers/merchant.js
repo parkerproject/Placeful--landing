@@ -22,9 +22,7 @@ var sendEmail = function (email, subject, content) {
       html: content
     }
   }, function (error, response) {
-    //uh oh, there was an error
     if (error) console.log(JSON.stringify(error));
-    //everything's good, lets see what mandrill said
     else console.log(response);
   });
 };
@@ -67,7 +65,6 @@ var login = function (request, reply) {
           request.auth.session.set(account);
           return reply.redirect('/business/manage_deals');
         }
-
       });
     }
   }

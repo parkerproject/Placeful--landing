@@ -106,37 +106,6 @@
 </head>
 
 <body id="home">
-  <!-- Start preloading -->
-  <div id="loading" class="loading-invisible">
-    <div class="loading-center">
-      <div class="loading-center-absolute">
-        <div class="object"></div>
-        <div class="object"></div>
-        <div class="object"></div>
-        <div class="object"></div>
-        <div class="object"></div>
-        <div class="object"></div>
-        <div class="object"></div>
-        <div class="object"></div>
-        <div class="object"></div>
-        <div class="object"></div>
-      </div>
-      <p>Please wait...</p>
-    </div>
-  </div>
-  <script type="text/javascript">
-    document.getElementById("loading").className = "loading-visible";
-    var hideDiv = function() {
-      document.getElementById("loading").className = "loading-invisible";
-    };
-    var oldLoad = window.onload;
-    var newLoad = oldLoad ? function() {
-      hideDiv.call(this);
-      oldLoad.call(this);
-    } : hideDiv;
-    window.onload = newLoad;
-  </script>
-  <!-- End preloading -->
 
   <!-- Start Scroll to top -->
   <div class="scroll top">
