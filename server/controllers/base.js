@@ -34,5 +34,13 @@ module.exports = {
     app: {
       name: '404'
     }
+  },
+  business: {
+    handler: function (request, reply) {
+      return reply.redirect("https://merchant.dealsbox.co");
+    },
+    app: {
+      name: 'business'
+    }
   }
 };

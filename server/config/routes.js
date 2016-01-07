@@ -10,10 +10,6 @@ module.exports = function (server) {
   // Array of routes for Hapi
   var routeTable = [{
     method: 'GET',
-    path: '/business/thankyou',
-    config: controller.base.fbconfirm
-  }, {
-    method: 'GET',
     path: '/',
     config: controller.base.index
   }, {
@@ -113,77 +109,9 @@ module.exports = function (server) {
     path: '/promo',
     config: controller.promo.testing
   }, {
-    method: 'GET',
-    path: '/business',
-    config: controller.merchant.landing
-  }, {
-    method: 'GET',
-    path: '/business/home',
-    config: controller.dashboard.index
-  }, {
-    method: 'GET',
-    path: '/business/payment',
-    config: controller.merchant.index
-  }, {
-    method: ['GET', 'POST'],
-    path: '/business/login',
-    config: controller.merchant.login
-  }, {
-    method: 'GET',
-    path: '/business/logout',
-    config: controller.merchant.logout
-  }, {
-    method: ['GET', 'POST'],
-    path: '/business/forgotpass',
-    config: controller.merchant.forgot_pass
-  }, {
-    method: ['GET', 'POST'],
-    path: '/business/password_reset',
-    config: controller.merchant.password_reset
-  }, {
-    method: 'GET',
-    path: '/business/register',
-    config: controller.merchant.register
-  }, {
-    method: 'POST',
-    path: '/business/register_post',
-    config: controller.merchant.register_post
-  }, {
-    method: 'GET',
-    path: '/business/deal',
-    config: controller.merchant_deal.index
-  }, {
-    method: 'GET',
-    path: '/business/deal/edit',
-    config: controller.merchant_deal.edit
-  }, {
-    method: 'POST',
-    path: '/business/deal/edit_post',
-    config: controller.merchant_deal.edit_post
-  }, {
-    method: 'POST',
-    path: '/business/deal/delete_deal',
-    config: controller.merchant_deal.delete_deal
-  }, {
-    method: 'POST',
-    path: '/business/deal/builder',
-    config: controller.merchant_deal.builder
-  }, {
-    method: 'GET',
-    path: '/lab/yelp_phone',
-    config: controller.merchant_deal.searchYelpPhone
-  }, {
     method: 'POST',
     path: '/lab/payment',
     config: controller.payment.index
-  }, {
-    method: 'GET',
-    path: '/business/manage_deals',
-    config: controller.merchant_deal.deals
-  }, {
-    method: ['GET', 'POST'],
-    path: '/business/profile',
-    config: controller.merchant.profile
   }, {
     method: 'GET',
     path: '/user/coupon',
@@ -192,6 +120,10 @@ module.exports = function (server) {
     method: 'GET',
     path: '/deal/{deal_id}',
     config: controller.deal.index
+  }, {
+    method: 'GET',
+    path: '/business',
+    config: controller.base.business
   }];
   return routeTable;
 };

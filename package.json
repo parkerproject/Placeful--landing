@@ -34,6 +34,7 @@
     "hapi-swagger": "^2.1.0",
     "html-pdf": "^1.4.0",
     "inert": "^3.0.2",
+    "intercom.io": "^1.0.11",
     "joi": "^7.0.0",
     "json2csv": "^3.0.1",
     "kaiseki": "^0.5.6",
