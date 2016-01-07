@@ -20,7 +20,7 @@ module.exports = {
 
       kaiseki.getUsers(params, function (err, res, body, success) {
         if (!body.hasOwnProperty('error')) {
-          reply.view('merchant/referral_coupon', {
+          reply.view('referral_coupon', {
             code: body[0].objectId
           });
         } else {
