@@ -124,6 +124,10 @@ module.exports = function (server) {
     method: 'GET',
     path: '/business',
     config: controller.base.business
+  }, {
+    method: 'POST',
+    path: '/webhook/user/new',
+    config: controller.webhook.user
   }];
   return routeTable;
 };
