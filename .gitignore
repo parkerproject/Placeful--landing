@@ -16,3 +16,4 @@ node_modules
 server/controller/deal_images
 server/controllers/find.js
 server/controllers/factual.js
+server/controllers/findEmail.js
