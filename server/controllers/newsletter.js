@@ -12,7 +12,6 @@ var Promise = require('es6-promise').Promise;
 
 
 
-
 function getUsers(cb) {
   var params = {
     where: {
@@ -101,7 +100,7 @@ function handlerEmail() {
             }
             var payload = new sendgrid.Email({
               to: user.email,
-              from: 'deals@dealsbox.co',
+              from: 'hello@dealsbox.co',
               fromname: 'DEALSBOX',
               //subject: 'Enjoy today\'s local deals',
               subject: _.first(deals).title,

@@ -38,6 +38,7 @@
     "joi": "^7.0.0",
     "json2csv": "^3.0.1",
     "kaiseki": "^0.5.6",
+    "keen-js": "^3.3.0",
     "lodash": "^3.10.0",
     "mongojs": "^0.18.2",
     "node-mandrill": "^1.0.1",
