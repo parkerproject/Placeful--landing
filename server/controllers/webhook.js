@@ -5,7 +5,7 @@ var db = require("mongojs").connect(process.env.DEALSBOX_MONGODB_URL, collection
 var Keen = require("keen-js");
 var client = new Keen({
   projectId: process.env.KEEN_PROJECTID,
-  writeKey: process.env.WRITEKEY
+  writeKey: process.env.KEEN_WRITEKEY
 });
 
 
