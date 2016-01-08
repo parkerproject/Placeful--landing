@@ -26,9 +26,9 @@ module.exports = {
 
       client.addEvent("views", data, function (err, res) {
         if (err) {
-          console.log('error');
+          console.log(err);
         } else {
-          console.log('success');
+          console.log(res);
         }
       });
     }
