@@ -13,7 +13,7 @@ var client = new Keen({
 module.exports = {
   user: {
     handler: function (request, reply) {
-      let data = request.payload.data.item.metadata;
+      var data = request.payload.data.item.metadata;
 
       data.keen = {
         timestamp: new Date().toISOString()
