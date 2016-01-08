@@ -13,7 +13,7 @@ var client = new Keen({
 module.exports = {
   user: {
     handler: function (request, reply) {
-      db.webhook.save(request.payload);
+
       var data = request.payload.data.item.metadata;
 
       if (data) {
@@ -22,7 +22,7 @@ module.exports = {
         };
       }
 
-      //db.webhook.save(data);
+      db.webhook.save(data);
 
       client.addEvent("views", data, function (err, res) {
         if (err) {
