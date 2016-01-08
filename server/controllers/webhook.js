@@ -13,12 +13,13 @@ var client = new Keen({
 module.exports = {
   user: {
     handler: function (request, reply) {
-      var data = payload.data.item.metadata;
+      let data = request.payload.data.item.metadata;
+
       data.keen = {
         timestamp: new Date().toISOString()
       };
 
-      db.webhook.save(payload.data.item.metadata);
+      db.webhook.save(data);
 
       client.addEvent("views", data, function (err, res) {
         if (err) {
