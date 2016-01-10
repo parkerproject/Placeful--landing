@@ -8,6 +8,7 @@ lib-cov
 *.gz
 *.idea
 .env
+.eslintrc
 
 pids
 results
@@ -17,3 +18,4 @@ server/controller/deal_images
 server/controllers/find.js
 server/controllers/factual.js
 server/controllers/findEmail.js
+server/controllers/cj.js
