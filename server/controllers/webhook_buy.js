@@ -15,6 +15,7 @@ var score = 3;
 module.exports = {
   index: {
     handler: function (request, reply) {
+      db.webhook.save(request.payload);
 
       var data = request.payload.data.item.metadata;
 

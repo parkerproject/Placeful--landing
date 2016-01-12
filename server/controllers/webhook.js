@@ -16,8 +16,6 @@ module.exports = {
   index: {
     handler: function (request, reply) {
 
-      db.webhook.save(request.payload);
-
       var data = request.payload.data.item.metadata;
       if (data == null) {
         reply('no data');
