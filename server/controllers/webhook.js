@@ -17,6 +17,11 @@ module.exports = {
     handler: function (request, reply) {
 
       var data = request.payload.data.item.metadata;
+      console.log(request.payload);
+
+      if (!request.payload.data) {
+        reply('sorry no data');
+      }
 
       if (data) {
         data.keen = {
