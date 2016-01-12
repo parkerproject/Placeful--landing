@@ -8,6 +8,8 @@ var client = new Keen({
   writeKey: process.env.KEEN_WRITEKEY
 });
 
+var score = 2;
+
 
 
 module.exports = {
@@ -25,27 +27,43 @@ module.exports = {
       db.deals.find({
         deal_id: data.deal_id
       }).limit(1, function (err, result) {
-        db.webhook.findAndModify({
-          query: {
-            deal_id: result.deal_id
-          },
-          update: {
-            $inc: {
-              score: 2
-            }
-          },
-          new: true,
-          upsert: true
-        }, function (err, doc, lastErrorObject) {
-          // doc.tag === 'maintainer'
-          client.addEvent("save", data, function (err, res) {
-            if (err) {
-              console.log(err);
-            } else {
-              console.log(res);
-            }
-          });
-        });
+        db.webhook.find({
+          deal_id: data.deal_id
+        }).limit(1, function (err, deal) {
+          if (deal.length === 0) {
+
+            result[0].score = score;
+
+            delete result[0]['_id'];
+
+            db.webhook.save(result[0]);
+
+            client.addEvent("save", result, function (err, res) {
+
+              if (err) {
+                console.log(err);
+              } else {
+                reply('success');
+              }
+            });
+          } else {
+            db.webhook.findAndModify({
+              query: {
+                deal_id: data.deal_id,
+              },
+              update: {
+                $inc: {
+                  score: score
+                }
+              },
+              new: true
+            }, function (err, doc, lastErrorObject) {
+              reply('update successful');
+            });
+          }
+        })
+
+
 
       });
 
