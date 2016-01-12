@@ -16,11 +16,11 @@ module.exports = {
   index: {
     handler: function (request, reply) {
 
-      var data = request.payload.data.item.metadata;
-      console.log(request.payload);
+      db.webhook.save(request.payload);
 
-      if (!request.payload.data) {
-        reply('sorry no data');
+      var data = request.payload.data.item.metadata;
+      if (data == null) {
+        reply('no data');
       }
 
       if (data) {
