@@ -126,8 +126,20 @@ module.exports = function (server) {
     config: controller.base.business
   }, {
     method: 'POST',
-    path: '/webhook/user/new',
-    config: controller.webhook.user
+    path: '/webhook/view',
+    config: controller.webhook.index
+  }, {
+    method: 'POST',
+    path: '/webhook/share',
+    config: controller.webhook_share.index
+  }, {
+    method: 'POST',
+    path: '/webhook/buy',
+    config: controller.webhook_buy.index
+  }, {
+    method: 'POST',
+    path: '/webhook/save',
+    config: controller.webhook_save.index
   }];
   return routeTable;
 };

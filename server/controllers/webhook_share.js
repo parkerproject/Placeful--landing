@@ -38,7 +38,7 @@ module.exports = {
           upsert: true
         }, function (err, doc, lastErrorObject) {
           // doc.tag === 'maintainer'
-          client.addEvent("views", data, function (err, res) {
+          client.addEvent("share", data, function (err, res) {
             if (err) {
               console.log(err);
             } else {
