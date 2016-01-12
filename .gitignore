@@ -19,3 +19,4 @@ server/controllers/find.js
 server/controllers/factual.js
 server/controllers/findEmail.js
 server/controllers/cj.js
+server/controllers/aso.js
