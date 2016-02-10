@@ -156,7 +156,7 @@ h6 {
 }
 
 
-/*==================================== 
+/*====================================
   Our Modal Window styles
 =====================================*/
 
@@ -284,4 +284,24 @@ input:checked ~ .modal__overlay {
     background: #f2f6fb;
     box-shadow: 0 0 28px rgba(0, 0, 0, .2);
     padding: 10px;
+}
+
+.links{
+	float: right;
+  margin: 0;
+  padding: 0;
+}
+
+.links li{
+	display: inline-block;
+  padding: 5px;
+}
+
+.links li a{
+  color: white;
+  text-decoration: none;
+}
+
+.links li a:hover{
+  text-decoration: underline;
 }
