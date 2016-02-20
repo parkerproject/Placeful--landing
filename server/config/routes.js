@@ -122,7 +122,7 @@ module.exports = function (server) {
     config: controller.coupon.index
   }, {
     method: 'GET',
-    path: '/promotion/{promotion_id}',
+    path: '/promotion/{promotion_id}/{slug}',
     config: controller.deal.index
   }, {
     method: 'GET',
