@@ -1,8 +1,10 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html lang="en" class="no-js">
 
 <head>
-  <title>{{deal.title}} - DEALSBOX</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{deal.title}} - Placeful</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta property="og:url" content="{{facebook_url}}" />
@@ -11,172 +13,109 @@
   <meta property="og:description" content="{{deal.description}}" />
   <meta property="og:image" content="{{facebook_image_url}}" />
   <meta property="al:ios:app_store_id" content="944253010" />
-  <meta property="al:ios:url" content="dealsbox://deal/{{deal.deal_id}}" />
-  <meta property="al:ios:app_name" content="DEALSBOX" />
+  <meta property="al:ios:url" content="placeful://promotion/{{deal.deal_id}}" />
+  <meta property="al:ios:app_name" content="Placeful" />
   <meta property="fb:app_id" content="692286700888072" />
   <!-- <meta property="al:android:package" content="com.imdb.mobile" />
-  <meta property="al:android:url" content="imdb://title/tt0117500" />
-  <meta property="al:android:app_name" content="IMDb Movies & TV" /> -->
+<meta property="al:android:url" content="imdb://title/tt0117500" />
+<meta property="al:android:app_name" content="IMDb Movies & TV" /> -->
   <meta name="twitter:card" content="app">
-  <meta name="twitter:site" content="@dealsboxapp">
+  <meta name="twitter:site" content="@placefulapp">
   <meta name="twitter:description" content="{{deal.description}}">
   <meta name="twitter:app:country" content="US">
-  <meta name="twitter:app:name:iphone" content="DEALSBOX">
+  <meta name="twitter:app:name:iphone" content="Placeful">
   <meta name="twitter:app:id:iphone" content="944253010">
-  <meta name="twitter:app:url:iphone" content="dealsbox://deal/{{deal.deal_id}}">
-  <meta name="twitter:app:name:ipad" content="DEALSBOX">
+  <meta name="twitter:app:url:iphone" content="placeful://promotion/{{deal.deal_id}}">
+  <meta name="twitter:app:name:ipad" content="Placeful">
   <meta name="twitter:app:id:ipad" content="944253010">
-  <meta name="twitter:app:url:ipad" content="dealsbox://deal/{{deal.deal_id}}">
-  <!-- <meta name="twitter:app:name:googleplay" content="Cannonball">
-  <meta name="twitter:app:id:googleplay" content="io.fabric.samples.cannonball">
-  <meta name="twitter:app:url:googleplay" content="http://cannonball.fabric.io/poem/5149e249222f9e600a7540ef"> -->
-  <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+  <meta name="twitter:app:url:ipad" content="placeful://promotion/{{deal.deal_id}}">
 
-  <style>
-    .tabs-title>a,
-    a {
-      color: #DB462C
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="/cs/css/reset.css">
+  <!-- CSS reset -->
+  <link rel="stylesheet" href="/cs/css/style.css">
+  <!-- Resource style -->
+  <script src="/cs/js/modernizr.js"></script>
+  <!-- Modernizr -->
+  <style media="screen">
+    .cd-image-block li {
+      position: relative;
     }
     
-    .top-bar,
-    .top-bar ul {
-      background-color: #DB462C;
+    .overlay {
+      display: table;
+      content: '';
+      width: 80%;
+      background-color: rgba(0, 0, 0, 0.6);
+      position: absolute;
+      height: 30%;
+      bottom: 0;
+      margin: 0 auto;
     }
     
-    .thumbnail_1 {
-      width: 70px!important;
-    }
-    
-    .button.hollow.secondary {
-      border: 1px solid #fff;
-      color: #fff;
-    }
-    
-    .yelp_img {
-      width: 84px!important;
+    header {
+      padding: 10px 0;
+      height: 100px;
+      text-align: center;
     }
   </style>
 </head>
 
 <body>
-
-  <div class="top-bar">
-    <div class="row">
-      <div class="top-bar-left">
-        <ul class="dropdown menu" data-dropdown-menu>
-          <li class="menu-text">
-            <img src="https://dealsbox.co/images/newsletter_logo2.png" alt="" width="200px" />
-          </li>
-        </ul>
-      </div>
-      <div class="top-bar-right">
-        <ul class="menu">
-          <li class="download">
-            <a href="https://app.appsflyer.com/id944253010?pid=landing_page" class="" target="_blank">
-              <img src="https://dl.dropbox.com/s/le1m692ix9y6tlc/applestore.png?dl=0" width="150px">
-            </a>
-          </li>
-          <li>
-            <a href="http://bit.ly/1iKdE8o" class="btn btn-primary waiting-list" target="_blank">
-              <img src="https://dl.dropbox.com/s/xfqdyqw1p44tkhw/googleplay.png?dl=0" alt="" width="150px" />
-            </a>
-          </li>
-        </ul>
-      </div>
+  <title>Placeful</title>
+  <main>
+    <div class="cd-image-block">
+      <ul class="cd-images-list">
+        <li class="is-selected" style="background: url({{deal.large_image}}) no-repeat center center">
+        </li>
+      </ul>
+      <!-- .cd-images-list -->
     </div>
-  </div>
+    <!-- .cd-image-block -->
 
-  <br>
-
-  <div class="row">
-    <div class="medium-6 columns">
-      <p>
-        <img src="{{deal.yelp.rating_img_url}}" alt="" />
-        <small>{{deal.yelp.review_count}} Yelp reviews</small>
-      </p>
-      <img class="thumbnail" src="{{deal.large_image}}">
-      <address>
-        <strong>{{deal.merchant_name}}</strong>
-        <br /> {{deal.merchant_address}}
-        <br /> Tel: <a href="tel:{{deal.phone}}">{{deal.phone}}</a>
-      </address>
-    </div>
-    <div class="medium-6 large-5 columns">
-      <h3>{{deal.title}}</h3>
-      <p>{{deal.description}}</p>
-
-      <p style="padding-bottom:10px;">
-        <small>Deal Category:
-          <strong>{{deal.category_name}}</strong>
-        </small>
-      </p>
-      <label class="stat" style="padding-bottom: 10px;">
-        <span style="color:green;">{{price}}</span>
-      </label>
-      <a href="{{button_url}}" class="button large expanded" style="background-color: #27ae60;">
-        <strong>{{button_text}}</strong>
-      </a>
-    </div>
-  </div>
-  <div class="column row">
-    <hr>
-    <ul class="tabs" data-tabs id="example-tabs">
-      <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Reviews</a></li>
-      <!-- <li class="tabs-title"><a href="#panel2">Similar Deals</a></li> -->
-    </ul>
-    <div class="tabs-content" data-tabs-content="example-tabs">
-      <div class="tabs-panel is-active" id="panel1">
-        <h4>Reviews</h4>
-        {% for review in deal.yelp.reviews %}
-        <div class="media-object stack-for-small">
-          <div class="media-object-section">
-            <img class="thumbnail thumbnail_1" src="{{review.user.image_url}}" width="70px">
-          </div>
-          <div class="media-object-section">
-            <h5>{{review.user.name}} -
-              <img src="{{review.rating_image_url}}" alt="" class="yelp_img" />
-            </h5>
-            <p>{{review.excerpt}}</p>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-      <!-- <div class="tabs-panel" id="panel2">
-        <div class="row medium-up-3 large-up-5">
-          <div class="column">
-            <img class="thumbnail" src="http://placehold.it/350x200">
-            <h5>Other Product
-              <small>$22</small>
-            </h5>
-            <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam.</p>
-            <a href="#" class="button hollow tiny expanded">Buy Now</a>
-          </div>
-        </div>
-      </div> -->
-    </div>
-  </div>
-  <div class="row column">
-    <hr>
-    <ul class="menu">
-      <li>DEALSBOX</li>
-      <li class="download">
+    <div class="cd-content-block">
+      <header>
+        <p style="margin:0;"><img src="/images/logo.png" alt="" /></p>
         <a href="https://app.appsflyer.com/id944253010?pid=landing_page" class="" target="_blank">
-          <img src="https://dl.dropbox.com/s/le1m692ix9y6tlc/applestore.png?dl=0" width="150px">
+          <img src="/images/app_store2.png" width="180px">
         </a>
-      </li>
-      <li>
         <a href="http://bit.ly/1iKdE8o" class="btn btn-primary waiting-list" target="_blank">
-          <img src="https://dl.dropbox.com/s/xfqdyqw1p44tkhw/googleplay.png?dl=0" alt="" width="150px" />
+          <img src="/images/app_andriod_badges2.png" alt="" width="180px" />
         </a>
-      </li>
-      <li class="float-right">Copyright 2016</li>
-    </ul>
-  </div>
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
-  <script>
-    $(document).foundation();
-  </script>
+      </header>
+      <ul>
+        <li class="is-selected">
+          <div>
+            <h2>{{deal.title}}</h2>
+
+            <p>
+              <span style="color: black;">{{deal.merchant_name}}</span>
+              <br /> {{deal.merchant_address}}
+            </p>
+
+            <p>
+              <span>{{tags}}</span>
+              <br /> {{deal.description}}
+            </p>
+
+            <p>{{deal.instructions}}</p>
+
+          </div>
+        </li>
+
+      </ul>
+
+      <button class="cd-close">Close</button>
+    </div>
+    <!-- .cd-content-block -->
+
+  </main>
+  <!-- .cd-main -->
+
+  <script src="/cs/js/jquery-2.1.4.js"></script>
+  <script src="/cs/js/main.js"></script>
+  <!-- Resource jQuery -->
 </body>
 
 </html>

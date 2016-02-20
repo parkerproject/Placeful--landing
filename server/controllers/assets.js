@@ -60,6 +60,16 @@ module.exports = {
       name: 'css'
     }
   },
+  cs: {
+    handler: {
+      directory: {
+        path: './public/cs'
+      }
+    },
+    app: {
+      name: 'cs'
+    }
+  },
   fonts: {
     handler: {
       directory: {

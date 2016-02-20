@@ -1,11 +1,11 @@
 /**
  * Dependencies.
  */
-var requireDirectory = require('require-directory');
+var requireDirectory = require('require-directory')
 
 module.exports = function (server) {
   // Bootstrap your controllers so you dont have to load them individually. This loads them all into the controller name space. https://github.com/troygoode/node-require-directory
-  var controller = requireDirectory(module, '../controllers');
+  var controller = requireDirectory(module, '../controllers')
 
   // Array of routes for Hapi
   var routeTable = [{
@@ -32,6 +32,10 @@ module.exports = function (server) {
     method: 'GET',
     path: '/css/{path*}',
     config: controller.assets.css
+  }, {
+    method: 'GET',
+    path: '/cs/{path*}',
+    config: controller.assets.cs
   }, {
     method: 'GET',
     path: '/fonts/{path*}',
@@ -118,7 +122,7 @@ module.exports = function (server) {
     config: controller.coupon.index
   }, {
     method: 'GET',
-    path: '/deal/{deal_id}',
+    path: '/promotion/{promotion_id}',
     config: controller.deal.index
   }, {
     method: 'GET',
@@ -140,6 +144,6 @@ module.exports = function (server) {
     method: 'POST',
     path: '/webhook/save',
     config: controller.webhook_save.index
-  }];
-  return routeTable;
-};
+  }]
+  return routeTable
+}
