@@ -1,4 +1,4 @@
-/* -------------------------------- 
+/* --------------------------------
 
 Primary style
 
@@ -31,7 +31,7 @@ button {
   font-size: 1.6rem;
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
 Images block
 
@@ -41,7 +41,7 @@ Images block
 }
 .cd-image-block::before {
   /* this is the layer used to cover the .cd-image-block when the content block becomes visible - mobile only */
-  content: '';
+  /*content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -52,14 +52,14 @@ Images block
   visibility: hidden;
   -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
   -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
-  transition: opacity 0.3s 0s, visibility 0s 0.3s;
+  transition: opacity 0.3s 0s, visibility 0s 0.3s;*/
 }
 .cd-image-block.content-block-is-visible::before {
-  opacity: 1;
+  /*opacity: 1;
   visibility: visible;
   -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
   -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
-  transition: opacity 0.3s 0s, visibility 0s 0s;
+  transition: opacity 0.3s 0s, visibility 0s 0s;*/
 }
 @media only screen and (min-width: 768px) {
   .cd-image-block::before {
@@ -77,7 +77,7 @@ Images block
   background: #979c9c url(../img/img-1.jpg) no-repeat center center;
   background-size: cover;
 }
-.cd-images-list > li:nth-of-type(2) {
+/*.cd-images-list > li:nth-of-type(2) {
   background: #343642 url(../img/img-2.jpg) no-repeat center center;
   background-size: cover;
 }
@@ -88,7 +88,7 @@ Images block
 .cd-images-list > li:nth-of-type(4) {
   background: #338899 url(../img/img-4.jpg) no-repeat center center;
   background-size: cover;
-}
+}*/
 .cd-images-list > li > a {
   /* used to vertically align the h2 child -  mobile version only */
   display: table;
@@ -123,14 +123,14 @@ Images block
   }
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
 Content block
 
 -------------------------------- */
 .cd-content-block {
   /* move the block outside the viewport (to the right) - mobile only */
-  position: fixed;
+  /*position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
@@ -142,7 +142,7 @@ Content block
   transform: translateX(100%);
   -webkit-transition: -webkit-transform 0.3s;
   -moz-transition: -moz-transform 0.3s;
-  transition: transform 0.3s;
+  transition: transform 0.3s;*/
 }
 .cd-content-block.is-visible {
   -webkit-transform: translateX(0);
@@ -276,7 +276,7 @@ Content block
   }
 }
 
-/* ---------------------------------------------- 
+/* ----------------------------------------------
 
 Desktop slider - both image and content blocks
 
@@ -341,7 +341,7 @@ Desktop slider - both image and content blocks
     transform: translateX(-100%);
   }
 }
-/* -------------------------------- 
+/* --------------------------------
 
 Slider navigation
 
@@ -396,7 +396,7 @@ Slider navigation
   }
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
 Javascript disabled
 

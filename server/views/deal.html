@@ -56,13 +56,11 @@
     
     header {
       padding: 10px 0 10px 40px;
-      height: 100px;
     }
   </style>
 </head>
 
 <body>
-  <title>Placeful</title>
   <main>
     <div class="cd-image-block">
       <ul class="cd-images-list">
@@ -98,6 +96,10 @@
               <br /> {{deal.description}}
             </p>
 
+            <p>
+              Expires on {{deal.end_date | date('F jS, Y')}}
+            </p>
+
             <p>{{deal.instructions}}</p>
 
             <p>{{deal.fine_print}}</p>
@@ -107,15 +109,14 @@
 
       </ul>
 
-      <button class="cd-close">Close</button>
     </div>
     <!-- .cd-content-block -->
 
   </main>
   <!-- .cd-main -->
 
-  <script src="/cs/js/jquery-2.1.4.js"></script>
-  <script src="/cs/js/main.js"></script>
+  <!-- <script src="/cs/js/jquery-2.1.4.js"></script>
+  <script src="/cs/js/main.js"></script> -->
   <!-- Resource jQuery -->
 </body>
 
