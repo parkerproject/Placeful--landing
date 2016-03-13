@@ -1,3 +1,3 @@
-Dealsbox-landing
+Placeful discovery platform
 ==================
-The Landing page for Dealsbox mobile app
+The Landing page for Placeful mobile app
