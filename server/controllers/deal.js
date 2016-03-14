@@ -1,3 +1,4 @@
+'use strict'
 require('dotenv').load()
 const req = require('request')
 const collections = ['promotions']
