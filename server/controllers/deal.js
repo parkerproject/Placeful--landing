@@ -1,8 +1,7 @@
 require('dotenv').load()
-var _ = require('lodash')
-var req = require('request')
-var collections = ['promotions']
-var db = require('mongojs').connect(process.env.DEALSBOX_MONGODB_URL, collections)
+const req = require('request')
+const collections = ['promotions']
+const db = require('mongojs').connect(process.env.DEALSBOX_MONGODB_URL, collections)
 
 module.exports = {
   index: {
@@ -28,6 +27,6 @@ module.exports = {
 
         }
       })
-
+    }
   }
 }
