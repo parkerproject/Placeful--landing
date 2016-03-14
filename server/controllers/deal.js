@@ -17,7 +17,7 @@ module.exports = {
             return '#' + tag
           })
 
-          let hashtags = hashtags.join(' ')
+          // let hashtags = hashtags.join(' ')
 
           reply.view('deal', {
             deal: deal[0],
